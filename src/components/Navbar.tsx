@@ -34,12 +34,12 @@ const Navbar = () => {
                 <Moon className="transition-none" />
               )}
             </button>
-            <a
+            <Link
               href="/ride"
               className="font-medium text-foreground/80 cursor-pointer hover:text-foreground transition hover:underline"
             >
               Pricing
-            </a>
+            </Link>
             <a className="font-medium text-foreground/80 cursor-pointer hover:text-foreground transition hover:underline">
               Safety
             </a>

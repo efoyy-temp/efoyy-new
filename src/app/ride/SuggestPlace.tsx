@@ -69,7 +69,7 @@ const SuggestPlace = (props: Props) => {
         colors: {
           ...theme.colors,
           primary: "#FF6E61",
-          neutral0: "#161616",
+          neutral0: "hsl(var(--background))",
         },
       })}
       classNames={{
@@ -80,7 +80,7 @@ const SuggestPlace = (props: Props) => {
         input: () =>
           "!py-1 !placeholder:text-[#797979CA] !text-foreground transition-all ease-in-out",
         singleValue: () => "!text-foreground",
-        menuList: () => "!bg-[#161616] !rounded-lg",
+        menuList: () => "!bg-secondary-background !rounded-lg",
         option: (op) =>
           `!text-foreground/70 !text-sm ${op.isFocused ? "!bg-secondary" : ""} `,
       }}

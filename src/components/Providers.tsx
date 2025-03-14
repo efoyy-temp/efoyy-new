@@ -8,7 +8,7 @@ import {
 import { APIProvider } from "@vis.gl/react-google-maps";
 
 const client = new ApolloClient({
-  uri: "https://flyby-router-demo.herokuapp.com/",
+  uri: "https://spacex-production.up.railway.app/",
   cache: new InMemoryCache(),
 });
 

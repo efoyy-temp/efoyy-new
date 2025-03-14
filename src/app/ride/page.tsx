@@ -1,12 +1,6 @@
 "use client";
 
 import { Map, Marker, useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
-import {
-  MapContainer,
-  Marker as LeftMarker,
-  Popup,
-  TileLayer,
-} from "react-leaflet";
 import Navbar from "@/src/components/Navbar";
 import { MapPin } from "lucide-react";
 import * as React from "react";
@@ -53,24 +47,24 @@ export default function MyComponent() {
   return (
     <div className="min-h-screen flex flex-col ">
       <Navbar />
-      <div className="flex items-center flex-1 justify-center">
-        <div className="flex gap-8 py-0 px-4 max-md:h-auto max-md:flex-col max-sm:p-4 w-full md:items-center max-w-screen-xl">
+      <div className="flex items-center pt-14 flex-1 justify-center">
+        <div className="flex gap-8 py-16 px-4 max-md:h-auto max-md:flex-col max-sm:px-4 w-full md:items-center max-w-screen-xl">
           <div className="flex flex-col flex-1 items-start">
             <div className="flex flex-col gap-4 items-start self-stretch">
               <div className="space-y-2">
                 <div className="self-stretch text-sm font-semibold text-foreground">
                   Amazing pricing
                 </div>
-                <div className="self-stretch text-6xl bg-gradient-to-r from-white to-[#999999] text-clip text-transparent font-extrabold bg-clip-text max-sm:text-4xl">
+                <div className="self-stretch text-6xl bg-gradient-to-r from-foreground to-foreground/70 text-clip text-transparent font-extrabold bg-clip-text max-sm:text-4xl">
                   Check Out Our Prices
                 </div>
               </div>
             </div>
             <div className="flex flex-col self-stretch max-w-sm gap-6 pl-3 w-full my-6 md:my-12 relative">
               <div className=" h-[76px] absolute top-6 left-0">
-                <div className="h-full w-0.5 bg-white/80 absolute "></div>
-                <div className="size-2 bg-white/80 absolute top-0 left-px rotate-45 -translate-x-1/2 -translate-y-1/2 "></div>
-                <div className="size-2 bg-white/80 absolute bottom-0 left-px rotate-45 -translate-x-1/2 translate-y-1/2 "></div>
+                <div className="h-full w-0.5 bg-foreground/80 absolute "></div>
+                <div className="size-2 bg-foreground/80 absolute top-0 left-px rotate-45 -translate-x-1/2 -translate-y-1/2 "></div>
+                <div className="size-2 bg-foreground/80 absolute bottom-0 left-px rotate-45 -translate-x-1/2 translate-y-1/2 "></div>
               </div>
 
               <SuggestPlace
@@ -83,7 +77,7 @@ export default function MyComponent() {
               />
               <div className="flex gap-2 items-center">
                 <MapPin size={20} />
-                <div className="text-sm font-medium text-white">
+                <div className="text-sm font-medium text-foreground">
                   Use current location
                 </div>
               </div>
@@ -125,19 +119,6 @@ export default function MyComponent() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-[80vw] h-[600px] bg-red-700 overflow-hidden">
-        <MapContainer center={[INITIAL_CAMERA.center.lat, INITIAL_CAMERA.center.lng]} zoom={14} className="size-full">
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <LeftMarker position={[INITIAL_CAMERA.center.lat, INITIAL_CAMERA.center.lng]}>
-            <Popup>
-              A pretty CSS3 popup. <br />
-            </Popup>
-          </LeftMarker>
-        </MapContainer>
       </div>
     </div>
   );
