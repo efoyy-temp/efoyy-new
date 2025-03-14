@@ -1,101 +1,57 @@
-import Image from "next/image";
+"use client";
+import { useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Overview from "../components/Home/Overview";
+import Features from "../components/Home/Features";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <Navbar />
+      <div>
+        <div className="h-screen flex max-sm:flex-col pb-8 sm:pb-12 md:pb-20 px-6 sm:px-8 md:px-12 lg:px-16 justify-center sm:justify-end items-end  ">
+          <img
+            src="./hero-buildings.png"
+            style={{
+              maskImage: "linear-gradient(30deg, #00000020 20%, #000000)",
+            }}
+            className="inset-0 overflow-hidden top-auto h-[80vh] -z-10 w-full object-cover absolute motion-translate-y-in-[8%] motion-opacity-in-[80%] motion-blur-in-[2px]  motion-ease-out-cubic motion-duration-500"
+          />
+          <div className="flex items-start max-sm:my-auto justify-center w-full flex-col gap-4 ">
+            <div className="text-sm font-semibold text-primary motion-translate-y-in-[30%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-[1s] motion-delay-1000">
+              4k+ drivers working 24/7
+            </div>
+            <h1 className="max-w-[600px] text-5xl font-semibold bg-gradient-to-r from-foreground to-secondary-foreground/60 text-clip text-transparent bg-clip-text max-sm:text-4xl motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-300">
+              Where Do You Want <br /> To Go?
+            </h1>
+            <p className="font-medium max-w-lg text-sm mt-2 leading-6 motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-700">
+              Wherever you are in Addis, we've got your back with unbeatable
+              pricing, lightning-fast responses, and top-notch customer service
+              available 24/7! 🚀 Ready for your next ride? Download our app and
+              hop on board today!
+            </p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <a
+              className="hover:scale-105 transition ease-in-out"
+              href="#android"
+            >
+              <img
+                className="h-12 sm:h-16 object-contain"
+                src="./playbadge.png"
+              />
+            </a>
+            <a className="hover:scale-105 transition ease-in-out" href="#play">
+              <img
+                className="h-12 py-1.5 sm:h-16 sm:py-2.5 object-contain"
+                src="./appbadge.png"
+              />
+            </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+      <Overview />
+      <Features />
+    </>
   );
 }

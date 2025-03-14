@@ -1,6 +1,12 @@
 "use client";
 
 import { Map, Marker, useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
+import {
+  MapContainer,
+  Marker as LeftMarker,
+  Popup,
+  TileLayer,
+} from "react-leaflet";
 import Navbar from "@/src/components/Navbar";
 import { MapPin } from "lucide-react";
 import * as React from "react";
@@ -14,20 +20,27 @@ const INITIAL_CAMERA = {
   },
 };
 
+const position = [51.505, -0.09];
 export default function MyComponent() {
   const { flyTo } = useMapAnimation();
 
   const map = useMap();
-  const [startPlace, setStartPlace] =
-    React.useState<google.maps.places.PlaceGeometry>();
-  const [endPlace, setEndPlace] =
-    React.useState<google.maps.places.PlaceGeometry>();
+  const [startPlace, setStartPlace] = React.useState<[number, number]>();
+  const [endPlace, setEndPlace] = React.useState<[number, number]>();
 
   React.useEffect(() => {
     if (!map) return;
     const bounds = new google.maps.LatLngBounds();
-    if (startPlace) bounds.extend(startPlace.location!);
-    if (endPlace) bounds.extend(endPlace.location!);
+    if (startPlace)
+      bounds.extend({
+        lat: startPlace[0],
+        lng: startPlace[1],
+      });
+    if (endPlace)
+      bounds.extend({
+        lat: endPlace[0],
+        lng: endPlace[1],
+      });
 
     const zoom = calculateZoom(
       bounds,
@@ -38,7 +51,7 @@ export default function MyComponent() {
   }, [startPlace, endPlace]);
 
   return (
-    <div className="h-screen flex flex-col ">
+    <div className="min-h-screen flex flex-col ">
       <Navbar />
       <div className="flex items-center flex-1 justify-center">
         <div className="flex gap-8 py-0 px-4 max-md:h-auto max-md:flex-col max-sm:p-4 w-full md:items-center max-w-screen-xl">
@@ -92,16 +105,16 @@ export default function MyComponent() {
                 {startPlace && (
                   <Marker
                     position={{
-                      lat: startPlace.location?.lat() ?? 0,
-                      lng: startPlace.location?.lng() ?? 0,
+                      lat: startPlace[0],
+                      lng: startPlace[1],
                     }}
                   />
                 )}
                 {endPlace && (
                   <Marker
                     position={{
-                      lat: endPlace.location?.lat() ?? 0,
-                      lng: endPlace.location?.lng() ?? 0,
+                      lat: endPlace[0],
+                      lng: endPlace[1],
                     }}
                   />
                 )}
@@ -113,6 +126,19 @@ export default function MyComponent() {
           </div>
         </div>
       </div>
+      <div className="w-[80vw] h-[600px] bg-red-700 overflow-hidden">
+        <MapContainer center={[INITIAL_CAMERA.center.lat, INITIAL_CAMERA.center.lng]} zoom={14} className="size-full">
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <LeftMarker position={[INITIAL_CAMERA.center.lat, INITIAL_CAMERA.center.lng]}>
+            <Popup>
+              A pretty CSS3 popup. <br />
+            </Popup>
+          </LeftMarker>
+        </MapContainer>
+      </div>
     </div>
   );
 }
@@ -121,8 +147,8 @@ function Directions({
   start,
   end,
 }: {
-  start: google.maps.places.PlaceGeometry;
-  end: google.maps.places.PlaceGeometry;
+  start: [number, number];
+  end: [number, number];
 }) {
   const map = useMap();
   const routesLibrary = useMapsLibrary("routes");
@@ -142,12 +168,13 @@ function Directions({
     dxnService
       .route({
         origin: {
-          lat: start.location?.lat() ?? 0,
-          lng: start.location?.lng() ?? 0,
+          lat: start[0],
+          lng: start[1],
         },
+
         destination: {
-          lat: end.location?.lat() ?? 0,
-          lng: end.location?.lng() ?? 0,
+          lat: end[0],
+          lng: end[1],
         },
         travelMode: google.maps.TravelMode.DRIVING,
         optimizeWaypoints: true,
@@ -158,7 +185,7 @@ function Directions({
           suppressMarkers: true,
         });
       });
-  }, [dxnService, dxnRenderer, location]);
+  }, [dxnService, dxnRenderer, location, start, end]);
 
   return null;
 }

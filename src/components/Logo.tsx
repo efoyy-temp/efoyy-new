@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Logo = (props: { height: number }) => {
+const Logo = (props: { height: number; theme?: "dark" | "light" }) => {
   return (
     <Image
       src="/Logo.png"

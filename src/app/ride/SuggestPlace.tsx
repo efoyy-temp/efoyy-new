@@ -1,49 +1,63 @@
-import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
-import { ComponentProps, useEffect, useState } from "react";
+import axios from "axios";
+import { ComponentProps } from "react";
 import AsyncSelect from "react-select/async";
 
 type Props = ComponentProps<
   typeof AsyncSelect<{
     label: string;
-    value: google.maps.places.PlaceGeometry | undefined;
+    value: [number, number];
   }>
 >;
 
+interface PlaceResult {
+  features: Feature[];
+  type: string;
+}
+
+interface Feature {
+  geometry: Geometry;
+  type: string;
+  properties: Properties;
+}
+
+interface Geometry {
+  coordinates: number[];
+  type: string;
+}
+
+interface Properties {
+  osm_type: string;
+  osm_id: number;
+  extent?: number[];
+  country: string;
+  osm_key: string;
+  countrycode: string;
+  osm_value: string;
+  name: string;
+  type: string;
+  city?: string;
+  postcode?: string;
+  locality?: string;
+  street?: string;
+  district?: string;
+  county?: string;
+  state?: string;
+}
+
 const SuggestPlace = (props: Props) => {
-  const map = useMap();
-  const placesLib = useMapsLibrary("places");
-  const [svc, setSvc] = useState<google.maps.places.PlacesService | null>(null);
-
-  useEffect(() => {
-    if (!placesLib || !map) return;
-
-    const svc = new placesLib.PlacesService(map);
-    setSvc(svc);
-  }, [placesLib, map]);
-
-  const loadOptions = (
-    inputValue: string,
-    callback: (
-      options: {
-        label: string;
-        value: google.maps.places.PlaceGeometry | undefined;
-      }[],
-    ) => void,
-  ) => {
-    if (inputValue && svc)
-      svc.textSearch(
-        {
-          query: inputValue,
-        },
-        (value) => {
-          callback(
-            value?.map((place) => ({
-              label: place.name ?? "",
-              value: place.geometry,
-            })) ?? [],
-          );
-        },
-      );
+  const loadOptions = async (inputValue: string) => {
+    if (!inputValue) return [];
+    const res = await axios.get<PlaceResult>(
+      `https://photon.komoot.io/api/?q=${encodeURIComponent(inputValue)}`,
+    );
+    res.data.features;
+    return res.data.features.map((f) => ({
+      label: f.properties.name,
+      value: [f.geometry.coordinates[1], f.geometry.coordinates[0]] as [
+        number,
+        number,
+      ],
+    }));
   };
 
   return (
