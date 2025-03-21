@@ -10,11 +10,11 @@ export default function Home() {
       <div>
         <div className="h-screen flex max-sm:flex-col pb-8 sm:pb-12 md:pb-20 px-6 sm:px-8 md:px-12 lg:px-16 justify-center sm:justify-end items-end  ">
           <img
-            src="./hero-buildings.png"
+            src="./addis.jpg"
             style={{
               maskImage: "linear-gradient(30deg, #00000020 20%, #000000)",
             }}
-            className="inset-0 overflow-hidden top-auto h-[80vh] -z-10 w-full object-cover absolute motion-translate-y-in-[8%] motion-opacity-in-[80%] motion-blur-in-[2px]  motion-ease-out-cubic motion-duration-500"
+            className="inset-0 overflow-hidden top-auto h-screen -z-10 w-full object-cover absolute motion-translate-y-in-[8%] motion-opacity-in-[80%] motion-blur-in-[2px]  motion-ease-out-cubic motion-duration-500"
           />
           <div className="flex items-start max-sm:my-auto justify-center w-full flex-col gap-4 ">
             <div className="text-sm font-semibold text-primary motion-translate-y-in-[30%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-[1s] motion-delay-1000">
