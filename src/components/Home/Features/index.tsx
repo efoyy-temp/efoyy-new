@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Cpu } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const features = [
   {
@@ -31,6 +31,7 @@ const features = [
 ];
 
 const Features = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let frame: number | undefined;
     const onMouseMove = (e: MouseEvent) => {
@@ -65,19 +66,15 @@ const Features = () => {
         }
       }
     };
-    document
-      .getElementById("cards")!
-      .addEventListener("mousemove", onMouseMove);
+    cardRef.current?.addEventListener("mousemove", onMouseMove);
     return () => {
-      document
-        .getElementById("cards")!
-        .removeEventListener("mousemove", onMouseMove);
+      cardRef.current?.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
   return (
     <div className="min-h-screen flex justify-center items-center px-5 py-12">
       <div
-        id="cards"
+        ref={cardRef}
         style={{
           perspective: 1000,
         }}

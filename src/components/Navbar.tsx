@@ -5,9 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(
-    document.body.classList.contains("dark"),
-  );
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     const currentTheme = document.body.classList.contains("dark");
