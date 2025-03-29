@@ -48,7 +48,7 @@ const SuggestPlace = (props: Props) => {
   const loadOptions = async (inputValue: string) => {
     if (!inputValue) return [];
     const res = await axios.get<PlaceResult>(
-      `https://photon.komoot.io/api/?q=${encodeURIComponent(inputValue)}`,
+      `https://photon.komoot.io/api/?q=${encodeURIComponent(inputValue)}&lat=9.005&lon=38.763`,
     );
     res.data.features;
     return res.data.features.map((f) => ({
@@ -80,7 +80,7 @@ const SuggestPlace = (props: Props) => {
         input: () =>
           "!py-1 !placeholder:text-[#797979CA] !text-foreground transition-all ease-in-out",
         singleValue: () => "!text-foreground",
-        menuList: () => "!bg-secondary-background !rounded-lg",
+        menuList: () => "!bg-neutral-900 !rounded-lg",
         option: (op) =>
           `!text-foreground/70 !text-sm ${op.isFocused ? "!bg-secondary" : ""} `,
       }}

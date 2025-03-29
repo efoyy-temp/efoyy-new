@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { MapProvider } from "@vis.gl/react-maplibre";
 
 const client = new ApolloClient({
-  uri: "https://spacex-production.up.railway.app/",
+  uri: "https://api.efoyyta.com/graphql",
   cache: new InMemoryCache(),
 });
 

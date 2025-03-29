@@ -72,7 +72,7 @@ const Features = () => {
     };
   }, []);
   return (
-    <div className="min-h-screen flex justify-center items-center px-5 py-12">
+    <div className="min-h-[min(100vh,1024px)]  flex justify-center items-center px-5 py-12">
       <div
         ref={cardRef}
         style={{
@@ -92,7 +92,7 @@ const Card = (props: { feature: (typeof features)[number] }) => {
   return (
     <div
       className={cn(
-        "card bg-primary/80 dark:bg-indigo-900/70  backdrop-blur-sm",
+        "card bg-primary/80 dark:bg-gray-600/70  backdrop-blur-sm",
         props.feature.className,
       )}
     >
@@ -102,9 +102,9 @@ const Card = (props: { feature: (typeof features)[number] }) => {
         </div>
         <div className="">
           <div className="">
-            <div className="space-y-4 mt-6">
-              <h3 className="text-xl font-bold">{props.feature.title}</h3>
-              <p className="text-xs font-medium leading-relaxed text-foreground/80 ">
+            <div className="space-y-4 mt-4">
+              <h3 className="text-lg font-bold">{props.feature.title}</h3>
+              <p className="text-xs font-medium leading-relaxed text-foreground/70 ">
                 {props.feature.description}
               </p>
             </div>

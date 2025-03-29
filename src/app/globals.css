@@ -176,3 +176,28 @@
   z-index: 2;
   height: 100%;
 }
+
+.spinner {
+  -webkit-animation: spinnerAnimation 700ms steps(32) infinite;
+  animation: spinnerAnimation 700ms steps(32) infinite;
+}
+
+@-webkit-keyframes spinnerAnimation {
+  0% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(540deg);
+  }
+}
+
+@keyframes spinnerAnimation {
+  0% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(540deg);
+  }
+}
