@@ -101,11 +101,9 @@ const Navbar = () => {
       {/* Conditionally apply background and blur classes based on scrolled state */}
       <div
         className={clsx(
-          "fixed top-0 w-full z-10 flex py-4 px-4 md:px-8 transition-all duration-300 ease-out", // Added transition for smooth effect
+          "fixed top-0 w-full bg-gradient-to-b from-background/80 to-transparent z-10 flex py-4 px-4 md:px-8 transition-all duration-300 ease-out", // Added transition for smooth effect
           {
-            "backdrop-blur bg-gradient-to-b from-background/80 to-background/20":
-              scrolled, // Apply these classes only when scrolled
-            "bg-transparent": !scrolled, // Apply transparent background when not scrolled
+            "backdrop-blur ": scrolled, // Apply these classes only when scrolled
           },
         )}
       >
@@ -115,7 +113,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation Links - Hidden below md */}
-          <div className="hidden md:flex text-sm flex-1 justify-end items-center gap-6 tracking-wide">
+          <div className="hidden md:flex text-sm flex-1 justify-end items-center gap-4 tracking-wide">
             <NavLinks />
             {/* Theme Toggle Button - Moved inside desktop nav container */}
             <button
