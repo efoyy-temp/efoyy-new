@@ -10,7 +10,6 @@ import * as React from "react";
 import SuggestPlace from "./SuggestPlace";
 import { gql, useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import Footer from "@/src/components/Footer";
-import { cn } from "@/src/lib/utils"; // Import cn utility for conditional classes
 
 const INITIAL_CAMERA = {
   zoom: 12,
@@ -32,6 +31,7 @@ const getPriceQuery = gql`
 
 export default function MyComponent() {
   const { mymap } = useMap();
+  const [isHere, setIsHere] = React.useState(false);
   const [directions, setDirections] =
     React.useState<MapLibreGlDirections | null>(null);
 
@@ -102,6 +102,20 @@ export default function MyComponent() {
   const isLoading = queryInfo.loading;
   const hasResult = !!priceEstimate; // Check if we have any result (price or error)
 
+  const handleCurrentLocationClick = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      // Update state first
+      const currentLoc: [number, number] = [
+        position.coords.latitude,
+        position.coords.longitude,
+      ];
+      setIsHere(true);
+      setStartPlace(currentLoc);
+
+      // Then update directions if available
+    });
+  };
+
   return (
     <>
       <div className="min-h-screen flex flex-col ">
@@ -128,25 +142,18 @@ export default function MyComponent() {
                 {/* ... existing code for input decoration and SuggestPlace components ... */}
                 <SuggestPlace
                   placeholder="Where are you now?" // Swapped placeholders for clarity
-                  onChange={(place) => setStartPlace(place?.value)}
+                  isCurrent={isHere}
+                  onChange={(place) => {
+                    setIsHere(false);
+                    return setStartPlace(place);
+                  }}
                 />
                 <SuggestPlace
                   placeholder="Where are you heading?" // Swapped placeholders for clarity
-                  onChange={(place) => setEndPlace(place?.value)}
+                  onChange={setEndPlace}
                 />
                 <button
-                  onClick={() => {
-                    navigator.geolocation.getCurrentPosition((position) => {
-                      // Update state first
-                      const currentLoc: [number, number] = [
-                        position.coords.latitude,
-                        position.coords.longitude,
-                      ];
-                      setStartPlace(currentLoc);
-
-                      // Then update directions if available
-                    });
-                  }}
+                  onClick={handleCurrentLocationClick}
                   className="flex hover:bg-foreground/10 rounded-lg transition py-2 px-3 self-start gap-2 items-center"
                 >
                   <MapPin size={20} />
