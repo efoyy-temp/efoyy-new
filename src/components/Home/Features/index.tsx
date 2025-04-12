@@ -40,7 +40,9 @@ const Features = () => {
           x = e.clientX - rect.left,
           y = e.clientY - rect.top;
 
+        // @ts-expect-error dom
         card.style.setProperty("--mouse-x", `${x}px`);
+        // @ts-expect-error dom
         card.style.setProperty("--mouse-y", `${y}px`);
 
         if (x > 0 && y > 0 && x < rect.width && y < rect.height) {
