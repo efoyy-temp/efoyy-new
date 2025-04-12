@@ -12,23 +12,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"; // Assuming this is the correct path
 import { Button } from "@/components/ui/button"; // Import Button for the trigger
+import { useTheme } from "next-themes";
 
-const Navbar = () => {
-  const [isDark, setIsDark] = useState(true);
+type Props = {
+  isLanding?: boolean;
+};
+
+const Navbar = (props: Props) => {
+  const { setTheme, theme } = useTheme();
   const [scrolled, setScrolled] = useState(false); // State to track scroll
-
-  useEffect(() => {
-    const currentTheme = document.body.classList.contains("dark");
-    if (currentTheme !== isDark) {
-      document.body.classList.toggle("dark");
-    }
-  }, [isDark]);
 
   // Effect to handle scroll event
   useEffect(() => {
     const handleScroll = () => {
       // Set scrolled to true if user scrolls down more than 10px, else false
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > window.innerHeight - 80);
     };
 
     // Add event listener when component mounts
@@ -44,44 +42,36 @@ const Navbar = () => {
   // Helper component for nav links to avoid repetition
   const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => (
     <>
-      <Link
+      <NavLink
+        scrolled={scrolled}
+        label="Pricing"
         href="/ride"
+        isLanding={props.isLanding}
+      />
+      <NavLink
+        scrolled={scrolled}
+        label="Safety"
+        href="/safety"
+        isLanding={props.isLanding}
+      />
+      <NavLink
+        scrolled={scrolled}
+        label="Features"
+        href="/"
+        isLanding={props.isLanding}
+      />
+      <NavLink
+        scrolled={scrolled}
+        label="Contact Us"
+        href="/contact"
+        isLanding={props.isLanding}
+      />
+      <Link
+        href="/"
         className={clsx(
-          "font-medium text-foreground/80 cursor-pointer hover:text-foreground transition hover:underline",
-          isMobile && "w-full p-2 text-left", // Mobile specific styles
-        )}
-      >
-        Pricing
-      </Link>
-      <a
-        className={clsx(
-          "font-medium text-foreground/80 cursor-pointer hover:text-foreground transition hover:underline",
-          isMobile && "w-full p-2 text-left", // Mobile specific styles
-        )}
-      >
-        Safety
-      </a>
-      <a
-        className={clsx(
-          "font-medium text-foreground/80 cursor-pointer hover:text-foreground transition hover:underline",
-          isMobile && "w-full p-2 text-left", // Mobile specific styles
-        )}
-      >
-        Features
-      </a>
-      <a
-        className={clsx(
-          "font-medium text-foreground/80 cursor-pointer hover:text-foreground transition hover:underline",
-          isMobile && "w-full p-2 text-left", // Mobile specific styles
-        )}
-      >
-        Contact Us
-      </a>
-      <a
-        className={clsx(
-          "group hover:brightness-125 tranition ease-out text-primary-foreground bg-primary rounded-md cursor-pointer pl-6 pr-3 py-2 flex gap-1.5 items-center",
+          "group hover:brightness-125 tranition ease-out text-primary-foreground bg-primary rounded-md cursor-pointer pl-5 pr-2 py-1.5 flex gap-1.5 items-center",
           isMobile &&
-          "w-full p-2 justify-between bg-transparent text-foreground/80 hover:text-foreground hover:bg-accent", // Mobile specific styles for login
+            "w-full p-2 justify-between bg-transparent hover:bg-accent",
         )}
       >
         <span className="font-medium">Login</span>
@@ -92,7 +82,7 @@ const Navbar = () => {
             isMobile && "hidden", // Hide arrow on mobile dropdown item
           )}
         />
-      </a>
+      </Link>
     </>
   );
 
@@ -101,30 +91,30 @@ const Navbar = () => {
       {/* Conditionally apply background and blur classes based on scrolled state */}
       <div
         className={clsx(
-          "fixed top-0 w-full bg-gradient-to-b from-background/80 to-transparent z-10 flex py-4 px-4 md:px-8 transition-all duration-300 ease-out", // Added transition for smooth effect
+          `fixed top-0 w-full bg-gradient-to-b to-transparent z-10 flex py-4 px-4 md:px-8 transition-all duration-300 ease-out ${props.isLanding && !scrolled ? "via-black/50 via-60% from-black/80" : "via-background/50 from-background/80 "}`,
           {
             "backdrop-blur ": scrolled, // Apply these classes only when scrolled
           },
         )}
       >
-        <div className="w-full max-w-screen-2xl flex justify-between mx-auto pt-2 items-center">
+        <div className="w-full max-w-screen-2xl flex justify-between mx-auto items-center">
           <Link href="/">
             <Logo height={28} />
           </Link>
 
           {/* Desktop Navigation Links - Hidden below md */}
-          <div className="hidden md:flex text-sm flex-1 justify-end items-center gap-4 tracking-wide">
+          <div className="hidden md:flex text-sm flex-1 justify-end items-center gap-5 tracking-wide">
             <NavLinks />
             {/* Theme Toggle Button - Moved inside desktop nav container */}
             <button
-              onClick={() => setIsDark(!isDark)}
-              className="rounded outline-none p-2 hover:bg-foreground/20 "
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className={`rounded outline-none p-1 hover:bg-foreground/20 ${props.isLanding && !scrolled ? "text-white/80" : "text-foreground"}`}
               aria-label="Toggle theme" // Added aria-label for accessibility
             >
-              {isDark ? (
-                <Sun className="transition-none" />
+              {theme === "dark" ? (
+                <Sun size={18} className="transition-none" />
               ) : (
-                <Moon className="transition-none" />
+                <Moon size={18} className="transition-none" />
               )}
             </button>
           </div>
@@ -133,11 +123,11 @@ const Navbar = () => {
           <div className="flex md:hidden items-center gap-2">
             {/* Theme Toggle Button - Also needed for mobile */}
             <button
-              onClick={() => setIsDark(!isDark)}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="rounded outline-none p-2 hover:bg-foreground/20 "
               aria-label="Toggle theme" // Added aria-label for accessibility
             >
-              {isDark ? (
+              {theme === "dark" ? (
                 <Sun className="transition-none" />
               ) : (
                 <Moon className="transition-none" />
@@ -163,15 +153,21 @@ const Navbar = () => {
                     Pricing
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                  <a className="w-full">Safety</a>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                  <a className="w-full">Features</a>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                  <a className="w-full">Contact Us</a>
-                </DropdownMenuItem>
+                <Link href="/safety" className="w-full">
+                  <DropdownMenuItem className="px-3 hover:bg-foreground/10">
+                    <a className="w-full">Safety</a>
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/" className="w-full">
+                  <DropdownMenuItem className="px-3 hover:bg-foreground/10">
+                    <a className="w-full">Features</a>
+                  </DropdownMenuItem>
+                </Link>
+                <Link href="/contact" className="w-full">
+                  <DropdownMenuItem className="px-3 hover:bg-foreground/10">
+                    <a className="w-full">Contact Us</a>
+                  </DropdownMenuItem>
+                </Link>
                 <DropdownMenuItem className="px-3 hover:bg-foreground/10">
                   <a
                     href="#"
@@ -188,5 +184,23 @@ const Navbar = () => {
     </>
   );
 };
+
+function NavLink(props: {
+  label: string;
+  href: string;
+  isLanding?: boolean;
+  scrolled?: boolean;
+}) {
+  //
+  //
+  return (
+    <a
+      href={props.href}
+      className={`font-medium cursor-pointer transition hover:underline text-sm ${props.isLanding && !props.scrolled ? "text-white/80 hover:text-white" : "text-foreground/80 hover:text-foreground"}`}
+    >
+      {props.label}
+    </a>
+  );
+}
 
 export default Navbar;
