@@ -7,9 +7,10 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <Navbar isLanding />
       <div>
-        <div className="h-screen flex max-sm:flex-col pb-8 sm:pb-12 md:pb-20 px-6 sm:px-8 md:px-12 lg:px-16 justify-center sm:justify-end items-end  ">
+        <div className="h-screen flex max-sm:flex-col pb-8 sm:pb-12 md:pb-20 px-6 sm:px-8 md:px-12 lg:px-16 justify-center sm:justify-end items-end bg-">
+          <div className="inset-0 bg-black absolute -z-20"></div>
           <img
             src="./addis.jpg"
             style={{
@@ -21,10 +22,10 @@ export default function Home() {
             <div className="text-sm font-semibold text-primary motion-translate-y-in-[30%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-[1s] motion-delay-1000">
               4k+ drivers working 24/7
             </div>
-            <h1 className="max-w-[600px] text-5xl font-semibold bg-gradient-to-r from-foreground to-secondary-foreground/60 text-clip text-transparent bg-clip-text max-sm:text-4xl motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-300">
+            <h1 className="max-w-[600px] text-5xl font-semibold bg-gradient-to-r from-white to-white/40 text-clip text-transparent bg-clip-text max-sm:text-4xl motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-300">
               Where Do You Want <br /> To Go?
             </h1>
-            <p className="font-medium max-w-lg text-sm mt-2 leading-6 motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-700">
+            <p className="font-medium max-w-lg text-white/80 text-sm mt-2 leading-6 motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-700">
               Wherever you are in Addis, we've got your back with unbeatable
               pricing, lightning-fast responses, and top-notch customer service
               available 24/7! 🚀 Ready for your next ride? Download our app and

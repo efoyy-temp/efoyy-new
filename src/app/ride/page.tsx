@@ -4,12 +4,13 @@ import MapLibreGlDirections, {
 } from "@maplibre/maplibre-gl-directions";
 import { Map, Marker, useMap } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
-import Navbar from "@/src/components/Navbar";
-import { Loader, Loader2, MapPin } from "lucide-react";
+import { Loader2, MapPin } from "lucide-react";
 import * as React from "react";
 import SuggestPlace from "./SuggestPlace";
-import { gql, useLazyQuery, useMutation, useQuery } from "@apollo/client";
-import Footer from "@/src/components/Footer";
+import { gql, useLazyQuery } from "@apollo/client";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { useTheme } from "next-themes";
 
 const INITIAL_CAMERA = {
   zoom: 12,
@@ -30,6 +31,7 @@ const getPriceQuery = gql`
 `;
 
 export default function MyComponent() {
+  const { theme } = useTheme();
   const { mymap } = useMap();
   const [isHere, setIsHere] = React.useState(false);
   const [directions, setDirections] =
@@ -128,7 +130,7 @@ export default function MyComponent() {
                   <div className="self-stretch text-sm font-semibold text-foreground">
                     Amazing pricing
                   </div>
-                  <div className="self-stretch bg-gradient-to-r from-foreground to-foreground/70 text-clip text-transparent font-extrabold bg-clip-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl ">
+                  <div className="self-stretch bg-gradient-to-r from-foreground to-foreground/70 text-clip text-transparent font-extrabold bg-clip-text text-3xl sm:text-4xl md:text-5xl ">
                     Check Out Our Prices
                   </div>
                 </div>
@@ -194,15 +196,7 @@ export default function MyComponent() {
                     )}
                   </>
                 )}
-                {/* Optional: Show message if inputs are missing and button was clicked */}
-                {/* {!isLoading && !hasResult && !startPlace && !endPlace && (
-                    <p className="text-sm font-medium text-yellow-600">
-                      Please select start and end locations.
-                    </p>
-                 )} */}
               </div>
-
-              {/* Removed the old error message paragraph */}
             </div>
             <div className="flex-1 max-md:w-full max-md:aspect-square md:max-w-[min(512px,40%)]  md:h-[60vh]">
               <div className="size-full rounded-3xl overflow-hidden relative">
@@ -214,7 +208,9 @@ export default function MyComponent() {
                   }}
                   id="mymap"
                   style={{ width: "100%", height: "100%" }}
-                  mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+                  mapStyle={
+                    "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+                  }
                 >
                   {startPlace && (
                     <Marker

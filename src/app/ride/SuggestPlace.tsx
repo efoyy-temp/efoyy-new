@@ -117,13 +117,13 @@ const SuggestPlace = (props: Props) => {
             debouncedLoadOptions(event.target.value);
           }}
           className={
-            "bg-background px-3 py-2.5 data-[focus]:border-primary !placeholder:text-[#797979CA] !text-foreground transition-all ease-in-out border rounded-md w-full" // Added w-full for consistency
+            "bg-background px-3 py-2.5 data-[focus]:border-primary !placeholder:text-muted-foreground !text-foreground transition-all ease-in-out border rounded-md w-full" // Added w-full for consistency
           }
         />
         <ComboboxOptions
           anchor="bottom"
           transition
-          className="origin-top border transition duration-200 ease-out empty:invisible data-[closed]:scale-95 data-[closed]:opacity-0 bg-neutral-950 mt-2 rounded-lg py-2 px-1 w-[var(--input-width)]"
+          className="origin-top border transition duration-200 ease-out empty:invisible data-[closed]:scale-95 data-[closed]:opacity-0 bg-muted mt-2 rounded-lg py-2 px-1 w-[var(--input-width)]"
         >
           {isLoading && (
             <div className="px-5 py-2 text-sm opacity-40">
@@ -136,7 +136,7 @@ const SuggestPlace = (props: Props) => {
               <ComboboxOption
                 key={location.label + index}
                 value={location}
-                className={`text-foreground/70 !text-sm data-[focus]:bg-secondary/80  p-2 rounded `}
+                className={`text-foreground/70 !text-sm data-[focus]:bg-background/80  p-2 rounded `}
               >
                 {location.label}
               </ComboboxOption>
