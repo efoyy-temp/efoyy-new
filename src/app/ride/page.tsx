@@ -11,6 +11,8 @@ import { gql, useLazyQuery } from "@apollo/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
+import { toast } from "@/hooks/use-toast";
 
 const INITIAL_CAMERA = {
   zoom: 12,
@@ -31,11 +33,11 @@ const getPriceQuery = gql`
 `;
 
 export default function MyComponent() {
-  const { theme } = useTheme();
   const { mymap } = useMap();
   const [isHere, setIsHere] = React.useState(false);
   const [directions, setDirections] =
     React.useState<MapLibreGlDirections | null>(null);
+  const [cardOpen, setCardOpen] = React.useState(false)
 
   const [getPrice, queryInfo] = useLazyQuery(getPriceQuery, {
     variables: {
@@ -57,9 +59,7 @@ export default function MyComponent() {
 
   const handleClick = () => {
     if (!startPlace || !endPlace || !userInput) {
-      // Optionally handle the case where inputs are missing
       console.warn("Start place, end place, or route data is missing.");
-      // Maybe show a user-facing message here
       return;
     }
     console.log({ userInput });
