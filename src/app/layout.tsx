@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Noto_Sans_Ethiopic } from "next/font/google";
+import { Manrope, Noto_Serif_Ethiopic } from "next/font/google";
 import "./globals.css";
 import Providers from "../components/Providers";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
@@ -10,8 +10,9 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
-const noto = Noto_Sans_Ethiopic({
+const noto = Noto_Serif_Ethiopic({
   variable: "--font-noto",
+  fallback: ["var(--font-manrope)", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={` ${locale == "en" ? manrope.className : noto.className} antialiased`}
+        className={`${manrope.variable} ${locale == "en" ? manrope.className : noto.className} antialiased`}
       >
         <NextIntlClientProvider>
           <NextThemesProvider
