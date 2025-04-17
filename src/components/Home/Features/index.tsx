@@ -3,35 +3,34 @@
 import { cn } from "@/lib/utils";
 import { Cpu } from "lucide-react";
 import { useEffect, useRef } from "react";
-
-const features = [
-  {
-    title: "Request a safe ride with our advanced vehicle technology.",
-    description:
-      "Experience competitive pricing with our cutting-edge pricing system! Just hop in and let your driver know to use our app for the most affordable rates.",
-    className: "sm:row-span-2",
-  },
-
-  {
-    title: "Request a safe",
-    description:
-      "Experience competitive pricing with our cutting-edge pricing system!",
-  },
-  {
-    title: "Request a safe",
-    description:
-      "Experience competitive pricing with our cutting-edge pricing system!",
-  },
-  {
-    title: "Request a safe",
-    description:
-      "Experience competitive pricing with our cutting-edge pricing system! Just hop in and let your driver know to use our app for the most affordable rates.",
-    className: "sm:col-span-2",
-  },
-];
+import { useTranslations } from 'next-intl';
 
 const Features = () => {
+  const t = useTranslations('home.features');
   const cardRef = useRef<HTMLDivElement>(null);
+  
+  // Get features data from translations
+  const features = [
+    {
+      title: t('items.0.title'),
+      description: t('items.0.description'),
+      className: "sm:row-span-2",
+    },
+    {
+      title: t('items.1.title'),
+      description: t('items.1.description'),
+    },
+    {
+      title: t('items.2.title'),
+      description: t('items.2.description'),
+    },
+    {
+      title: t('items.3.title'),
+      description: t('items.3.description'),
+      className: "sm:col-span-2",
+    },
+  ];
+  
   useEffect(() => {
     let frame: number | undefined;
     const onMouseMove = (e: MouseEvent) => {
@@ -90,7 +89,7 @@ const Features = () => {
   );
 };
 
-const Card = (props: { feature: (typeof features)[number] }) => {
+const Card = (props: { feature: { title: string; description: string; className?: string } }) => {
   return (
     <div
       className={cn(

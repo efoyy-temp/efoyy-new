@@ -2,9 +2,11 @@
 
 import { useEffect, useRef } from "react"
 import { MapPin } from "lucide-react"
+import { useTranslations } from 'next-intl'
 
 export function MapView() {
-  const mapRef = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<HTMLCanvasElement>(null)
+  const t = useTranslations('map')
 
   useEffect(() => {
     // This is a placeholder for a real map implementation
@@ -51,7 +53,7 @@ export function MapView() {
       <div className="absolute bottom-4 right-4 bg-background rounded-md shadow-md p-3">
         <div className="flex items-center gap-2">
           <MapPin className="h-4 w-4 text-primary" />
-          <span className="text-sm font-medium">Your location</span>
+          <span className="text-sm font-medium">{t('yourLocation')}</span>
         </div>
       </div>
     </div>

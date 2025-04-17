@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/dropdown-menu"; // Assuming this is the correct path
 import { Button } from "@/components/ui/button"; // Import Button for the trigger
 import { useTheme } from "next-themes";
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type Props = {
   isLanding?: boolean;
@@ -21,6 +23,7 @@ type Props = {
 const Navbar = (props: Props) => {
   const { setTheme, theme } = useTheme();
   const [scrolled, setScrolled] = useState(false); // State to track scroll
+  const t = useTranslations('navbar');
 
   // Effect to handle scroll event
   useEffect(() => {
@@ -44,25 +47,25 @@ const Navbar = (props: Props) => {
     <>
       <NavLink
         scrolled={scrolled}
-        label="Pricing"
+        label={t('pricing')}
         href="/ride"
         isLanding={props.isLanding}
       />
       <NavLink
         scrolled={scrolled}
-        label="Safety"
+        label={t('safety')}
         href="/safety"
         isLanding={props.isLanding}
       />
       <NavLink
         scrolled={scrolled}
-        label="Features"
+        label={t('features')}
         href="/"
         isLanding={props.isLanding}
       />
       <NavLink
         scrolled={scrolled}
-        label="Contact Us"
+        label={t('contactUs')}
         href="/contact"
         isLanding={props.isLanding}
       />
@@ -74,7 +77,7 @@ const Navbar = (props: Props) => {
             "w-full p-2 justify-between bg-transparent hover:bg-accent",
         )}
       >
-        <span className="font-medium">Login</span>
+        <span className="font-medium">{t('login')}</span>
         <ArrowUpRight
           size={20}
           className={clsx(
@@ -105,6 +108,8 @@ const Navbar = (props: Props) => {
           {/* Desktop Navigation Links - Hidden below md */}
           <div className="hidden md:flex text-sm flex-1 justify-end items-center gap-5 tracking-wide">
             <NavLinks />
+            {/* Language Switcher */}
+            <LanguageSwitcher />
             {/* Theme Toggle Button - Moved inside desktop nav container */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -121,6 +126,8 @@ const Navbar = (props: Props) => {
 
           {/* Mobile Menu - Visible below md */}
           <div className="flex md:hidden items-center gap-2">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
             {/* Theme Toggle Button - Also needed for mobile */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -138,8 +145,7 @@ const Navbar = (props: Props) => {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu />
-                  <span className="sr-only">Open menu</span>{" "}
-                  {/* Accessibility */}
+                  <span className="sr-only">{t('openMenu')}</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -150,22 +156,22 @@ const Navbar = (props: Props) => {
                 {/* Render links inside DropdownMenuItem */}
                 <DropdownMenuItem className="px-3 hover:bg-foreground/10">
                   <Link href="/ride" className="w-full">
-                    Pricing
+                    {t('pricing')}
                   </Link>
                 </DropdownMenuItem>
                 <Link href="/safety" className="w-full">
                   <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                    <a className="w-full">Safety</a>
+                    <a className="w-full">{t('safety')}</a>
                   </DropdownMenuItem>
                 </Link>
                 <Link href="/" className="w-full">
                   <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                    <a className="w-full">Features</a>
+                    <a className="w-full">{t('features')}</a>
                   </DropdownMenuItem>
                 </Link>
                 <Link href="/contact" className="w-full">
                   <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                    <a className="w-full">Contact Us</a>
+                    <a className="w-full">{t('contactUs')}</a>
                   </DropdownMenuItem>
                 </Link>
                 <DropdownMenuItem className="px-3 hover:bg-foreground/10">
@@ -173,7 +179,7 @@ const Navbar = (props: Props) => {
                     href="#"
                     className="w-full flex justify-between items-center"
                   >
-                    Login <ArrowUpRight size={16} />
+                    {t('login')} <ArrowUpRight size={16} />
                   </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>

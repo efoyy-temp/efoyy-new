@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "../components/Providers";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { getLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -24,6 +25,8 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${manrope.className} antialiased`}>
+        <NextIntlClientProvider>
+
         <NextThemesProvider
           attribute="class"
           defaultTheme="system"
@@ -32,6 +35,7 @@ export default async function RootLayout({
         >
           <Providers>{children}</Providers>
         </NextThemesProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

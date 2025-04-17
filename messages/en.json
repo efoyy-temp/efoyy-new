@@ -1,0 +1,219 @@
+{
+  "app": {
+    "title": "Efoyy",
+    "description": "Safely arrive at your destination"
+  },
+  "navbar": {
+    "pricing": "Pricing",
+    "safety": "Safety",
+    "features": "Features",
+    "contactUs": "Contact Us",
+    "login": "Login",
+    "openMenu": "Open menu"
+  },
+  "home": {
+    "hero": {
+      "drivers": "4k+ drivers working 24/7",
+      "title": "Where Do You Want To Go?",
+      "description": "Wherever you are in Addis, we've got your back with unbeatable pricing, lightning-fast responses, and top-notch customer service available 24/7! 🚀 Ready for your next ride? Download our app and hop on board today!"
+    },
+    "overview": {
+      "title": "Ride ordering",
+      "subtitle": "Simplifying ride booking",
+      "description": "Efoyy simplifies your ride booking brooking easy and intuitive",
+      "items": [
+        {
+          "title": "Hail a ride with our cars.",
+          "paragraph": "Unlock better pricing with our innovative pricing algorithm! Simply hop in and ask your driver to use our app for the best rates."
+        },
+        {
+          "title": "Hail a ride with our cars.",
+          "paragraph": "Unlock better pricing with our innovative pricing algorithm! Simply hop in and ask your driver to use our app for the best rates."
+        },
+        {
+          "title": "Hail a ride with our cars.",
+          "paragraph": "Unlock better pricing with our innovative pricing algorithm! Simply hop in and ask your driver to use our app for the best rates."
+        }
+      ]
+    },
+    "features": {
+      "items": [
+        {
+          "title": "Request a safe ride with our advanced vehicle technology.",
+          "description": "Experience competitive pricing with our cutting-edge pricing system! Just hop in and let your driver know to use our app for the most affordable rates."
+        },
+        {
+          "title": "Request a safe",
+          "description": "Experience competitive pricing with our cutting-edge pricing system!"
+        },
+        {
+          "title": "Request a safe",
+          "description": "Experience competitive pricing with our cutting-edge pricing system!"
+        },
+        {
+          "title": "Request a safe",
+          "description": "Experience competitive pricing with our cutting-edge pricing system! Just hop in and let your driver know to use our app for the most affordable rates."
+        }
+      ]
+    }
+  },
+  "map": {
+    "yourLocation": "Your location"
+  },
+  "ride": {
+    "chooseRideType": "Choose a ride type",
+    "economy": "Economy",
+    "economyPrice": "$12-15",
+    "standard": "Standard",
+    "standardPrice": "$18-22",
+    "premium": "Premium",
+    "premiumPrice": "$25-30",
+    "paymentMethod": "Visa •••• 4242",
+    "estimatedTime": "5 min away"
+  },
+  "ridePage": {
+    "title": "Amazing pricing",
+    "subtitle": "Check Out Our Prices",
+    "whereNow": "Where are you now?",
+    "whereHeading": "Where are you heading?",
+    "useCurrentLocation": "Use current location",
+    "seePrices": "See Prices",
+    "estimatedPrice": "Estimated Price"
+  },
+  "safetyPage": {
+    "tagline": "Your safety is our top priority.",
+    "title": "Safety Features Designed to Exceed Expectations",
+    "description": "We're excited to introduce our SOS feature, launching in phases. First, you'll experience the MVP version as part of our Safety Kit in the app. When you're on a trip, simply tap the SOS button to activate it. Here's what happens next:",
+    "benefitsTitle": "Discover the benefits of our SOS feature when it's activated!",
+    "benefit1": "Every SMS message sent will contain the precise, real-time location of the driver, ensuring that recipients can track their whereabouts accurately.",
+    "benefit2": "Nearby drivers, within a 5KM range, will get an SMS notification.",
+    "benefit3": "As soon as the driver adds emergency contacts, each one will instantly receive a text message, ensuring they are promptly informed and ready to assist.",
+    "benefit4": "When the SOS feature is activated, the Efoyy team will try to reach the driver. If they can't connect, the app will:",
+    "benefit4Item1": "Send the driver's location via SMS every 30 seconds.",
+    "benefit4Item2": "Alert nearby drivers with the driver's exact location."
+  },
+  "contactPage": {
+    "title": "Get in Touch",
+    "description": "Have questions about our safety features or need assistance? We're here to help. Reach out to our team using any of the methods below.",
+    "formTitle": "Send us a message",
+    "name": "Your Name",
+    "nameLabel": "Enter your name",
+    "email": "Email Address",
+    "emailLabel": "Enter your email",
+    "subject": "Subject",
+    "subjectLabel": "How can we help you?",
+    "message": "Message",
+    "messageLabel": "Tell us more about your inquiry...",
+    "sending": "Sending...",
+    "send": "Send Message",
+    "successMessage": "Thank you for your message! We'll get back to you soon.",
+    "errorMessage": "Sorry, there was an error with your submission. Please try again later.",
+    "contactInfoTitle": "Contact Information",
+    "location": "Our Location",
+    "locationDetails": "123 Safety Street, Tech City, TC 10101",
+    "phone": "Phone Number",
+    "phoneNumber": "+1 (555) 123-4567",
+    "emailTitle": "Email Address",
+    "emailAddress": "support@efoyy.com",
+    "hours": "Working Hours",
+    "workingHours": "Mon-Fri: 9AM - 6PM",
+    "followUs": "Follow Us"
+  },
+  "driverPage": {
+    "hero": {
+      "title": "Drive & Earn On Your Schedule",
+      "description": "Join thousands of drivers who've found freedom and financial opportunity with RideShare. Set your own hours and be your own boss.",
+      "signUp": "Sign Up to Drive",
+      "learnMore": "Learn More"
+    },
+    "benefits": {
+      "title": "Why Drive With Us?",
+      "description": "RideShare offers the flexibility, earnings, and support you need to succeed on your own terms.",
+      "flexibility": {
+        "title": "Flexible Schedule",
+        "description": "Drive whenever you want. No minimum hours or schedules to follow.",
+        "item1": "Work around your existing commitments",
+        "item2": "Drive during peak hours for maximum earnings",
+        "item3": "Take time off whenever you need it"
+      },
+      "earnings": {
+        "title": "Competitive Earnings",
+        "description": "Keep more of what you earn with our driver-friendly commission structure.",
+        "item1": "Lower commission rates than competitors",
+        "item2": "Weekly direct deposits to your bank account",
+        "item3": "Surge pricing during high-demand periods"
+      },
+      "protection": {
+        "title": "Driver Protection",
+        "description": "We've got your back with comprehensive insurance and safety features.",
+        "item1": "Insurance coverage while on the platform",
+        "item2": "24/7 emergency support hotline",
+        "item3": "Safety features built into the driver app"
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "description": "Getting started is easy. Be on the road and earning in just a few simple steps.",
+      "step1": {
+        "title": "1. Sign Up",
+        "description": "Complete our simple online application process"
+      },
+      "step2": {
+        "title": "2. Get Verified",
+        "description": "Pass a background check and vehicle inspection"
+      },
+      "step3": {
+        "title": "3. Go Online",
+        "description": "Turn on the app when you're ready to accept rides"
+      },
+      "step4": {
+        "title": "4. Start Earning",
+        "description": "Get paid weekly with direct deposit to your bank"
+      }
+    },
+    "app": {
+      "title": "Powerful Driver App",
+      "description": "Our driver app is designed to make your experience seamless and profitable.",
+      "feature1": {
+        "title": "Smart Navigation",
+        "description": "Turn-by-turn directions and traffic updates in real-time"
+      },
+      "feature2": {
+        "title": "Destination Filters",
+        "description": "Set your destination and get rides heading your way"
+      },
+      "feature3": {
+        "title": "Earnings Tracker",
+        "description": "Monitor your earnings and trips in real-time"
+      },
+      "feature4": {
+        "title": "Driver Rewards",
+        "description": "Earn points for consistent service and unlock benefits"
+      }
+    }
+  },
+  "footer": {
+    "company": {
+      "title": "Company",
+      "aboutUs": "About Us",
+      "careers": "Careers",
+      "blog": "Blog",
+      "contactUs": "Contact Us"
+    },
+    "resources": {
+      "title": "Resources",
+      "helpCenter": "Help Center",
+      "faqs": "FAQs",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "solutions": {
+      "title": "Solutions",
+      "bePassenger": "Be a passenger",
+      "beRider": "be a rider",
+      "partner": "partner with us",
+      "jobs": "jobs"
+    },
+    "copyright": "©{year} EFOYY. ALL RIGHTS RESERVED"
+  }
+}

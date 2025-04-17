@@ -4,15 +4,16 @@ import MapLibreGlDirections, {
 } from "@maplibre/maplibre-gl-directions";
 import { Map, Marker, useMap } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { Loader2, MapPin } from "lucide-react";
+import { Loader2, MapPin, Navigation } from "lucide-react";
 import * as React from "react";
-import SuggestPlace from "./SuggestPlace";
 import { gql, useLazyQuery } from "@apollo/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
+import { useTranslations } from 'next-intl';
+import Place from "@/components/Place";
 
 const INITIAL_CAMERA = {
   zoom: 12,
@@ -32,7 +33,10 @@ const getPriceQuery = gql`
   }
 `;
 
-export default function MyComponent() {
+export default function RidePage() {
+  const t = useTranslations('ridePage');
+  const mapT = useTranslations('map');
+  
   const { mymap } = useMap();
   const [isHere, setIsHere] = React.useState(false);
   const [directions, setDirections] =
@@ -51,7 +55,9 @@ export default function MyComponent() {
   console.log(queryInfo?.data?.calcPriceEstimate);
 
   const [startPlace, setStartPlace] = React.useState<[number, number]>();
+  const [startPlaceName, setStartPlaceName] = React.useState<string>();
   const [endPlace, setEndPlace] = React.useState<[number, number]>();
+  const [endPlaceName, setEndPlaceName] = React.useState<string>();
   const [userInput, setUserInput] = React.useState<{
     distance: number;
     duration: number;
@@ -113,8 +119,7 @@ export default function MyComponent() {
       ];
       setIsHere(true);
       setStartPlace(currentLoc);
-
-      // Then update directions if available
+      setStartPlaceName(mapT('yourLocation'));
     });
   };
 
@@ -128,39 +133,51 @@ export default function MyComponent() {
               <div className="flex flex-col gap-4 items-start self-stretch">
                 <div className="space-y-2">
                   <div className="self-stretch text-sm font-semibold text-foreground">
-                    Amazing pricing
+                    {t('title')}
                   </div>
                   <div className="self-stretch bg-gradient-to-r from-foreground to-foreground/70 text-clip text-transparent font-extrabold bg-clip-text text-3xl sm:text-4xl md:text-5xl ">
-                    Check Out Our Prices
+                    {t('subtitle')}
                   </div>
                 </div>
               </div>
               <div className="flex flex-col self-stretch max-w-sm gap-6 pl-3 w-full my-6 md:my-12 relative">
-                <div className=" h-[76px] absolute top-6 left-0">
-                  <div className="h-full w-0.5 bg-foreground/80 absolute "></div>
-                  <div className="size-2 bg-foreground/80 absolute top-0 left-px rotate-45 -translate-x-1/2 -translate-y-1/2 "></div>
-                  <div className="size-2 bg-foreground/80 absolute bottom-0 left-px rotate-45 -translate-x-1/2 translate-y-1/2 "></div>
+                <div className="h-[76px] absolute top-6 left-0">
+                  <div className="h-full w-0.5 bg-foreground/80 absolute"></div>
+                  <div className="size-2 bg-foreground/80 absolute top-0 left-px rotate-45 -translate-x-1/2 -translate-y-1/2"></div>
+                  <div className="size-2 bg-foreground/80 absolute bottom-0 left-px rotate-45 -translate-x-1/2 translate-y-1/2"></div>
                 </div>
-                {/* ... existing code for input decoration and SuggestPlace components ... */}
-                <SuggestPlace
-                  placeholder="Where are you now?" // Swapped placeholders for clarity
+                
+                <Place
+                  placeholder={t('whereNow')}
                   isCurrent={isHere}
-                  onChange={(place) => {
+                  icon={<MapPin size={18} />}
+                  defaultLatLng={startPlace}
+                  defaultName={startPlaceName}
+                  onChange={(place, name) => {
                     setIsHere(false);
-                    return setStartPlace(place);
+                    setStartPlace(place);
+                    setStartPlaceName(name);
                   }}
                 />
-                <SuggestPlace
-                  placeholder="Where are you heading?" // Swapped placeholders for clarity
-                  onChange={setEndPlace}
+                
+                <Place
+                  placeholder={t('whereHeading')}
+                  icon={<Navigation size={18} />}
+                  defaultLatLng={endPlace}
+                  defaultName={endPlaceName}
+                  onChange={(place, name) => {
+                    setEndPlace(place);
+                    setEndPlaceName(name);
+                  }}
                 />
+                
                 <button
                   onClick={handleCurrentLocationClick}
                   className="flex hover:bg-foreground/10 rounded-lg transition py-2 px-3 self-start gap-2 items-center"
                 >
                   <MapPin size={20} />
                   <div className="text-sm font-medium text-foreground">
-                    Use current location
+                    {t('useCurrentLocation')}
                   </div>
                 </button>
               </div>
@@ -170,27 +187,39 @@ export default function MyComponent() {
                 className="flex items-center disabled:opacity-65 gap-2 px-6 py-3 text-sm font-semibold text-primary-foreground bg-primary rounded-md cursor-pointer transition-opacity" // Removed mt-6, will use gap in parent
               >
                 {isLoading && <Loader2 size={16} className="animate-spin" />}{" "}
-                {/* Use animate-spin */}
-                See Prices
+                {t('seePrices')}
               </button>
 
               {/* Result Display Area */}
-              <div className="mt-2 h-10">
-                {" "}
-                {/* Added fixed height container to prevent layout shifts */}
+              <div className="mt-6">
                 {!isLoading && hasResult && (
                   <>
                     {priceEstimate?.price && (
-                      <p className="text-xl font-semibold text-foreground mt-4">
-                        <span className="text-sm font-regular block opacity-85">
-                          Estimated Price{" "}
+                      <div className="p-6 bg-card border rounded-lg">
+                        <span className="text-sm font-medium text-muted-foreground block">
+                          {t('estimatedPrice')}
                         </span>
-                        {Number(priceEstimate.price).toLocaleString()} Birr
-                        {/* Assuming ETB */}
-                      </p>
+                        <p className="text-2xl font-bold text-foreground">
+                          {Number(priceEstimate.price).toLocaleString()} Birr
+                        </p>
+                        
+                        {startPlaceName && endPlaceName && (
+                          <div className="mt-3 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-2">
+                              <MapPin size={16} className="text-primary" />
+                              <span>{startPlaceName}</span>
+                            </div>
+                            <div className="w-0.5 h-4 bg-muted-foreground/30 ml-2"></div>
+                            <div className="flex items-center gap-2">
+                              <Navigation size={16} className="text-primary" />
+                              <span>{endPlaceName}</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     )}
                     {priceEstimate?.errorMessage && (
-                      <p className="text-sm font-medium text-red-500">
+                      <p className="text-sm font-medium text-red-500 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
                         Error: {priceEstimate.errorMessage}
                       </p>
                     )}

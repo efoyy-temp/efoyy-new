@@ -1,19 +1,24 @@
+'use client';
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
+  const t = useTranslations('footer');
+  const currentYear = new Date().getFullYear();
+  
   return (
     <footer className="bg-background mt-20 flex flex-col items-center ">
       <div className="container pt-16 px-8 max-w-7xl">
         <div className="flex flex-wrap justify-between gap-12">
           <div className="space-y-4 min-w-28">
-            <h3 className="text- font-bold mb-6">Company</h3>
+            <h3 className="text- font-bold mb-6">{t('company.title')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  About Us
+                  {t('company.aboutUs')}
                 </Link>
               </li>
               <li>
@@ -21,7 +26,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  Careers
+                  {t('company.careers')}
                 </Link>
               </li>
               <li>
@@ -29,7 +34,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  Blog
+                  {t('company.blog')}
                 </Link>
               </li>
               <li>
@@ -37,7 +42,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  Contact Us
+                  {t('company.contactUs')}
                 </Link>
               </li>
             </ul>
@@ -45,14 +50,14 @@ export default function Footer() {
 
           {/* Resources Section */}
           <div className="space-y-4 min-w-28">
-            <h3 className="text- font-bold mb-6">Resources</h3>
+            <h3 className="text- font-bold mb-6">{t('resources.title')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  Help Center
+                  {t('resources.helpCenter')}
                 </Link>
               </li>
               <li>
@@ -60,7 +65,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  FAQs
+                  {t('resources.faqs')}
                 </Link>
               </li>
               <li>
@@ -68,7 +73,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  Privacy Policy
+                  {t('resources.privacyPolicy')}
                 </Link>
               </li>
               <li>
@@ -76,7 +81,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  Terms of Service
+                  {t('resources.termsOfService')}
                 </Link>
               </li>
             </ul>
@@ -84,14 +89,14 @@ export default function Footer() {
 
           {/* Solutions Section */}
           <div className="space-y-4 min-w-28">
-            <h3 className="text- font-bold mb-6">Solutions</h3>
+            <h3 className="text- font-bold mb-6">{t('solutions.title')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  Be a passenger
+                  {t('solutions.bePassenger')}
                 </Link>
               </li>
               <li>
@@ -99,7 +104,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  be a rider
+                  {t('solutions.beRider')}
                 </Link>
               </li>
               <li>
@@ -107,7 +112,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  partner with us
+                  {t('solutions.partner')}
                 </Link>
               </li>
               <li>
@@ -115,7 +120,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  jobs
+                  {t('solutions.jobs')}
                 </Link>
               </li>
             </ul>
@@ -125,7 +130,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-14 mb-8 text-center">
           <p className="text-primary font-semibold text-xs leading-relaxed">
-            ©{new Date().getFullYear()} EFOYY. ALL RIGHTS RESERVED
+            {t('copyright').replace('{year}', currentYear.toString())}
           </p>
         </div>
       </div>

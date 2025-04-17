@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Loader2 } from "lucide-react"; // Import Loader2 for spinner
+import { useTranslations } from 'next-intl';
 
 // Define a Zod schema for form validation
 const formSchema = z.object({
@@ -36,6 +37,7 @@ type FormInput = z.infer<typeof formSchema>;
 export default function ContactPage() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false); // State for loading spinner
+  const t = useTranslations('contactPage');
 
   const {
     register,
@@ -54,14 +56,13 @@ export default function ContactPage() {
       console.log("Form Data:", data);
 
       toast({
-        description: "Thank you for your message! We'll get back to you soon.",
+        description: t('successMessage'),
       });
       reset();
     } catch (error) {
       console.error("Form Submission Error:", error);
       toast({
-        description:
-          "Sorry, there was an error with your submission. Please try again later.",
+        description: t('errorMessage'),
         variant: "destructive",
       });
     } finally {
@@ -76,26 +77,25 @@ export default function ContactPage() {
       <main className="container mx-auto px-4 py-12 pt-20">
         <div className="text-center mb-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
-            Get in Touch
+            {t('title')}
           </h1>
           <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
-            Have questions about our safety features or need assistance? We're
-            here to help. Reach out to our team using any of the methods below.
+            {t('description')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
+            <h2 className="text-2xl font-bold mb-6">{t('formTitle')}</h2>
             <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">
-                    Your Name
+                    {t('name')}
                   </label>
                   <Input
                     id="name"
-                    placeholder="Enter your name"
+                    placeholder={t('nameLabel')}
                     {...register("name")}
                   />
                   {errors.name && (
@@ -106,12 +106,12 @@ export default function ContactPage() {
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium">
-                    Email Address
+                    {t('email')}
                   </label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder={t('emailLabel')}
                     {...register("email")}
                   />
                   {errors.email && (
@@ -123,11 +123,11 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-medium">
-                  Subject
+                  {t('subject')}
                 </label>
                 <Input
                   id="subject"
-                  placeholder="How can we help you?"
+                  placeholder={t('subjectLabel')}
                   {...register("subject")}
                 />
                 {errors.subject && (
@@ -138,11 +138,11 @@ export default function ContactPage() {
               </div>
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium">
-                  Message
+                  {t('message')}
                 </label>
                 <Textarea
                   id="message"
-                  placeholder="Tell us more about your inquiry..."
+                  placeholder={t('messageLabel')}
                   className="min-h-[150px] "
                   {...register("message")}
                 />
@@ -160,12 +160,12 @@ export default function ContactPage() {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Sending...
+                    {t('sending')}
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    {t('send')}
                   </>
                 )}
               </Button>
@@ -174,7 +174,7 @@ export default function ContactPage() {
 
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('contactInfoTitle')}</h2>
               <div className="space-y-6">
                 <Card className="border-border bg-card">
                   <CardContent className="p-6">
@@ -185,10 +185,10 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-medium text-card-foreground">
-                            Our Location
+                            {t('location')}
                           </h3>
                           <p className="text-muted-foreground mt-1">
-                            123 Safety Street, Tech City, TC 10101
+                            {t('locationDetails')}
                           </p>
                         </div>
                       </div>
@@ -198,10 +198,10 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-medium text-card-foreground">
-                            Phone Number
+                            {t('phone')}
                           </h3>
                           <p className="text-muted-foreground mt-1">
-                            +1 (555) 123-4567
+                            {t('phoneNumber')}
                           </p>
                         </div>
                       </div>
@@ -211,10 +211,10 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-medium text-card-foreground">
-                            Email Address
+                            {t('emailTitle')}
                           </h3>
                           <p className="text-muted-foreground mt-1">
-                            support@efoyy.com
+                            {t('emailAddress')}
                           </p>
                         </div>
                       </div>
@@ -224,10 +224,10 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-medium text-card-foreground">
-                            Working Hours
+                            {t('hours')}
                           </h3>
                           <p className="text-muted-foreground mt-1">
-                            Mon-Fri: 9AM - 6PM
+                            {t('workingHours')}
                           </p>
                         </div>
                       </div>
@@ -238,7 +238,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold mb-6">Follow Us</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('followUs')}</h2>
               <div className="flex gap-4">
                 <a
                   href="#"
@@ -299,7 +299,7 @@ export default function ContactPage() {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
                       clipRule="evenodd"
                     />
                   </svg>

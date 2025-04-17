@@ -3,8 +3,11 @@ import Navbar from "../components/Navbar";
 import Overview from "../components/Home/Overview";
 import Features from "../components/Home/Features";
 import Footer from "../components/Footer";
+import { useTranslations } from 'next-intl';
 
 export default function Home() {
+  const t = useTranslations('home.hero');
+  
   return (
     <>
       <Navbar isLanding />
@@ -20,16 +23,13 @@ export default function Home() {
           />
           <div className="flex items-start max-sm:my-auto justify-center w-full flex-col gap-4 ">
             <div className="text-sm font-semibold text-primary motion-translate-y-in-[30%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-[1s] motion-delay-1000">
-              4k+ drivers working 24/7
+              {t('drivers')}
             </div>
             <h1 className="max-w-[600px] text-5xl font-semibold bg-gradient-to-r from-white to-white/40 text-clip text-transparent bg-clip-text max-sm:text-4xl motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-300">
-              Where Do You Want <br /> To Go?
+              {t('title')}
             </h1>
             <p className="font-medium max-w-lg text-white/80 text-sm mt-2 leading-6 motion-translate-y-in-[20%] motion-opacity-in-[0%] motion-blur-in-[1px]  motion-ease-out-cubic motion-duration-1000 motion-delay-700">
-              Wherever you are in Addis, we've got your back with unbeatable
-              pricing, lightning-fast responses, and top-notch customer service
-              available 24/7! 🚀 Ready for your next ride? Download our app and
-              hop on board today!
+              {t('description')}
             </p>
           </div>
           <div className="flex gap-2 items-center">
