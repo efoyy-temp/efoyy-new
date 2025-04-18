@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import {
   Navigation,
@@ -29,8 +30,13 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTranslations } from "next-intl";
 
 export default function FeaturesPage() {
+  const t = useTranslations("featuresPage");
+  const driverT = useTranslations("featuresPage.driver");
+  const riderT = useTranslations("featuresPage.rider");
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -41,11 +47,10 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-16 text-center">
             <div className="space-y-6">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                Efoyy Features
+                {t("hero.title")}
               </h1>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Discover all the features that make Efoyy the perfect platform
-                for both drivers and riders.
+                {t("hero.description")}
               </p>
             </div>
             <Tabs defaultValue="drivers" className="w-full max-w-md">
@@ -53,13 +58,13 @@ export default function FeaturesPage() {
                 <TabsTrigger value="drivers" className="py-2" asChild>
                   <a href="#driver-features">
                     <Car className="h-6 w-6 mr-2" />
-                    For Drivers
+                    {t("hero.drivers")}
                   </a>
                 </TabsTrigger>
                 <TabsTrigger value="riders" className="py-2" asChild>
                   <a href="#rider-features">
                     <Users className="h-6 w-6 mr-2" />
-                    For Riders
+                    {t("hero.riders")}
                   </a>
                 </TabsTrigger>
               </TabsList>
@@ -76,15 +81,14 @@ export default function FeaturesPage() {
         <div className="max-w-screen-xl w-full px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-              For Drivers
+              {t("hero.drivers")}
             </div>
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Drive & Earn On Your Schedule
+                {driverT("title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Join thousands of drivers who've found freedom and financial
-                opportunity with Efoyy. Set your own hours and be your own boss.
+                {driverT("description")}
               </p>
             </div>
           </div>
@@ -93,20 +97,18 @@ export default function FeaturesPage() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h3 className="text-2xl font-bold">
-                  Freedom to work on your terms
+                  {driverT("freedom.title")}
                 </h3>
                 <p className="text-muted-foreground">
-                  With Efoyy, you're in control of when, where, and how much you
-                  work. Whether you're looking for a full-time income or just
-                  some extra cash, we've got you covered.
+                  {driverT("freedom.description")}
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button size="lg" className="px-8" asChild>
-                  <a href="#driver-cta">Sign Up to Drive</a>
+                  <a href="#driver-cta">{driverT("signUp")}</a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="#driver-how-it-works">Learn More</a>
+                  <a href="#driver-how-it-works">{driverT("learnMore")}</a>
                 </Button>
               </div>
             </div>
@@ -130,11 +132,10 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Why Drive With Us?
+                {driverT("benefits.title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Efoyy offers the flexibility, earnings, and support you need to
-                succeed on your own terms.
+                {driverT("benefits.description")}
               </p>
             </div>
           </div>
@@ -142,51 +143,48 @@ export default function FeaturesPage() {
             <Card>
               <CardHeader className="pb-2">
                 <CalendarClock className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Flexible Schedule</CardTitle>
+                <CardTitle>{driverT("benefits.flexible.title")}</CardTitle>
                 <CardDescription>
-                  Drive whenever you want. No minimum hours or schedules to
-                  follow.
+                  {driverT("benefits.flexible.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
-                  <li>Work around your existing commitments</li>
-                  <li>Drive during peak hours for maximum earnings</li>
-                  <li>Take time off whenever you need it</li>
+                  <li>{driverT("benefits.flexible.items.0")}</li>
+                  <li>{driverT("benefits.flexible.items.1")}</li>
+                  <li>{driverT("benefits.flexible.items.2")}</li>
                 </ul>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="pb-2">
                 <DollarSign className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Competitive Earnings</CardTitle>
+                <CardTitle>{driverT("benefits.earnings.title")}</CardTitle>
                 <CardDescription>
-                  Keep more of what you earn with our driver-friendly commission
-                  structure.
+                  {driverT("benefits.earnings.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
-                  <li>Lower commission rates than competitors</li>
-                  <li>Weekly direct deposits to your bank account</li>
-                  <li>Surge pricing during high-demand periods</li>
+                  <li>{driverT("benefits.earnings.items.0")}</li>
+                  <li>{driverT("benefits.earnings.items.1")}</li>
+                  <li>{driverT("benefits.earnings.items.2")}</li>
                 </ul>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="pb-2">
                 <Shield className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Driver Protection</CardTitle>
+                <CardTitle>{driverT("benefits.protection.title")}</CardTitle>
                 <CardDescription>
-                  We've got your back with comprehensive insurance and safety
-                  features.
+                  {driverT("benefits.protection.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
-                  <li>Insurance coverage while on the platform</li>
-                  <li>24/7 emergency support hotline</li>
-                  <li>Safety features built into the driver app</li>
+                  <li>{driverT("benefits.protection.items.0")}</li>
+                  <li>{driverT("benefits.protection.items.1")}</li>
+                  <li>{driverT("benefits.protection.items.2")}</li>
                 </ul>
               </CardContent>
             </Card>
@@ -203,11 +201,10 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                How It Works For Drivers
+                {driverT("howItWorks.title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Getting started is easy. Be on the road and earning in just a
-                few simple steps.
+                {driverT("howItWorks.description")}
               </p>
             </div>
           </div>
@@ -269,11 +266,10 @@ export default function FeaturesPage() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Powerful Driver App
+                  {driverT("app.title")}
                 </h2>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Our driver app is designed to make your experience seamless
-                  and profitable.
+                  {driverT("app.description")}
                 </p>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
@@ -328,10 +324,10 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Driver Success Stories
+                {driverT("stories.title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Hear from drivers who have transformed their lives with Efoyy.
+                {driverT("stories.description")}
               </p>
             </div>
           </div>
@@ -493,18 +489,19 @@ export default function FeaturesPage() {
             />
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
-                <h3 className="text-2xl font-bold">Your ride, your way</h3>
+                <h3 className="text-2xl font-bold">
+                  {riderT("convenience.title")}
+                </h3>
                 <p className="text-muted-foreground">
-                  Whether you're heading to work, meeting friends, or exploring
-                  a new city, Efoyy gets you there safely and comfortably.
+                  {riderT("convenience.description")}
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button size="lg" className="px-8" asChild>
-                  <a href="#rider-cta">Book a Ride</a>
+                  <a href="#rider-cta">{riderT("book")}</a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="#rider-how-it-works">Learn More</a>
+                  <a href="#rider-how-it-works">{riderT("learnMore")}</a>
                 </Button>
               </div>
             </div>
@@ -521,11 +518,10 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Why Ride With Us?
+                {riderT("benefits.title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Efoyy offers convenience, safety, and affordability for all your
-                transportation needs.
+                {riderT("benefits.description")}
               </p>
             </div>
           </div>
@@ -533,9 +529,9 @@ export default function FeaturesPage() {
             <Card>
               <CardHeader className="pb-2">
                 <Clock className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Quick Pickups</CardTitle>
+                <CardTitle>{riderT("benefits.quick.title")}</CardTitle>
                 <CardDescription>
-                  Get a ride in minutes, even during peak hours.
+                  {riderT("benefits.quick.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -549,9 +545,9 @@ export default function FeaturesPage() {
             <Card>
               <CardHeader className="pb-2">
                 <Shield className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Safety First</CardTitle>
+                <CardTitle>{riderT("benefits.safety.title")}</CardTitle>
                 <CardDescription>
-                  Your safety is our top priority with every ride.
+                  {riderT("benefits.safety.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -565,9 +561,9 @@ export default function FeaturesPage() {
             <Card>
               <CardHeader className="pb-2">
                 <CreditCard className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Affordable Options</CardTitle>
+                <CardTitle>{riderT("benefits.affordable.title")}</CardTitle>
                 <CardDescription>
-                  Multiple ride options to fit your budget and needs.
+                  {riderT("benefits.affordable.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -591,11 +587,10 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                How It Works For Riders
+                {riderT("howItWorks.title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Getting a ride is simple and straightforward with our
-                easy-to-use app.
+                {riderT("howItWorks.description")}
               </p>
             </div>
           </div>
@@ -650,11 +645,10 @@ export default function FeaturesPage() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Rider App Features
+                  {riderT("app.title")}
                 </h2>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Our rider app is designed with you in mind, making every
-                  journey smooth and hassle-free.
+                  {riderT("app.description")}
                 </p>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
@@ -716,108 +710,51 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                What Our Riders Say
+                {riderT("stories.title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Don't just take our word for it - hear from our satisfied
-                riders.
+                {riderT("stories.description")}
               </p>
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center space-y-4">
-                  <Image
-                    src="/placeholder.svg?height=100&width=100"
-                    width="100"
-                    height="100"
-                    alt="Rider portrait"
-                    className="rounded-full aspect-square object-cover"
-                  />
-                  <div className="space-y-2 text-center">
-                    <h3 className="font-bold">Emily K.</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Using Efoyy since 2021
-                    </p>
-                    <p className="text-sm">
-                      "Efoyy has been a game-changer for my daily commute. The
-                      drivers are always professional, and I never wait more
-                      than a few minutes for pickup."
-                    </p>
-                    <div className="flex justify-center">
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
+            {[0, 1, 2].map((index) => (
+              <Card
+                key={index}
+                className={index === 2 ? "md:col-span-2 lg:col-span-1" : ""}
+              >
+                <CardContent className="pt-6">
+                  <div className="flex flex-col items-center space-y-4">
+                    <Image
+                      src="/placeholder.svg?height=100&width=100"
+                      width="100"
+                      height="100"
+                      alt="Rider portrait"
+                      className="rounded-full aspect-square object-cover"
+                    />
+                    <div className="space-y-2 text-center">
+                      <h3 className="font-bold">
+                        {riderT(`stories.testimonials.${index}.name`)}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {riderT(`stories.testimonials.${index}.since`)}
+                      </p>
+                      <p className="text-sm">
+                        {riderT(`stories.testimonials.${index}.quote`)}
+                      </p>
+                      <div className="flex justify-center">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="h-4 w-4 fill-primary text-primary"
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center space-y-4">
-                  <Image
-                    src="/placeholder.svg?height=100&width=100"
-                    width="100"
-                    height="100"
-                    alt="Rider portrait"
-                    className="rounded-full aspect-square object-cover"
-                  />
-                  <div className="space-y-2 text-center">
-                    <h3 className="font-bold">Marcus L.</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Using Efoyy since 2022
-                    </p>
-                    <p className="text-sm">
-                      "As someone who doesn't own a car, Efoyy has given me the
-                      freedom to go anywhere in the city without relying on
-                      public transportation schedules."
-                    </p>
-                    <div className="flex justify-center">
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="md:col-span-2 lg:col-span-1">
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center space-y-4">
-                  <Image
-                    src="/placeholder.svg?height=100&width=100"
-                    width="100"
-                    height="100"
-                    alt="Rider portrait"
-                    className="rounded-full aspect-square object-cover"
-                  />
-                  <div className="space-y-2 text-center">
-                    <h3 className="font-bold">Sophia W.</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Using Efoyy since 2020
-                    </p>
-                    <p className="text-sm">
-                      "I feel safe using Efoyy, even late at night. The ability
-                      to share my trip status with friends gives me peace of
-                      mind, and the drivers are always respectful."
-                    </p>
-                    <div className="flex justify-center">
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                      <Star className="h-4 w-4 fill-primary text-primary" />
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -831,18 +768,18 @@ export default function FeaturesPage() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Ready to Ride with Us?
+                {riderT("cta.title")}
               </h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Download the app now and experience the convenience of Efoyy.
+                {riderT("cta.description")}
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Button size="lg" className="px-8">
-                Download App
+                {riderT("cta.download")}
               </Button>
               <Button variant="outline" size="lg">
-                Learn More
+                {riderT("cta.learnMore")}
               </Button>
             </div>
           </div>

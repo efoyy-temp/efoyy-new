@@ -78,7 +78,9 @@
     "whereHeading": "Where are you heading?",
     "useCurrentLocation": "Use current location",
     "seePrices": "See Prices",
-    "estimatedPrice": "Estimated Price"
+    "estimatedPrice": "Estimated Price",
+    "close": "Close",
+    "estimatedTime": "Estimated Time"
   },
   "safetyPage": {
     "tagline": "Your safety is our top priority.",
@@ -215,5 +217,237 @@
       "jobs": "jobs"
     },
     "copyright": "©year EFOYY. ALL RIGHTS RESERVED"
+  },
+  "featuresPage": {
+    "hero": {
+      "title": "Efoyy Features",
+      "description": "Discover all the features that make Efoyy the perfect platform for both drivers and riders.",
+      "drivers": "For Drivers",
+      "riders": "For Riders"
+    },
+    "driver": {
+      "title": "Drive & Earn On Your Schedule",
+      "description": "Join thousands of drivers who've found freedom and financial opportunity with Efoyy. Set your own hours and be your own boss.",
+      "freedom": {
+        "title": "Freedom to work on your terms",
+        "description": "With Efoyy, you're in control of when, where, and how much you work. Whether you're looking for a full-time income or just some extra cash, we've got you covered."
+      },
+      "signUp": "Sign Up to Drive",
+      "learnMore": "Learn More",
+      "benefits": {
+        "title": "Why Drive With Us?",
+        "description": "Efoyy offers the flexibility, earnings, and support you need to succeed on your own terms.",
+        "flexible": {
+          "title": "Flexible Schedule",
+          "description": "Drive whenever you want. No minimum hours or schedules to follow.",
+          "items": [
+            "Work around your existing commitments",
+            "Drive during peak hours for maximum earnings",
+            "Take time off whenever you need it"
+          ]
+        },
+        "earnings": {
+          "title": "Competitive Earnings",
+          "description": "Keep more of what you earn with our driver-friendly commission structure.",
+          "items": [
+            "Lower commission rates than competitors",
+            "Weekly direct deposits to your bank account",
+            "Surge pricing during high-demand periods"
+          ]
+        },
+        "protection": {
+          "title": "Driver Protection",
+          "description": "We've got your back with comprehensive insurance and safety features.",
+          "items": [
+            "Insurance coverage while on the platform",
+            "24/7 emergency support hotline",
+            "Safety features built into the driver app"
+          ]
+        }
+      },
+      "howItWorks": {
+        "title": "How It Works For Drivers",
+        "description": "Getting started is easy. Be on the road and earning in just a few simple steps.",
+        "steps": [
+          {
+            "title": "1. Sign Up",
+            "description": "Complete our simple online application process"
+          },
+          {
+            "title": "2. Get Verified",
+            "description": "Pass a background check and vehicle inspection"
+          },
+          {
+            "title": "3. Go Online",
+            "description": "Turn on the app when you're ready to accept rides"
+          },
+          {
+            "title": "4. Start Earning",
+            "description": "Get paid weekly with direct deposit to your bank"
+          }
+        ]
+      },
+      "app": {
+        "title": "Powerful Driver App",
+        "description": "Our driver app is designed to make your experience seamless and profitable.",
+        "features": [
+          {
+            "title": "Smart Navigation",
+            "description": "Turn-by-turn directions and traffic updates in real-time"
+          },
+          {
+            "title": "Destination Filters",
+            "description": "Set your destination and get rides heading your way"
+          },
+          {
+            "title": "Earnings Tracker",
+            "description": "Monitor your earnings and trips in real-time"
+          },
+          {
+            "title": "Driver Rewards",
+            "description": "Earn points for consistent service and unlock benefits"
+          }
+        ]
+      },
+      "stories": {
+        "title": "Driver Success Stories",
+        "description": "Hear from drivers who have transformed their lives with Efoyy.",
+        "testimonials": [
+          {
+            "name": "Michael T.",
+            "since": "Driving since 2022",
+            "quote": "I started driving part-time and now I'm making more than I did at my office job. The flexibility allows me to be there for my family while earning a great income."
+          },
+          {
+            "name": "Sarah J.",
+            "since": "Driving since 2021",
+            "quote": "As a student, Efoyy gives me the perfect way to earn money between classes. I can work when I want and focus on my studies when needed."
+          },
+          {
+            "name": "David R.",
+            "since": "Driving since 2020",
+            "quote": "After losing my job during the pandemic, Efoyy became my lifeline. Three years later, I'm still driving because I love the freedom and the income is better than any job I've had."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Start Driving?",
+        "description": "Join thousands of satisfied drivers and start earning on your own schedule today.",
+        "signUp": "Sign Up Now",
+        "support": "Contact Support"
+      }
+    },
+    "rider": {
+      "title": "Go Anywhere, Anytime",
+      "description": "Experience the convenience of Efoyy with reliable rides at your fingertips, day or night.",
+      "convenience": {
+        "title": "Your ride, your way",
+        "description": "Whether you're heading to work, meeting friends, or exploring a new city, Efoyy gets you there safely and comfortably."
+      },
+      "book": "Book a Ride",
+      "learnMore": "Learn More",
+      "benefits": {
+        "title": "Why Ride With Us?",
+        "description": "Efoyy offers convenience, safety, and affordability for all your transportation needs.",
+        "quick": {
+          "title": "Quick Pickups",
+          "description": "Get a ride in minutes, even during peak hours.",
+          "items": [
+            "Average pickup time under 5 minutes",
+            "Real-time driver location tracking",
+            "Schedule rides in advance"
+          ]
+        },
+        "safety": {
+          "title": "Safety First",
+          "description": "Your safety is our top priority with every ride.",
+          "items": [
+            "Verified and background-checked drivers",
+            "Share your trip details with trusted contacts",
+            "24/7 support and emergency assistance"
+          ]
+        },
+        "affordable": {
+          "title": "Affordable Options",
+          "description": "Multiple ride options to fit your budget and needs.",
+          "items": [
+            "Economy, standard, and premium vehicle options",
+            "Transparent pricing with no hidden fees",
+            "Split fare with friends for group rides"
+          ]
+        }
+      },
+      "howItWorks": {
+        "title": "How It Works For Riders",
+        "description": "Getting a ride is simple and straightforward with our easy-to-use app.",
+        "steps": [
+          {
+            "title": "1. Download App",
+            "description": "Get the Efoyy app from your app store"
+          },
+          {
+            "title": "2. Enter Location",
+            "description": "Set your pickup point and destination"
+          },
+          {
+            "title": "3. Choose Ride",
+            "description": "Select from economy, standard, or premium"
+          },
+          {
+            "title": "4. Enjoy the Ride",
+            "description": "Rate your driver and provide feedback"
+          }
+        ]
+      },
+      "app": {
+        "title": "Rider App Features",
+        "description": "Our rider app is designed with you in mind, making every journey smooth and hassle-free.",
+        "features": [
+          {
+            "title": "Live Tracking",
+            "description": "Follow your driver's location in real-time on the map"
+          },
+          {
+            "title": "Arrival Alerts",
+            "description": "Get notified when your driver is arriving"
+          },
+          {
+            "title": "Loyalty Program",
+            "description": "Earn points with every ride for future discounts"
+          },
+          {
+            "title": "Quick Reorder",
+            "description": "Easily book rides to your favorite destinations"
+          }
+        ]
+      },
+      "stories": {
+        "title": "What Our Riders Say",
+        "description": "Don't just take our word for it - hear from our satisfied riders.",
+        "testimonials": [
+          {
+            "name": "Emily K.",
+            "since": "Using Efoyy since 2021",
+            "quote": "Efoyy has been a game-changer for my daily commute. The drivers are always professional, and I never wait more than a few minutes for pickup."
+          },
+          {
+            "name": "Marcus L.",
+            "since": "Using Efoyy since 2022",
+            "quote": "As someone who doesn't own a car, Efoyy has given me the freedom to go anywhere in the city without relying on public transportation schedules."
+          },
+          {
+            "name": "Sophia W.",
+            "since": "Using Efoyy since 2020",
+            "quote": "I feel safe using Efoyy, even late at night. The ability to share my trip status with friends gives me peace of mind, and the drivers are always respectful."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Ready to Ride with Us?",
+        "description": "Download the app now and experience the convenience of Efoyy.",
+        "download": "Download App",
+        "learnMore": "Learn More"
+      }
+    }
   }
 }
