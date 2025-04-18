@@ -60,7 +60,7 @@ const Navbar = (props: Props) => {
       <NavLink
         scrolled={scrolled}
         label={t("features")}
-        href="/"
+        href="/features"
         isLanding={props.isLanding}
       />
       <NavLink
@@ -163,17 +163,17 @@ const Navbar = (props: Props) => {
                 </DropdownMenuItem>
                 <Link href="/safety" className="w-full">
                   <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                    <a className="w-full">{t("safety")}</a>
+                    {t("safety")}
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/" className="w-full">
+                <Link href="/features" className="w-full">
                   <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                    <a className="w-full">{t("features")}</a>
+                    {t("features")}
                   </DropdownMenuItem>
                 </Link>
                 <Link href="/contact" className="w-full">
                   <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                    <a className="w-full">{t("contactUs")}</a>
+                    {t("contactUs")}
                   </DropdownMenuItem>
                 </Link>
                 <DropdownMenuItem className="px-3 hover:bg-foreground/10">

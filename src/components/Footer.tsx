@@ -1,24 +1,24 @@
-'use client';
+"use client";
 import Link from "next/link";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
-  const t = useTranslations('footer');
+  const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-background mt-20 flex flex-col items-center ">
       <div className="container pt-16 px-8 max-w-7xl">
         <div className="flex flex-wrap justify-between gap-12">
           <div className="space-y-4 min-w-28">
-            <h3 className="text- font-bold mb-6">{t('company.title')}</h3>
+            <h3 className="text- font-bold mb-6">{t("company.title")}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('company.aboutUs')}
+                  {t("company.aboutUs")}
                 </Link>
               </li>
               <li>
@@ -26,7 +26,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('company.careers')}
+                  {t("company.careers")}
                 </Link>
               </li>
               <li>
@@ -34,7 +34,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('company.blog')}
+                  {t("company.blog")}
                 </Link>
               </li>
               <li>
@@ -42,7 +42,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('company.contactUs')}
+                  {t("company.contactUs")}
                 </Link>
               </li>
             </ul>
@@ -50,14 +50,14 @@ export default function Footer() {
 
           {/* Resources Section */}
           <div className="space-y-4 min-w-28">
-            <h3 className="text- font-bold mb-6">{t('resources.title')}</h3>
+            <h3 className="text- font-bold mb-6">{t("resources.title")}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('resources.helpCenter')}
+                  {t("resources.helpCenter")}
                 </Link>
               </li>
               <li>
@@ -65,7 +65,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('resources.faqs')}
+                  {t("resources.faqs")}
                 </Link>
               </li>
               <li>
@@ -73,7 +73,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('resources.privacyPolicy')}
+                  {t("resources.privacyPolicy")}
                 </Link>
               </li>
               <li>
@@ -81,7 +81,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('resources.termsOfService')}
+                  {t("resources.termsOfService")}
                 </Link>
               </li>
             </ul>
@@ -89,14 +89,14 @@ export default function Footer() {
 
           {/* Solutions Section */}
           <div className="space-y-4 min-w-28">
-            <h3 className="text- font-bold mb-6">{t('solutions.title')}</h3>
+            <h3 className="text- font-bold mb-6">{t("solutions.title")}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('solutions.bePassenger')}
+                  {t("solutions.bePassenger")}
                 </Link>
               </li>
               <li>
@@ -104,7 +104,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('solutions.beRider')}
+                  {t("solutions.beRider")}
                 </Link>
               </li>
               <li>
@@ -112,7 +112,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('solutions.partner')}
+                  {t("solutions.partner")}
                 </Link>
               </li>
               <li>
@@ -120,7 +120,7 @@ export default function Footer() {
                   href="#"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
-                  {t('solutions.jobs')}
+                  {t("solutions.jobs")}
                 </Link>
               </li>
             </ul>
@@ -130,13 +130,13 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-14 mb-8 text-center">
           <p className="text-primary font-semibold text-xs leading-relaxed">
-            {t('copyright').replace('{year}', currentYear.toString())}
+            {t("copyright").replace("year", currentYear.toString())}
           </p>
         </div>
       </div>
 
       <div className="w-full relative overflow-hidden">
-        <h1 className="tracking flex justify-center w-full text-foreground text-[30vw] text-center font-bold leading-[0.8] mb-[-6vw]">
+        <h1 className="tracking font-[Manrope] flex justify-center w-full text-foreground text-[30vw] text-center font-bold leading-[0.8] mb-[-6vw]">
           EFOYY
         </h1>
       </div>
