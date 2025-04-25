@@ -80,7 +80,8 @@
     "seePrices": "See Prices",
     "estimatedPrice": "Estimated Price",
     "close": "Close",
-    "estimatedTime": "Estimated Time"
+    "estimatedTime": "Estimated Time",
+    "estimatedDistance": "Estimated Distance"
   },
   "safetyPage": {
     "tagline": "Your safety is our top priority.",

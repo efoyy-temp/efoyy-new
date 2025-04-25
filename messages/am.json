@@ -80,7 +80,8 @@
     "seePrices": "ዋጋዎችን ይመልከቱ",
     "estimatedPrice": "የተገመተ ዋጋ",
     "close": "ዝጋ",
-    "estimatedTime": "የተገመተ ጊዜ"
+    "estimatedTime": "የተገመተ ጊዜ",
+    "estimatedDistance": "የተገመተ ቅርብ"
   },
   "safetyPage": {
     "tagline": "የእርስዎ ደህንነት የእኛ ቀዳሚ ቅድሚያ ነው።",

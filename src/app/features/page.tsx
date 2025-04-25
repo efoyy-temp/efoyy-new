@@ -113,7 +113,7 @@ export default function FeaturesPage() {
               </div>
             </div>
             <Image
-              src="/placeholder.svg?height=550&width=550"
+              src="/iPhone 16.png"
               width="550"
               height="550"
               alt="Driver using the Efoyy app"
@@ -257,7 +257,7 @@ export default function FeaturesPage() {
         <div className="max-w-screen-xl w-full px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-[500px_1fr] lg:gap-12 xl:grid-cols-[550px_1fr]">
             <Image
-              src="/placeholder.svg?height=550&width=550"
+              src="/iPhone 16.png"
               width="550"
               height="550"
               alt="Efoyy driver app interface"
@@ -335,8 +335,8 @@ export default function FeaturesPage() {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center space-y-4">
-                  <Image
-                    src="/placeholder.svg?height=100&width=100"
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/7.jpg"
                     width="100"
                     height="100"
                     alt="Driver portrait"
@@ -366,8 +366,8 @@ export default function FeaturesPage() {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center space-y-4">
-                  <Image
-                    src="/placeholder.svg?height=100&width=100"
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/18.jpg"
                     width="100"
                     height="100"
                     alt="Driver portrait"
@@ -397,8 +397,8 @@ export default function FeaturesPage() {
             <Card className="md:col-span-2 lg:col-span-1">
               <CardContent className="pt-6">
                 <div className="flex flex-col items-center space-y-4">
-                  <Image
-                    src="/placeholder.svg?height=100&width=100"
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/92.jpg"
                     width="100"
                     height="100"
                     alt="Driver portrait"
@@ -481,7 +481,7 @@ export default function FeaturesPage() {
 
           <div className="grid gap-6 lg:grid-cols-[500px_1fr] lg:gap-12 xl:grid-cols-[550px_1fr] py-12">
             <Image
-              src="/placeholder.svg?height=550&width=550"
+              src="/iPhone 16.png"
               width="550"
               height="550"
               alt="Person using the Efoyy rider app"
@@ -691,7 +691,7 @@ export default function FeaturesPage() {
               </div>
             </div>
             <Image
-              src="/placeholder.svg?height=550&width=550"
+              src="/iPhone 16.png"
               width="550"
               height="550"
               alt="Efoyy rider app interface"
@@ -726,7 +726,7 @@ export default function FeaturesPage() {
                 <CardContent className="pt-6">
                   <div className="flex flex-col items-center space-y-4">
                     <Image
-                      src="/placeholder.svg?height=100&width=100"
+                      src="/iPhone 16.png"
                       width="100"
                       height="100"
                       alt="Rider portrait"
