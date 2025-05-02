@@ -1,9 +1,14 @@
 import { MapPin } from "lucide-react";
 import { useState, useCallback } from "react";
 import axios from "axios";
-import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions } from "@headlessui/react";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxOption,
+  ComboboxOptions,
+} from "@headlessui/react";
 import { debounce } from "../lib/debounce";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 
 type PlaceProps = {
   label?: string;
@@ -67,12 +72,12 @@ const Place = ({
   defaultName,
 }: PlaceProps) => {
   const [value, setValue] = useState<Location | null>(
-    defaultLatLng && defaultName 
-      ? { 
-          label: defaultName, 
-          value: defaultLatLng 
-        } 
-      : null
+    defaultLatLng && defaultName
+      ? {
+        label: defaultName,
+        value: defaultLatLng,
+      }
+      : null,
   );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -108,20 +113,21 @@ const Place = ({
   // Helper function to format display name from properties
   const getDisplayName = (props: Properties): string => {
     const parts = [];
-    
+
     if (props.name) parts.push(props.name);
-    
+
     // Add additional context if available
     const context = [];
-    if (props.street && !props.name.includes(props.street)) context.push(props.street);
+    if (props.street && !props.name.includes(props.street))
+      context.push(props.street);
     if (props.district) context.push(props.district);
     if (props.city) context.push(props.city);
-    
+
     if (context.length > 0) {
-      parts.push(`(${context.join(', ')})`);
+      parts.push(`(${context.join(", ")})`);
     }
-    
-    return parts.join(' ');
+
+    return parts.join(" ");
   };
 
   // Create a debounced version of fetchLocations
@@ -152,7 +158,7 @@ const Place = ({
             <ComboboxInput
               aria-label={placeholder}
               displayValue={(location: Location | null) =>
-                isCurrent ? t('map.yourLocation') : (location?.label ?? "")
+                isCurrent ? t("map.yourLocation") : (location?.label ?? "")
               }
               placeholder={placeholder}
               onChange={(event) => {
@@ -162,7 +168,6 @@ const Place = ({
             />
           </div>
           <ComboboxOptions
-            anchor="bottom"
             transition
             className="absolute z-10 w-full mt-1 origin-top border transition duration-200 ease-out empty:invisible overflow-hidden shadow-lg bg-background rounded-md py-1 max-h-60 overflow-auto"
           >
@@ -171,22 +176,22 @@ const Place = ({
                 <p>Loading...</p>
               </div>
             )}
-            
+
             {isCurrent && (
               <ComboboxOption
                 value={{
-                  label: t('map.yourLocation'),
+                  label: t("map.yourLocation"),
                   value: [] as any,
                 }}
                 className="text-sm px-3 py-2 cursor-pointer hover:bg-secondary/20 focus:bg-secondary/20"
               >
                 <div className="flex items-center gap-2">
                   <MapPin size={16} className="text-primary" />
-                  {t('map.yourLocation')}
+                  {t("map.yourLocation")}
                 </div>
               </ComboboxOption>
             )}
-            
+
             {!isLoading &&
               !error &&
               locations.map((location, index) => (
@@ -198,11 +203,9 @@ const Place = ({
                   {location.label}
                 </ComboboxOption>
               ))}
-              
+
             {error && (
-              <div className="px-3 py-2 text-sm text-destructive">
-                {error}
-              </div>
+              <div className="px-3 py-2 text-sm text-destructive">{error}</div>
             )}
           </ComboboxOptions>
         </Combobox>
@@ -211,4 +214,4 @@ const Place = ({
   );
 };
 
-export default Place; 
+export default Place;

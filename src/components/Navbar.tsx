@@ -69,23 +69,6 @@ const Navbar = (props: Props) => {
         href="/contact"
         isLanding={props.isLanding}
       />
-      <Link
-        href="/"
-        className={clsx(
-          "group hover:brightness-125 tranition ease-out text-primary-foreground bg-primary rounded-md cursor-pointer pl-5 pr-2 py-1.5 flex gap-1.5 items-center",
-          isMobile &&
-          "w-full p-2 justify-between bg-transparent hover:bg-accent",
-        )}
-      >
-        <span className="font-medium">{t("login")}</span>
-        <ArrowUpRight
-          size={20}
-          className={clsx(
-            "group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all ease-out",
-            isMobile && "hidden", // Hide arrow on mobile dropdown item
-          )}
-        />
-      </Link>
     </div>
   );
 
@@ -176,14 +159,6 @@ const Navbar = (props: Props) => {
                     {t("contactUs")}
                   </DropdownMenuItem>
                 </Link>
-                <DropdownMenuItem className="px-3 hover:bg-foreground/10">
-                  <a
-                    href="#"
-                    className="w-full flex justify-between items-center"
-                  >
-                    {t("login")} <ArrowUpRight size={16} />
-                  </a>
-                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

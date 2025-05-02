@@ -189,11 +189,12 @@ export default function RidePage() {
               </button>
 
               <div
-                className={`mt-6 bg-gradient-to-tl from-white to-stone-100 dark:from-black dark:to-stone-900 shadow-md z-10 absolute top-4 py-6 px-4 sm:px-8 dark:shadow-neutral-600/5 rounded-xl border dark:border-stone-900 flex flex-col space-y-6 items-center justify-center motion-duration-[250ms] motion-duration-150/opacity ${cardOpen
+                className={`mt-6 bg-gradient-to-tl from-white to-stone-100 dark:from-black dark:to-stone-900 shadow-md z-10 absolute top-4 py-6 px-4 sm:px-8 dark:shadow-neutral-600/5 rounded-xl border dark:border-stone-900 flex flex-col space-y-6 items-center justify-center motion-duration-[250ms] motion-duration-150/opacity w-full  max-w-md min-h-40 ${cardOpen
                     ? "motion-scale-in-[0.25] motion-translate-x-in-[0%] motion-translate-y-in-[45%] motion-opacity-in-[0%]"
                     : "motion-scale-out-[0.25] motion-translate-x-out-[0%] motion-translate-y-out-[45%] motion-opacity-out-[0%]"
                   }`}
               >
+                {isLoading && <Loader2 size={40} className="animate-spin" />}{" "}
                 {!isLoading && hasResult && (
                   <>
                     {priceEstimate?.price && (
@@ -261,7 +262,7 @@ export default function RidePage() {
                 )}
                 <Button
                   size="lg"
-                  className="rounded-lg self-end"
+                  className="rounded-lg self-end mt-auto"
                   onClick={() => setCardOpen(!cardOpen)}
                 >
                   {t("close") || "Close"}

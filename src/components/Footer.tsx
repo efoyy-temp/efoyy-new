@@ -45,33 +45,35 @@ export default function Footer() {
           <div className="space-y-4 min-w-28">
             <h3 className="text- font-bold mb-6">{t("resources.title")}</h3>
             <ul className="space-y-2">
+              
               <li>
                 <Link
-                  href="#"
-                  className="text-sm font-normal hover:opacity-80 transition-opacity"
-                >
-                  {t("resources.helpCenter")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
+                  href="/faq"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
                   {t("resources.faqs")}
                 </Link>
               </li>
+
               <li>
                 <Link
-                  href="#"
+                  href="/privacy-policy"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
                   {t("resources.privacyPolicy")}
                 </Link>
               </li>
+<li>
+                <Link
+                  href="/driver-privacy-policy"
+                  className="text-sm font-normal hover:opacity-80 transition-opacity"
+                >
+                  {t("resources.driverPrivacyPolicy")}
+                </Link>
+              </li>
               <li>
                 <Link
-                  href="#"
+                  href="/terms"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
                 >
                   {t("resources.termsOfService")}
@@ -81,43 +83,6 @@ export default function Footer() {
           </div>
 
           {/* Solutions Section */}
-          <div className="space-y-4 min-w-28">
-            <h3 className="text- font-bold mb-6">{t("solutions.title")}</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm font-normal hover:opacity-80 transition-opacity"
-                >
-                  {t("solutions.bePassenger")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm font-normal hover:opacity-80 transition-opacity"
-                >
-                  {t("solutions.beRider")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm font-normal hover:opacity-80 transition-opacity"
-                >
-                  {t("solutions.partner")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm font-normal hover:opacity-80 transition-opacity"
-                >
-                  {t("solutions.jobs")}
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Copyright */}

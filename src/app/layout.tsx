@@ -29,6 +29,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <link rel="icon" href="/Charcoal_004.jpg" />
       <body
         className={`${manrope.variable} ${locale == "en" ? manrope.className : noto.className} antialiased`}
       >

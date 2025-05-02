@@ -125,13 +125,13 @@
   "driverPage": {
     "hero": {
       "title": "Drive & Earn On Your Schedule",
-      "description": "Join thousands of drivers who've found freedom and financial opportunity with RideShare. Set your own hours and be your own boss.",
+      "description": "Join thousands of drivers who've found freedom and financial opportunity with Efoyy. Set your own hours and be your own boss.",
       "signUp": "Sign Up to Drive",
       "learnMore": "Learn More"
     },
     "benefits": {
       "title": "Why Drive With Us?",
-      "description": "RideShare offers the flexibility, earnings, and support you need to succeed on your own terms.",
+      "description": "Efoyy offers the flexibility, earnings, and support you need to succeed on your own terms.",
       "flexibility": {
         "title": "Flexible Schedule",
         "description": "Drive whenever you want. No minimum hours or schedules to follow.",
@@ -208,7 +208,8 @@
       "helpCenter": "Help Center",
       "faqs": "FAQs",
       "privacyPolicy": "Privacy Policy",
-      "termsOfService": "Terms of Service"
+      "termsOfService": "Terms of Service",
+      "driverPrivacyPolicy": "Driver Privacy Policy"
     },
     "solutions": {
       "title": "Solutions",
@@ -448,6 +449,457 @@
         "description": "Download the app now and experience the convenience of Efoyy.",
         "download": "Download App",
         "learnMore": "Learn More"
+      }
+    }
+  },
+  "privacyPolicy": {
+    "title": "Rider's Privacy Policy",
+    "effectiveDate": "Effective Date: March 01, 2024",
+    "noticeTitle": "Customer Privacy Notice",
+    "noticeDescription": "Welcome to Efoyy Transport Technology Solutions (ETTS), where safeguarding your privacy and personal information while using our Website, Android, and iOS apps is our utmost priority. Our commitment to transparency is reflected in this Customer Privacy Notice, providing you with a comprehensive understanding of how we handle, collect, utilize, share, and secure your data when utilizing our platform.",
+    "toc": {
+      "title": "Table of Contents",
+      "1": "Information We Collect",
+      "2": "How We Use Your Information",
+      "3": "Sharing Your Information",
+      "4": "Your Rights and Choices",
+      "5": "Data Protection Measures",
+      "6": "Reporting Suspected Illegal Use and Security Concerns",
+      "7": "Cookies Service",
+      "8": "Data Collection Logs",
+      "9": "Children's Privacy",
+      "10": "Security",
+      "11": "Dispute Resolution",
+      "12": "Changes to This Privacy Notice",
+      "13": "Contact Us"
+    },
+    "section1": {
+      "title": "1. Information We Collect",
+      "description": "We collect various types of information to enhance your experience on our platform. This may include:",
+      "list": {
+        "0": "Personal information such as your name, email address, and phone number.",
+        "1": "Location data for providing our services, navigation, and safety.",
+        "2": "Payment details for secure transactions within the app.",
+        "3": "Ride history, timestamps, and payment records.",
+        "4": "Communications with our customer support and other users.",
+        "5": "During certain rides, drivers may request to take your picture for safety purposes. These photos are securely stored on our servers and automatically deleted after 24 hours unless suspicious activity is reported."
+      }
+    },
+    "section2": {
+      "title": "2. How We Use Your Information",
+      "list": {
+        "0": "Provide you with efficient and reliable services on our platform.",
+        "1": "Process payments securely within the app.",
+        "2": "Continuously improve your overall platform experience.",
+        "3": "Respond promptly to inquiries and resolve issues through our customer support.",
+        "4": "Verify identity and investigate policy violations to enhance safety.",
+        "5": "Share personalized promotions and updates with your consent.",
+        "6": "Comply with all applicable laws and regulations."
+      }
+    },
+    "section3": {
+      "title": "3. Sharing Your Information",
+      "description": "Rest assured, we take your privacy seriously and share your information only in specific situations:",
+      "list": {
+        "0": "With other users when you request a ride or use our services.",
+        "1": "With law enforcement or authorities as required by applicable laws.",
+        "2": "With trusted third-party service providers who assist us in delivering our services.",
+        "3": "With your explicit consent for marketing purposes."
+      }
+    },
+    "section4": {
+      "title": "4. Your Rights and Choices",
+      "list": {
+        "0": "Access and correction of your personal data.",
+        "1": "Request account deletion, subject to legal retention requirements.",
+        "2": "Manage your marketing preferences and opt-out as you see fit.",
+        "3": "Control location data sharing through your device settings."
+      }
+    },
+    "section5": {
+      "title": "5. Data Protection Measures",
+      "description": "Our commitment to your privacy includes robust security measures. We employ state-of-the-art practices to protect your data from unauthorized access, disclosure, alteration, or destruction. Our security protocols encompass encryption and other advanced security measures. For more details, please refer to our Security Policy."
+    },
+    "section6": {
+      "title": "6. Reporting Suspected Illegal Use and Security Concerns",
+      "description": {
+        "0": "If you suspect illegal app use or have security concerns, contact us at ",
+        "1": ", or using the contact us page at ",
+        "2": " or the feedback form on the app. Your cooperation helps maintain app security."
+      }
+    },
+    "section7": {
+      "title": "7. Cookies Service",
+      "description": "We use cookies and similar technologies to enhance your browsing experience and collect information about your interactions with our app."
+    },
+    "section8": {
+      "title": "8. Data Collection Logs",
+      "description": "We may collect data logs for the purpose of improving our services and enhancing user experiences. These logs may include information such as device information, app usage statistics, and user interactions within the app."
+    },
+    "section9": {
+      "title": "9. Children's Privacy",
+      "description": "Efoyy is committed to protecting the privacy of children. Our app is not designed for, nor do we knowingly collect data from children under the age of 13. In compliance with the Children's Online Privacy Protection Act (COPPA) and GDPR regulations for minors in the EU, we do not collect or store any personal information from children under the specified age limits."
+    },
+    "section10": {
+      "title": "10. Security",
+      "description": "We protect data from unauthorized access, disclosure, alteration, or destruction using encryption and security measures. For more information about our security practices, please refer to our Security Policy."
+    },
+    "section11": {
+      "title": "11. Dispute Resolution",
+      "description": {
+        "0": "In the event of any dispute related to privacy concerns or data handling, users are encouraged to contact us directly at ",
+        "1": " for resolution. We are committed to resolving disputes amicably and efficiently. If a satisfactory resolution is not reached, users have the right to contact relevant data protection authorities."
+      }
+    },
+    "section12": {
+      "title": "12. Changes to This Privacy Notice",
+      "description": "To ensure your ongoing transparency, we may update this Customer Privacy Notice to align with operational, legal, or regulatory changes. Any updates will be promptly communicated within the app, and the 'Last Updated' date will indicate the latest revision."
+    },
+    "section13": {
+      "title": "13. Contact Us",
+      "description": {
+        "0": "If you have any questions or concerns about this Privacy Notice or your platform usage, please don't hesitate to reach out to us at ",
+        "1": ". Thank you for choosing Efoyy Transport Technology Solutions (ETTS)."
+      }
+    },
+    "thankYou": "Thank you for choosing Efoyy Transport Technology Solutions (ETTS)."
+  },
+  "driverPrivacyPolicy": {
+    "title": "Driver's Privacy Policy",
+    "effectiveDate": "Effective Date: March 01, 2024",
+    "noticeTitle": "Driver Privacy Notice",
+    "noticeDescription": "Welcome to Efoyy Transport Technology Solutions (ETTS), where safeguarding your privacy and personal information while using our Website, Android, and iOS apps is our utmost priority. Our commitment to transparency is reflected in this Driver Privacy Notice, providing you with a comprehensive understanding of how we handle, collect, utilize, share, and secure your data when utilizing our platform.",
+    "toc": {
+      "title": "Table of Contents",
+      "1": "Information We Collect",
+      "2": "How We Use Your Information",
+      "3": "Sharing Your Information",
+      "4": "Your Rights and Choices",
+      "5": "Data Protection Measures",
+      "6": "Reporting Suspected Illegal Use and Security Concerns",
+      "7": "Cookies Service",
+      "8": "Data Collection Logs",
+      "9": "Children's Privacy",
+      "10": "Security",
+      "11": "Dispute Resolution",
+      "12": "Changes to This Privacy Notice",
+      "13": "Contact Us"
+    },
+    "section1": {
+      "title": "1. Information We Collect",
+      "description": "We collect various types of information to enhance your experience on our platform. This may include:",
+      "list": {
+        "0": "Personal information such as your name, email address, and phone number.",
+        "1": "Location data for providing our services, navigation, and safety.",
+        "2": "Payment details for secure transactions within the app.",
+        "3": "Ride history, timestamps, and payment records.",
+        "4": "Communications with our customer support and other users.",
+        "5": "During certain rides, drivers may request to take your picture for safety purposes. These photos are securely stored on our servers and automatically deleted after 24 hours unless suspicious activity is reported."
+      }
+    },
+    "section2": {
+      "title": "2. How We Use Your Information",
+      "list": {
+        "0": "Provide you with efficient and reliable services on our platform.",
+        "1": "Process payments securely within the app.",
+        "2": "Continuously improve your overall platform experience.",
+        "3": "Respond promptly to inquiries and resolve issues through our customer support.",
+        "4": "Verify identity and investigate policy violations to enhance safety.",
+        "5": "Share personalized promotions and updates with your consent.",
+        "6": "Comply with all applicable laws and regulations."
+      }
+    },
+    "section3": {
+      "title": "3. Sharing Your Information",
+      "description": "Rest assured, we take your privacy seriously and share your information only in specific situations:",
+      "list": {
+        "0": "With other users when you request a ride or use our services.",
+        "1": "With law enforcement or authorities as required by applicable laws.",
+        "2": "With trusted third-party service providers who assist us in delivering our services.",
+        "3": "With your explicit consent for marketing purposes."
+      }
+    },
+    "section4": {
+      "title": "4. Your Rights and Choices",
+      "list": {
+        "0": "Access and correction of your personal data.",
+        "1": "Request account deletion, subject to legal retention requirements.",
+        "2": "Manage your marketing preferences and opt-out as you see fit.",
+        "3": "Control location data sharing through your device settings."
+      }
+    },
+    "section5": {
+      "title": "5. Data Protection Measures",
+      "description": "Our commitment to your privacy includes robust security measures. We employ state-of-the-art practices to protect your data from unauthorized access, disclosure, alteration, or destruction. Our security protocols encompass encryption and other advanced security measures. For more details, please refer to our Security Policy."
+    },
+    "section6": {
+      "title": "6. Reporting Suspected Illegal Use and Security Concerns",
+      "description": {
+        "0": "If you suspect illegal app use or have security concerns, contact us at ",
+        "1": ", or using the contact us page at ",
+        "2": " or the feedback form on the app. Your cooperation helps maintain app security."
+      }
+    },
+    "section7": {
+      "title": "7. Cookies Service",
+      "description": "We use cookies and similar technologies to enhance your browsing experience and collect information about your interactions with our app."
+    },
+    "section8": {
+      "title": "8. Data Collection Logs",
+      "description": "We may collect data logs for the purpose of improving our services and enhancing user experiences. These logs may include information such as device information, app usage statistics, and user interactions within the app."
+    },
+    "section9": {
+      "title": "9. Children's Privacy",
+      "description": "Efoyy is committed to protecting the privacy of children. Our app is not designed for, nor do we knowingly collect data from children under the age of 13. In compliance with the Children's Online Privacy Protection Act (COPPA) and GDPR regulations for minors in the EU, we do not collect or store any personal information from children under the specified age limits."
+    },
+    "section10": {
+      "title": "10. Security",
+      "description": "We protect data from unauthorized access, disclosure, alteration, or destruction using encryption and security measures. For more information about our security practices, please refer to our Security Policy."
+    },
+    "section11": {
+      "title": "11. Dispute Resolution",
+      "description": {
+        "0": "In the event of any dispute related to privacy concerns or data handling, users are encouraged to contact us directly at ",
+        "1": " for resolution. We are committed to resolving disputes amicably and efficiently. If a satisfactory resolution is not reached, users have the right to contact relevant data protection authorities."
+      }
+    },
+    "section12": {
+      "title": "12. Changes to This Privacy Notice",
+      "description": "To ensure your ongoing transparency, we may update this Driver Privacy Notice to align with operational, legal, or regulatory changes. Any updates will be promptly communicated within the app, and the 'Last Updated' date will indicate the latest revision."
+    },
+    "section13": {
+      "title": "13. Contact Us",
+      "description": {
+        "0": "If you have any questions or concerns about this Privacy Notice or your platform usage, please don't hesitate to reach out to us at ",
+        "1": ". Thank you for choosing Efoyy Transport Technology Solutions (ETTS)."
+      }
+    },
+    "thankYou": "Thank you for choosing Efoyy Transport Technology Solutions (ETTS)."
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "effectiveDate": "Effective Date: March 01, 2024",
+    "generalTitle": "General Terms and Conditions",
+    "generalDescription": "Welcome to Efoyy Transport Technology Solutions (ETTS). These Terms and Conditions govern your use of our Website, Android, and iOS applications (collectively, the 'Platform'). By accessing or using our Platform, you agree to be bound by these Terms. Please read them carefully before using our services.",
+    "toc": {
+      "title": "Table of Contents",
+      "1": "Acceptance of Terms",
+      "2": "User Accounts",
+      "3": "Platform Rules and Conduct",
+      "4": "Payment Terms",
+      "5": "Cancellation Policy",
+      "6": "Intellectual Property",
+      "7": "Limitation of Liability",
+      "8": "Indemnification",
+      "9": "Dispute Resolution",
+      "10": "Termination",
+      "11": "Modifications to Terms",
+      "12": "Governing Law",
+      "13": "Contact Us"
+    },
+    "section1": {
+      "title": "1. Acceptance of Terms",
+      "p1": "By creating an account, accessing, or using our Platform, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree with any part of these Terms, you must not use our Platform.",
+      "p2": "These Terms constitute a legally binding agreement between you and Efoyy Transport Technology Solutions (ETTS). You must be at least 18 years old to use our services. By using our Platform, you represent and warrant that you meet this age requirement."
+    },
+    "section2": {
+      "title": "2. User Accounts",
+      "1": {"title": "2.1 Account Creation", "p": "To use our services, you must create an account by providing accurate, current, and complete information. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account."},
+      "2": {"title": "2.2 Account Types", "p": "Our Platform offers two types of accounts:", "riderTitle": "Rider Account:", "riderDescription": "Allows users to request and pay for transportation services.", "driverTitle": "Driver Account:", "driverDescription": "Allows users to offer transportation services through our Platform, subject to additional verification and eligibility requirements."},
+      "3": {"title": "2.3 Account Security", "p": "You agree to notify us immediately of any unauthorized use of your account or any other breach of security. We cannot and will not be liable for any loss or damage arising from your failure to maintain the security of your account."}
+    },
+    "section3": {
+      "title": "3. Platform Rules and Conduct",
+      "1": {"title": "3.1 General Rules", "p": "When using our Platform, you agree not to:", "list": {"0": "Violate any applicable laws or regulations", "1": "Infringe upon the rights of others", "2": "Use our Platform for any illegal or unauthorized purpose", "3": "Interfere with or disrupt the operation of our Platform", "4": "Attempt to gain unauthorized access to our systems or user accounts", "5": "Harass, threaten, or intimidate other users", "6": "Post false, misleading, or deceptive content"}},
+      "2": {"title": "3.2 Rider Conduct", "p": "As a rider, you agree to:", "list": {"0": "Treat drivers with respect and courtesy", "1": "Be at the pickup location when the driver arrives", "2": "Not bring illegal substances or weapons in the vehicle", "3": "Not damage or vandalize the driver's vehicle", "4": "Comply with all safety instructions provided by the driver"}},
+      "3": {"title": "3.3 Driver Conduct", "p": "As a driver, you agree to:", "list": {"0": "Maintain a valid driver's license and all required permits", "1": "Keep your vehicle clean, safe, and in good operating condition", "2": "Follow all traffic laws and safety regulations", "3": "Treat riders with respect and courtesy", "4": "Follow the route suggested by the Platform unless the rider requests otherwise", "5": "Not discriminate against riders based on race, religion, nationality, disability, sexual orientation, gender, or any other protected characteristic"}}
+    },
+    "section4": {
+      "title": "4. Payment Terms",
+      "1": {"title": "4.1 Pricing", "p": "Ride prices are calculated based on distance, time, demand, and other factors. Prices may vary and are subject to change. The Platform will display the estimated price before you confirm a ride request."},
+      "2": {"title": "4.2 Payment Methods", "p": "We accept various payment methods as indicated in the app. By providing a payment method, you represent that you are authorized to use the payment method and authorize us to charge the full amount of the ride, including applicable fees, taxes, and gratuities."},
+      "3": {"title": "4.3 Driver Payments", "p": "Drivers will receive payment for completed rides according to our payment schedule, minus applicable service fees. Detailed payment information is available in the Driver Agreement."}
+    },
+    "section5": {
+      "title": "5. Cancellation Policy",
+      "p1": "Riders may cancel a ride request, but cancellation fees may apply depending on the timing of the cancellation and other factors. Drivers may also cancel ride requests, but excessive cancellations may result in penalties or account deactivation.",
+      "p2": "Specific cancellation fees and policies are displayed in the app and may be updated from time to time."
+    },
+    "section6": {
+      "title": "6. Intellectual Property",
+      "p1": "All content, features, and functionality of our Platform, including but not limited to text, graphics, logos, icons, images, audio clips, digital downloads, data compilations, and software, are the exclusive property of Efoyy Transport Technology Solutions (ETTS) or its licensors and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.",
+      "p2": "You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Platform without our prior written consent."
+    },
+    "section7": {
+      "title": "7. Limitation of Liability",
+      "p": "To the maximum extent permitted by law, Efoyy Transport Technology Solutions (ETTS) and its affiliates, officers, employees, agents, partners, and licensors shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to, loss of profits, data, use, goodwill, or other intangible losses, resulting from:",
+      "list": {"0": "Your access to or use of or inability to access or use the Platform", "1": "Any conduct or content of any third party on the Platform", "2": "Any content obtained from the Platform", "3": "Unauthorized access, use, or alteration of your transmissions or content"},
+      "p2": "In no event shall our total liability to you for all claims exceed the amount you have paid to us for the use of our services during the twelve (12) months preceding the event giving rise to the liability."
+    },
+    "section8": {
+      "title": "8. Indemnification",
+      "p": "You agree to defend, indemnify, and hold harmless Efoyy Transport Technology Solutions (ETTS), its affiliates, licensors, and service providers, and its and their respective officers, directors, employees, contractors, agents, licensors, suppliers, successors, and assigns from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Platform."
+    },
+    "section9": {
+      "title": "9. Dispute Resolution",
+      "p1": "Any dispute arising from or relating to these Terms or your use of our Platform shall first be resolved through good-faith negotiations. If such negotiations fail, the dispute shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association or another mutually agreed-upon arbitration service.",
+      "p2": "You agree to waive any right to participate in a class action lawsuit or class-wide arbitration. Any arbitration shall be conducted on an individual basis."
+    },
+    "section10": {
+      "title": "10. Termination",
+      "p1": "We reserve the right to suspend or terminate your account and access to our Platform at any time, with or without cause, and with or without notice. Upon termination, your right to use the Platform will immediately cease.",
+      "p2": "All provisions of these Terms which by their nature should survive termination shall survive, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability."
+    },
+    "section11": {
+      "title": "11. Modifications to Terms",
+      "p1": "We may revise these Terms from time to time at our sole discretion. All changes are effective immediately when posted and apply to all access to and use of the Platform thereafter.",
+      "p2": "Your continued use of the Platform following the posting of revised Terms means that you accept and agree to the changes. You are expected to check this page frequently so you are aware of any changes, as they are binding on you."
+    },
+    "section12": {
+      "title": "12. Governing Law",
+      "p": "These Terms and your use of the Platform shall be governed by and construed in accordance with the laws of [Jurisdiction], without regard to its conflict of law principles. Your use of the Platform may also be subject to other local, state, national, or international laws."
+    },
+    "section13": {
+      "title": "13. Contact Us",
+      "p1": "If you have any questions about these Terms and Conditions, please contact us at ",
+      "p2": "."
+    },
+    "thankYou": "Thank you for choosing Efoyy Transport Technology Solutions (ETTS)."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to common questions about using Efoyy as a rider or driver.",
+    "searchPlaceholder": "Search for questions or keywords...",
+    "clear": "Clear",
+    "tabs": {
+      "general": "General",
+      "riders": "Riders",
+      "drivers": "Drivers",
+      "payments": "Payments",
+      "safety": "Safety"
+    },
+    "generalTitle": "General Questions",
+    "ridersTitle": "Rider Questions",
+    "driversTitle": "Driver Questions",
+    "paymentsTitle": "Payment Questions",
+    "safetyTitle": "Safety Questions",
+    "noMatch": "No matching questions found.",
+    "stillHaveQuestions": "Still have questions?",
+    "supportDescription": "Our support team is here to help you with any other questions you might have.",
+    "contactSupport": "Contact Support",
+    "general": {
+      "count": "5",
+      "0": {
+        "question": "What is Efoyy?",
+        "answer": "Efoyy is a platform that connects riders with drivers to provide convenient, reliable, and affordable transportation. Our app allows you to request a ride with just a few taps, track your driver in real-time, and pay seamlessly through the app."
+      },
+      "1": {
+        "question": "How do I download the Efoyy app?",
+        "answer": "The Efoyy app is available for free download on both iOS and Android devices. Simply visit the App Store or Google Play Store, search for 'Efoyy', and tap 'Download' or 'Install'."
+      },
+      "2": {
+        "question": "Is Efoyy available in my city?",
+        "answer": "Efoyy is currently available in over 100 cities worldwide and we're expanding rapidly. To check if Efoyy is available in your area, open the app and enter your location, or visit our website and enter your city in the coverage checker."
+      },
+      "3": {
+        "question": "How do I contact Efoyy customer support?",
+        "answer": "You can contact our customer support team through the app by tapping on 'Help' in the menu and selecting 'Contact Support'. Alternatively, you can email us at support@Efoyy.com or visit our Support Center on our website."
+      },
+      "4": {
+        "question": "Is my personal information secure with Efoyy?",
+        "answer": "Yes, we take data security very seriously. We use industry-standard encryption to protect your personal and payment information. For more details on how we handle your data, please refer to our Privacy Policy."
+      }
+    },
+    "riders": {
+      "count": "5",
+      "0": {
+        "question": "How do I request a ride?",
+        "answer": "To request a ride, open the Efoyy app, enter your destination in the 'Where to?' field, select the type of ride you want (Economy, Standard, or Premium), review the fare estimate, and tap 'Request Ride'. You'll be matched with a nearby driver who will pick you up at your location."
+      },
+      "1": {
+        "question": "How are ride fares calculated?",
+        "answer": "Ride fares are calculated based on several factors including the distance of your trip, estimated time, current demand, and the type of vehicle you select. You'll always see a fare estimate before confirming your ride request."
+      },
+      "2": {
+        "question": "Can I schedule a ride in advance?",
+        "answer": "Yes, you can schedule a ride up to 7 days in advance. Simply enter your destination, tap on 'Schedule' instead of 'Request Ride', select your desired pickup date and time, and confirm your request."
+      },
+      "3": {
+        "question": "How do I split the fare with friends?",
+        "answer": "To split the fare, tap on 'Split Fare' after requesting a ride. You can then select contacts from your phone or enter phone numbers of friends who are riding with you. They'll receive a notification to accept the fare split and will need to have the Efoyy app installed."
+      },
+      "4": {
+        "question": "What if I leave something in my ride?",
+        "answer": "If you've left an item in a Efoyy vehicle, you can report it through the app. Go to 'Your Trips', select the trip where you left the item, tap 'I lost an item', and follow the instructions to contact the driver. If you're unable to reach the driver, contact our customer support."
+      }
+    },
+    "drivers": {
+      "count": "5",
+      "0": {
+        "question": "How do I become a Efoyy driver?",
+        "answer": "To become a Efoyy driver, you need to sign up through our app or website. You'll need to provide personal information, vehicle details, and required documents such as your driver's license, vehicle registration, and insurance. Once submitted, we'll review your application and conduct a background check."
+      },
+      "1": {
+        "question": "What are the vehicle requirements to drive with Efoyy?",
+        "answer": "Vehicle requirements vary by city, but generally, your vehicle must be a 4-door car in good condition, not older than 10-15 years, and pass a vehicle inspection. Check the specific requirements for your city in the driver section of our app or website."
+      },
+      "2": {
+        "question": "How and when do I get paid?",
+        "answer": "Drivers are paid weekly via direct deposit to their linked bank account. The payment includes all trips completed up until midnight on Sunday of each week. You can also opt for instant payouts (for a small fee) to cash out your earnings up to 5 times per day."
+      },
+      "3": {
+        "question": "Can I choose when and where to drive?",
+        "answer": "Yes, one of the benefits of driving with Efoyy is the flexibility. You can drive whenever you want, for as long as you want, and in any area where Efoyy operates. Simply go online in the driver app when you're ready to accept ride requests."
+      },
+      "4": {
+        "question": "What happens if there's an accident during a ride?",
+        "answer": "In case of an accident, ensure everyone's safety first and contact emergency services if needed. Then report the incident through the 'Help' section in your driver app. Efoyy provides insurance coverage for drivers during active trips, but coverage may vary depending on your location and the circumstances."
+      }
+    },
+    "payments": {
+      "count": "5",
+      "0": {
+        "question": "What payment methods are accepted?",
+        "answer": "Efoyy accepts most major credit and debit cards, PayPal, Apple Pay, Google Pay, and in some regions, cash payments. You can add or update your payment methods in the 'Payment' section of the app."
+      },
+      "1": {
+        "question": "Why was I charged a cancellation fee?",
+        "answer": "Cancellation fees are charged when you cancel a ride after a driver has been assigned and is on their way to your pickup location. This fee compensates the driver for their time and fuel. The exact timing and amount vary by city, but you'll always be notified before a cancellation fee is applied."
+      },
+      "2": {
+        "question": "How do I get a receipt for my ride?",
+        "answer": "Receipts are automatically sent to the email address associated with your account after each ride. You can also view your ride history and receipts in the app by going to 'Your Trips' and selecting the specific trip."
+      },
+      "3": {
+        "question": "Can I tip my driver?",
+        "answer": "Yes, you can tip your driver through the app after your ride is completed. When rating your driver, you'll have the option to add a tip. Tips are entirely optional and 100% of the tip goes to the driver."
+      },
+      "4": {
+        "question": "What if I'm charged incorrectly for a ride?",
+        "answer": "If you believe you've been charged incorrectly, you can dispute the charge through the app. Go to 'Your Trips', select the trip in question, tap 'Report an Issue with this Trip', and follow the prompts. Our support team will review your case and make any necessary adjustments."
+      }
+    },
+    "safety": {
+      "count": "5",
+      "0": {
+        "question": "How does Efoyy ensure rider safety?",
+        "answer": "Efoyy prioritizes safety through several measures including background checks for all drivers, real-time trip tracking, an in-app emergency button that connects to local authorities, the ability to share your trip details with trusted contacts, and a two-way rating system to maintain community standards."
+      },
+      "1": {
+        "question": "Can I request a specific driver or vehicle type?",
+        "answer": "While you can't request a specific driver, you can select different vehicle types based on your needs, such as Economy, Standard, or Premium. We also offer options like child seat availability or extra spacious vehicles in some markets."
+      },
+      "2": {
+        "question": "What health and safety measures are in place during the pandemic?",
+        "answer": "During the COVID-19 pandemic, we've implemented several safety measures including mandatory mask policies for both riders and drivers, regular sanitization of vehicles, contactless pickup options, and health checklists for drivers before they can go online."
+      },
+      "3": {
+        "question": "What should I do if I feel unsafe during a ride?",
+        "answer": "If you ever feel unsafe during a ride, use the emergency button in the app which will connect you with local authorities. After the ride, report any concerns through the app, and our safety team will take appropriate action. In case of an immediate emergency, always call local emergency services first."
+      },
+      "4": {
+        "question": "How are drivers vetted before they can drive for Efoyy?",
+        "answer": "All drivers must complete a thorough background check that includes criminal history and driving record checks. They must also provide valid documentation including driver's license, vehicle registration, and insurance. Vehicles must meet our quality standards and pass regular inspections."
       }
     }
   }
