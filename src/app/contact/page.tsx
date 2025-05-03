@@ -173,7 +173,7 @@ export default function ContactPage() {
                   name="phoneNumber"
                   defaultValue=""
                   render={({ field, fieldState }) => (
-                    <div className="space-y-2">
+                    <div className="space-y-2 sm:col-span-2 [&_li]:!bg-ed-200">
                       <label
                         htmlFor="phoneNumber"
                         className="text-sm font-medium"
@@ -189,8 +189,8 @@ export default function ContactPage() {
                         }}
                         dropdownClass="!bg-card"
                         countryCodeEditable={false}
-                        buttonClass="!bg-card !px-2 !border-border !rounded-md"
-                        inputClass="!bg-card !ml-16 !pl-4 !h-auto [&_li]:!bg-red-200 py-1  placeholder:!text-muted-foreground !border-border !rounded-r-md h-auto flex-1"
+                        buttonClass="!bg-card !border-border !rounded-md"
+                        inputClass="!bg-card !ml-16 !pl-4 !h-auto  py-1  placeholder:!text-muted-foreground !border-border !rounded-r-md h-auto flex-1"
                         containerClass="!border-border w-full flex "
                         value={field.value}
                       />

@@ -116,7 +116,7 @@
   }
 }
 
-#cards:hover > .card::after {
+#cards:hover>.card::after {
   opacity: 1;
 }
 
@@ -132,8 +132,7 @@
 }
 
 .card:hover {
-  transform: perspective(1000px) rotateY(var(--rotate-y))
-    rotateX(var(--rotate-x));
+  transform: perspective(1000px) rotateY(var(--rotate-y)) rotateX(var(--rotate-x));
 }
 
 .card:hover::before {
@@ -155,25 +154,21 @@
 }
 
 .card::before {
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(155, 155, 155, 0.06),
-    transparent 40%
-  );
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(155, 155, 155, 0.06),
+      transparent 40%);
   z-index: 3;
   filter: blur(10px);
 }
 
 .card::after {
-  background: radial-gradient(
-    600px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.4),
-    transparent 40%
-  );
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.4),
+      transparent 40%);
   z-index: 1;
 }
 
-.card > .card-content {
+.card>.card-content {
   /* background: linear-gradient(130deg, #171721f0 30%, #000); */
   border-radius: inherit;
   display: flex;
@@ -205,4 +200,26 @@
   100% {
     transform: rotate(540deg);
   }
+}
+
+.react-tel-input .country-list .country:hover {
+  background-color: hsl(var(--secondary)) !important;
+}
+
+.react-tel-input .selected-flag {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  width: 56px !important;
+}
+
+.react-tel-input .selected-flag:hover {
+  background: hsl(var(--secondary)) !important;
+}
+
+.react-tel-input .flag-dropdown.open .selected-flag {
+  background: hsl(var(--secondary));
+}
+
+.react-tel-input .country-list .country.highlight {
+  background-color: hsl(var(--secondary)) !important;
 }
