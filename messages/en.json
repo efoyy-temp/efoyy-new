@@ -113,9 +113,9 @@
     "errorMessage": "Sorry, there was an error with your submission. Please try again later.",
     "contactInfoTitle": "Contact Information",
     "location": "Our Location",
+    "phoneNumber": "+1 (555) 123-4567",
     "locationDetails": "123 Safety Street, Tech City, TC 10101",
     "phone": "Phone Number",
-    "phoneNumber": "+1 (555) 123-4567",
     "emailTitle": "Email Address",
     "emailAddress": "support@efoyy.com",
     "hours": "Working Hours",
@@ -704,21 +704,76 @@
     },
     "section2": {
       "title": "2. User Accounts",
-      "1": {"title": "2.1 Account Creation", "p": "To use our services, you must create an account by providing accurate, current, and complete information. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account."},
-      "2": {"title": "2.2 Account Types", "p": "Our Platform offers two types of accounts:", "riderTitle": "Rider Account:", "riderDescription": "Allows users to request and pay for transportation services.", "driverTitle": "Driver Account:", "driverDescription": "Allows users to offer transportation services through our Platform, subject to additional verification and eligibility requirements."},
-      "3": {"title": "2.3 Account Security", "p": "You agree to notify us immediately of any unauthorized use of your account or any other breach of security. We cannot and will not be liable for any loss or damage arising from your failure to maintain the security of your account."}
+      "1": {
+        "title": "2.1 Account Creation",
+        "p": "To use our services, you must create an account by providing accurate, current, and complete information. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account."
+      },
+      "2": {
+        "title": "2.2 Account Types",
+        "p": "Our Platform offers two types of accounts:",
+        "riderTitle": "Rider Account:",
+        "riderDescription": "Allows users to request and pay for transportation services.",
+        "driverTitle": "Driver Account:",
+        "driverDescription": "Allows users to offer transportation services through our Platform, subject to additional verification and eligibility requirements."
+      },
+      "3": {
+        "title": "2.3 Account Security",
+        "p": "You agree to notify us immediately of any unauthorized use of your account or any other breach of security. We cannot and will not be liable for any loss or damage arising from your failure to maintain the security of your account."
+      }
     },
     "section3": {
       "title": "3. Platform Rules and Conduct",
-      "1": {"title": "3.1 General Rules", "p": "When using our Platform, you agree not to:", "list": {"0": "Violate any applicable laws or regulations", "1": "Infringe upon the rights of others", "2": "Use our Platform for any illegal or unauthorized purpose", "3": "Interfere with or disrupt the operation of our Platform", "4": "Attempt to gain unauthorized access to our systems or user accounts", "5": "Harass, threaten, or intimidate other users", "6": "Post false, misleading, or deceptive content"}},
-      "2": {"title": "3.2 Rider Conduct", "p": "As a rider, you agree to:", "list": {"0": "Treat drivers with respect and courtesy", "1": "Be at the pickup location when the driver arrives", "2": "Not bring illegal substances or weapons in the vehicle", "3": "Not damage or vandalize the driver's vehicle", "4": "Comply with all safety instructions provided by the driver"}},
-      "3": {"title": "3.3 Driver Conduct", "p": "As a driver, you agree to:", "list": {"0": "Maintain a valid driver's license and all required permits", "1": "Keep your vehicle clean, safe, and in good operating condition", "2": "Follow all traffic laws and safety regulations", "3": "Treat riders with respect and courtesy", "4": "Follow the route suggested by the Platform unless the rider requests otherwise", "5": "Not discriminate against riders based on race, religion, nationality, disability, sexual orientation, gender, or any other protected characteristic"}}
+      "1": {
+        "title": "3.1 General Rules",
+        "p": "When using our Platform, you agree not to:",
+        "list": {
+          "0": "Violate any applicable laws or regulations",
+          "1": "Infringe upon the rights of others",
+          "2": "Use our Platform for any illegal or unauthorized purpose",
+          "3": "Interfere with or disrupt the operation of our Platform",
+          "4": "Attempt to gain unauthorized access to our systems or user accounts",
+          "5": "Harass, threaten, or intimidate other users",
+          "6": "Post false, misleading, or deceptive content"
+        }
+      },
+      "2": {
+        "title": "3.2 Rider Conduct",
+        "p": "As a rider, you agree to:",
+        "list": {
+          "0": "Treat drivers with respect and courtesy",
+          "1": "Be at the pickup location when the driver arrives",
+          "2": "Not bring illegal substances or weapons in the vehicle",
+          "3": "Not damage or vandalize the driver's vehicle",
+          "4": "Comply with all safety instructions provided by the driver"
+        }
+      },
+      "3": {
+        "title": "3.3 Driver Conduct",
+        "p": "As a driver, you agree to:",
+        "list": {
+          "0": "Maintain a valid driver's license and all required permits",
+          "1": "Keep your vehicle clean, safe, and in good operating condition",
+          "2": "Follow all traffic laws and safety regulations",
+          "3": "Treat riders with respect and courtesy",
+          "4": "Follow the route suggested by the Platform unless the rider requests otherwise",
+          "5": "Not discriminate against riders based on race, religion, nationality, disability, sexual orientation, gender, or any other protected characteristic"
+        }
+      }
     },
     "section4": {
       "title": "4. Payment Terms",
-      "1": {"title": "4.1 Pricing", "p": "Ride prices are calculated based on distance, time, demand, and other factors. Prices may vary and are subject to change. The Platform will display the estimated price before you confirm a ride request."},
-      "2": {"title": "4.2 Payment Methods", "p": "We accept various payment methods as indicated in the app. By providing a payment method, you represent that you are authorized to use the payment method and authorize us to charge the full amount of the ride, including applicable fees, taxes, and gratuities."},
-      "3": {"title": "4.3 Driver Payments", "p": "Drivers will receive payment for completed rides according to our payment schedule, minus applicable service fees. Detailed payment information is available in the Driver Agreement."}
+      "1": {
+        "title": "4.1 Pricing",
+        "p": "Ride prices are calculated based on distance, time, demand, and other factors. Prices may vary and are subject to change. The Platform will display the estimated price before you confirm a ride request."
+      },
+      "2": {
+        "title": "4.2 Payment Methods",
+        "p": "We accept various payment methods as indicated in the app. By providing a payment method, you represent that you are authorized to use the payment method and authorize us to charge the full amount of the ride, including applicable fees, taxes, and gratuities."
+      },
+      "3": {
+        "title": "4.3 Driver Payments",
+        "p": "Drivers will receive payment for completed rides according to our payment schedule, minus applicable service fees. Detailed payment information is available in the Driver Agreement."
+      }
     },
     "section5": {
       "title": "5. Cancellation Policy",
@@ -733,7 +788,12 @@
     "section7": {
       "title": "7. Limitation of Liability",
       "p": "To the maximum extent permitted by law, Efoyy Transport Technology Solutions (ETTS) and its affiliates, officers, employees, agents, partners, and licensors shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to, loss of profits, data, use, goodwill, or other intangible losses, resulting from:",
-      "list": {"0": "Your access to or use of or inability to access or use the Platform", "1": "Any conduct or content of any third party on the Platform", "2": "Any content obtained from the Platform", "3": "Unauthorized access, use, or alteration of your transmissions or content"},
+      "list": {
+        "0": "Your access to or use of or inability to access or use the Platform",
+        "1": "Any conduct or content of any third party on the Platform",
+        "2": "Any content obtained from the Platform",
+        "3": "Unauthorized access, use, or alteration of your transmissions or content"
+      },
       "p2": "In no event shall our total liability to you for all claims exceed the amount you have paid to us for the use of our services during the twelve (12) months preceding the event giving rise to the liability."
     },
     "section8": {
