@@ -1,6 +1,7 @@
 "use client";
 
 import { useToast } from "@/hooks/use-toast";
+import { isValidPhoneNumber } from "libphonenumber-js";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,19 +21,27 @@ import { gql, useMutation } from "@apollo/client"; // Import gql and useMutation
 
 // Define a Zod schema for form validation
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+  name: z.string().trim().min(1, "Required").min(2, {
+    message: "Too short",
   }),
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-  phoneDialCode: z.string().min(1, {
-    message: "Dial code is required.",
-  }),
-  phoneNumber: z.string().min(5, {
-    // Basic validation, adjust as needed
-    message: "Phone number must be at least 5 characters.",
-  }),
+  email: z
+    .string()
+    .trim()
+    .refine(
+      (data) => (data ? z.string().email().safeParse(data).success : true),
+      "Invalid email address.",
+    )
+    .optional(),
+  phoneNumber: z
+    .object({
+      dialCode: z.string(),
+      number: z.string(),
+    })
+    .refine((data) => data.dialCode && data.number, "Phone number is required")
+    .refine((data) => {
+      console.log(data);
+      return isValidPhoneNumber(data.number);
+    }, "Invalid phone number"),
   subject: z.string().min(3, {
     message: "Subject must be at least 3 characters.",
   }),
@@ -109,8 +118,8 @@ export default function ContactPage() {
         userInput: {
           name: data.name,
           email: data.email,
-          phoneDialCode: data.phoneDialCode,
-          phoneNumber: data.phoneNumber,
+          phoneDialCode: data.phoneNumber.dialCode,
+          phoneNumber: data.phoneNumber.number,
           subject: data.subject,
           message: data.message,
         },
@@ -171,7 +180,6 @@ export default function ContactPage() {
                 <Controller
                   control={control}
                   name="phoneNumber"
-                  defaultValue=""
                   render={({ field, fieldState }) => (
                     <div className="space-y-2 sm:col-span-2 [&_li]:!bg-ed-200">
                       <label
@@ -183,16 +191,24 @@ export default function ContactPage() {
 
                       <PhoneInput
                         onChange={(phone, country) => {
-                          field.onChange(phone);
-                          // @ts-ignore
-                          form.setValue("phoneDialCode", country?.dialCode);
+                          console.log({
+                            number: phone,
+                            // @ts-ignore
+                            dialCode: country?.dialCode,
+                          });
+                          field.onChange({
+                            number: "+" + phone,
+                            // @ts-ignore
+                            dialCode: country?.dialCode,
+                          });
                         }}
                         dropdownClass="!bg-card"
                         countryCodeEditable={false}
                         buttonClass="!bg-card !border-border !rounded-md"
                         inputClass="!bg-card !ml-16 !pl-4 !h-auto  py-1  placeholder:!text-muted-foreground !border-border !rounded-r-md h-auto flex-1"
                         containerClass="!border-border w-full flex "
-                        value={field.value}
+                        value={field.value.number}
+                        country={"et"}
                       />
 
                       {fieldState.error && (
