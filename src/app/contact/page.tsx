@@ -207,7 +207,7 @@ export default function ContactPage() {
                         buttonClass="!bg-card !border-border !rounded-md"
                         inputClass="!bg-card !ml-16 !pl-4 !h-auto  py-1  placeholder:!text-muted-foreground !border-border !rounded-r-md h-auto flex-1"
                         containerClass="!border-border w-full flex "
-                        value={field.value.number}
+                        value={field.value?.number}
                         country={"et"}
                       />
 
