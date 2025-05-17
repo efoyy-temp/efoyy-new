@@ -1,0 +1,9 @@
+
+User-Agent: *
+
+Disallow: /privacy-policy
+Disallow: /driver-privacy-policy
+
+
+Allow: /
+

@@ -24,8 +24,6 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { useTranslations } from "next-intl";
 
-export const revalidate = 600;
-
 export default function FAQPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const t = useTranslations("faq");
