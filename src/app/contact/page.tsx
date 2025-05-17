@@ -117,7 +117,7 @@ export default function ContactPage() {
       variables: {
         userInput: {
           name: data.name,
-          email: data.email,
+          email: data.email ?? null,
           phoneDialCode: data.phoneNumber.dialCode,
           phoneNumber: data.phoneNumber.number,
           subject: data.subject,
