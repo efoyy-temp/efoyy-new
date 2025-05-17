@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import {
-  Navigation,
   Search,
   Users,
   Car,
@@ -25,6 +23,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { useTranslations } from "next-intl";
+
+export const revalidate = 600;
 
 export default function FAQPage() {
   const [searchQuery, setSearchQuery] = useState("");
