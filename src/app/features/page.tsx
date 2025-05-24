@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import {
-  Navigation,
   CalendarClock,
   DollarSign,
   Shield,
@@ -233,7 +232,7 @@ export default function FeaturesPage() {
               </div>
               <h3 className="text-xl font-bold">3. Go Online</h3>
               <p className="text-sm text-center text-muted-foreground">
-                Turn on the app when you're ready to accept rides
+                Turn on the app when you&apos;re ready to accept rides
               </p>
             </div>
             <div className="flex flex-col items-center space-y-2 border rounded-lg p-4 bg-background">
@@ -348,9 +347,10 @@ export default function FeaturesPage() {
                       Driving since 2022
                     </p>
                     <p className="text-sm">
-                      "I started driving part-time and now I'm making more than
-                      I did at my office job. The flexibility allows me to be
-                      there for my family while earning a great income."
+                      &quot;I started driving part-time and now I&apos;m making
+                      more than I did at my office job. The flexibility allows
+                      me to be there for my family while earning a great
+                      income.&quot;
                     </p>
                     <div className="flex justify-center">
                       <Star className="h-4 w-4 fill-primary text-primary" />
@@ -379,9 +379,9 @@ export default function FeaturesPage() {
                       Driving since 2021
                     </p>
                     <p className="text-sm">
-                      "As a student, Efoyy gives me the perfect way to earn
+                      &quot;As a student, Efoyy gives me the perfect way to earn
                       money between classes. I can work when I want and focus on
-                      my studies when needed."
+                      my studies when needed.&quot;
                     </p>
                     <div className="flex justify-center">
                       <Star className="h-4 w-4 fill-primary text-primary" />
@@ -410,10 +410,10 @@ export default function FeaturesPage() {
                       Driving since 2020
                     </p>
                     <p className="text-sm">
-                      "After losing my job during the pandemic, Efoyy became my
-                      lifeline. Three years later, I'm still driving because I
-                      love the freedom and the income is better than any job
-                      I've had."
+                      &quot;After losing my job during the pandemic, Efoyy
+                      became my lifeline. Three years later, I&apos;m still
+                      driving because I love the freedom and the income is
+                      better than any job I&apos;ve had.&quot;
                     </p>
                     <div className="flex justify-center">
                       <Star className="h-4 w-4 fill-primary text-primary" />
@@ -657,7 +657,7 @@ export default function FeaturesPage() {
                   <div>
                     <h3 className="font-bold">Live Tracking</h3>
                     <p className="text-sm text-muted-foreground">
-                      Follow your driver's location in real-time on the map
+                      Follow your driver&apos;s location in real-time on the map
                     </p>
                   </div>
                 </div>

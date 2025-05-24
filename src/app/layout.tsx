@@ -8,10 +8,12 @@ import { NextIntlClientProvider } from "next-intl";
 
 const manrope = Manrope({
   variable: "--font-manrope",
+  subsets: ["latin"],
 });
 
 const noto = Noto_Serif_Ethiopic({
   variable: "--font-noto",
+  subsets: ["ethiopic"],
   fallback: ["var(--font-manrope)", "sans-serif"],
 });
 

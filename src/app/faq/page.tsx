@@ -72,101 +72,103 @@ export default function FAQPage() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <main className="flex-1 container px-4 md:px-6 py-8 md:py-12 mt-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-2">
-              {t("title")}
-            </h1>
-            <p className="text-muted-foreground">{t("description")}</p>
-          </div>
+      <div className="flex justify-center">
+        <main className="w-full  max-w-screen-lg px-4 md:px-6 py-8 md:py-12 mt-16">
+          <div className="mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl mb-2">
+                {t("title")}
+              </h1>
+              <p className="text-muted-foreground">{t("description")}</p>
+            </div>
 
-          {/* Search Bar */}
-          <div className="relative mb-8">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              className="pl-10"
-              placeholder={t("searchPlaceholder")}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            {searchQuery && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-7 px-2"
-                onClick={() => setSearchQuery("")}
-              >
-                {t("clear")}
-              </Button>
-            )}
-          </div>
-
-          {/* FAQ Categories */}
-          <Tabs defaultValue="general">
-            <TabsList className="grid grid-cols-2 md:grid-cols-5 mb-8 h-auto">
-              {categories.map((cat) => (
-                <TabsTrigger
-                  value={cat.key}
-                  className="flex items-center gap-2"
-                  key={cat.key}
+            {/* Search Bar */}
+            <div className="relative mb-8">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                className="pl-10"
+                placeholder={t("searchPlaceholder")}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-7 px-2"
+                  onClick={() => setSearchQuery("")}
                 >
-                  <cat.icon className="h-4 w-4" />
-                  <span>
-                    {cat.label} ({counts[cat.key]})
-                  </span>
-                </TabsTrigger>
+                  {t("clear")}
+                </Button>
+              )}
+            </div>
+
+            {/* FAQ Categories */}
+            <Tabs defaultValue="general">
+              <TabsList className="grid grid-cols-2 md:grid-cols-5 mb-8 h-auto">
+                {categories.map((cat) => (
+                  <TabsTrigger
+                    value={cat.key}
+                    className="flex items-center gap-2"
+                    key={cat.key}
+                  >
+                    <cat.icon className="h-4 w-4" />
+                    <span>
+                      {cat.label} ({counts[cat.key]})
+                    </span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+
+              {categories.map((cat) => (
+                <TabsContent value={cat.key} key={cat.key}>
+                  <h2 className="text-2xl font-bold mb-4">
+                    {t(`${cat.key}Title`)}
+                  </h2>
+                  {filterQuestions(getQuestions(cat.key)).length > 0 ? (
+                    <Accordion type="single" collapsible className="w-full">
+                      {filterQuestions(getQuestions(cat.key)).map(
+                        (
+                          item: { question: string; answer: string },
+                          index: number,
+                        ) => (
+                          <AccordionItem
+                            key={index}
+                            value={`${cat.key}-item-${index}`}
+                          >
+                            <AccordionTrigger>{item.question}</AccordionTrigger>
+                            <AccordionContent>{item.answer}</AccordionContent>
+                          </AccordionItem>
+                        ),
+                      )}
+                    </Accordion>
+                  ) : (
+                    <p className="text-muted-foreground text-center py-8">
+                      {t("noMatch")}
+                    </p>
+                  )}
+                </TabsContent>
               ))}
-            </TabsList>
+            </Tabs>
 
-            {categories.map((cat) => (
-              <TabsContent value={cat.key} key={cat.key}>
-                <h2 className="text-2xl font-bold mb-4">
-                  {t(`${cat.key}Title`)}
+            {/* Contact Support Section */}
+            <div className="mt-16 border-t pt-8">
+              <div className="text-center flex flex-col gap-4 items-center">
+                <h2 className="text-2xl font-bold mb-2">
+                  {t("stillHaveQuestions")}
                 </h2>
-                {filterQuestions(getQuestions(cat.key)).length > 0 ? (
-                  <Accordion type="single" collapsible className="w-full">
-                    {filterQuestions(getQuestions(cat.key)).map(
-                      (
-                        item: { question: string; answer: string },
-                        index: number,
-                      ) => (
-                        <AccordionItem
-                          key={index}
-                          value={`${cat.key}-item-${index}`}
-                        >
-                          <AccordionTrigger>{item.question}</AccordionTrigger>
-                          <AccordionContent>{item.answer}</AccordionContent>
-                        </AccordionItem>
-                      ),
-                    )}
-                  </Accordion>
-                ) : (
-                  <p className="text-muted-foreground text-center py-8">
-                    {t("noMatch")}
-                  </p>
-                )}
-              </TabsContent>
-            ))}
-          </Tabs>
-
-          {/* Contact Support Section */}
-          <div className="mt-16 border-t pt-8">
-            <div className="text-center flex flex-col gap-4 items-center">
-              <h2 className="text-2xl font-bold mb-2">
-                {t("stillHaveQuestions")}
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                {t("supportDescription")}
-              </p>
-              <Button className="flex items-center gap-2 ">
-                <Mail className="h-4 w-4" />
-                {t("contactSupport")}
-              </Button>
+                <p className="text-muted-foreground mb-6">
+                  {t("supportDescription")}
+                </p>
+                <Button className="flex items-center gap-2 ">
+                  <Mail className="h-4 w-4" />
+                  {t("contactSupport")}
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
 
       <Footer />
     </div>

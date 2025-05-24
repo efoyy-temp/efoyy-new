@@ -193,12 +193,12 @@ export default function ContactPage() {
                         onChange={(phone, country) => {
                           console.log({
                             number: phone,
-                            // @ts-ignore
+                            // @ts-expect-error this is not typed
                             dialCode: country?.dialCode,
                           });
                           field.onChange({
                             number: "+" + phone,
-                            // @ts-ignore
+                            // @ts-expect-error this is not typed
                             dialCode: country?.dialCode,
                           });
                         }}

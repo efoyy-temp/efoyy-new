@@ -3,34 +3,34 @@
 import { cn } from "@/lib/utils";
 import { Cpu } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 
 const Features = () => {
-  const t = useTranslations('home.features');
+  const t = useTranslations("home.features");
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   // Get features data from translations
   const features = [
     {
-      title: t('items.0.title'),
-      description: t('items.0.description'),
+      title: t("items.0.title"),
+      description: t("items.0.description"),
       className: "sm:row-span-2",
     },
     {
-      title: t('items.1.title'),
-      description: t('items.1.description'),
+      title: t("items.1.title"),
+      description: t("items.1.description"),
     },
     {
-      title: t('items.2.title'),
-      description: t('items.2.description'),
+      title: t("items.2.title"),
+      description: t("items.2.description"),
     },
     {
-      title: t('items.3.title'),
-      description: t('items.3.description'),
+      title: t("items.3.title"),
+      description: t("items.3.description"),
       className: "sm:col-span-2",
     },
   ];
-  
+
   useEffect(() => {
     let frame: number | undefined;
     const onMouseMove = (e: MouseEvent) => {
@@ -55,10 +55,12 @@ const Features = () => {
             frame = undefined;
           }
           frame = requestAnimationFrame(() => {
+            // @ts-expect-error dom
             card.style.setProperty(
               "--rotate-y",
               `${Math.round(xOffset * -10)}deg`,
             );
+            // @ts-expect-error dom
             card.style.setProperty(
               "--rotate-x",
               `${Math.round(yOffset * 10)}deg`,
@@ -89,7 +91,9 @@ const Features = () => {
   );
 };
 
-const Card = (props: { feature: { title: string; description: string; className?: string } }) => {
+const Card = (props: {
+  feature: { title: string; description: string; className?: string };
+}) => {
   return (
     <div
       className={cn(

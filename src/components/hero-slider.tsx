@@ -103,7 +103,7 @@ export function HeroSlider({
           <div className="absolute inset-0 max-w-screen-2xl w-full mx-auto px-4 md:px-8 flex flex-col justify-center z-20">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               {/* Text content - left side */}
-              <div className="md:col-span-7 lg:col-span-6 h-56">
+              <div className="md:col-span-7 lg:col-span-6 min-h-56">
                 {slide.tagline && (
                   <p className="text-primary font-semibold mb-2">
                     {slide.tagline}
