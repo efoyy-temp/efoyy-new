@@ -94,7 +94,7 @@ const Place = ({
     setError("");
     try {
       const res = await axios.get<PlaceResult>(
-        `https://photon.komoot.io/api/?q=${encodeURIComponent(inputValue)}&lat=9.005&lon=38.763&&limit=8`,
+        `https://photon.komoot.io/api/?q=${encodeURIComponent(inputValue)}&lat=9.005&lon=38.763&limit=8`,
       );
       setLocations(
         res.data.features.map((f) => ({
