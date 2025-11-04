@@ -35,15 +35,17 @@ export default function FAQPage() {
     { key: "drivers", icon: Car, label: t("tabs.drivers") },
     { key: "payments", icon: CreditCard, label: t("tabs.payments") },
     { key: "safety", icon: Shield, label: t("tabs.safety") },
-  ];
+  ] as const;
 
   // Get questions from translations
   const getQuestions = (
-    category: string,
+    category: (typeof categories)[number]["key"],
   ): { question: string; answer: string }[] => {
     const count = Number(t(`${category}.count`));
     return Array.from({ length: count }).map((_, i: number) => ({
+      // @ts-ignore
       question: t(`${category}.${i}.question`),
+      // @ts-ignore
       answer: t(`${category}.${i}.answer`),
     }));
   };

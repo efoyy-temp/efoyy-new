@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Manrope, Noto_Serif_Ethiopic } from "next/font/google";
+import { Instrument_Sans, Noto_Serif_Ethiopic } from "next/font/google";
 import "./globals.css";
 import Providers from "../components/Providers";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 
-const manrope = Manrope({
+const manrope = Instrument_Sans({
   variable: "--font-manrope",
   subsets: ["latin"],
 });

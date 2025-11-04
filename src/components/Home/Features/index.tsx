@@ -43,30 +43,6 @@ const Features = () => {
         card.style.setProperty("--mouse-x", `${x}px`);
         // @ts-expect-error dom
         card.style.setProperty("--mouse-y", `${y}px`);
-
-        if (x > 0 && y > 0 && x < rect.width && y < rect.height) {
-          const centerX = Math.round(rect.width * 0.5);
-          const centerY = Math.round(rect.height * 0.5);
-
-          const xOffset = (centerX - x) / rect.width;
-          const yOffset = (centerY - y) / rect.height;
-          if (frame !== undefined) {
-            cancelAnimationFrame(frame);
-            frame = undefined;
-          }
-          frame = requestAnimationFrame(() => {
-            // @ts-expect-error dom
-            card.style.setProperty(
-              "--rotate-y",
-              `${Math.round(xOffset * -10)}deg`,
-            );
-            // @ts-expect-error dom
-            card.style.setProperty(
-              "--rotate-x",
-              `${Math.round(yOffset * 10)}deg`,
-            );
-          });
-        }
       }
     };
     cardRef.current?.addEventListener("mousemove", onMouseMove);
@@ -74,13 +50,11 @@ const Features = () => {
       cardRef.current?.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
+
   return (
-    <div className="min-h-[min(100vh,1024px)]  flex justify-center items-center px-5 py-12">
+    <div className="min-h-[min(100vh,1024px)]  group flex justify-center items-center px-5 py-16">
       <div
         ref={cardRef}
-        style={{
-          perspective: 1000,
-        }}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full max-w-screen-xl gap-3 "
       >
         {features.map((feature, index) => (
@@ -97,21 +71,24 @@ const Card = (props: {
   return (
     <div
       className={cn(
-        "card bg-primary/80 dark:bg-gray-600/70  backdrop-blur-sm",
+        "card relative transition-all p-px bg-primary/20 ease-out duration-75 backdrop-blur-sm overflow-hidden",
         props.feature.className,
       )}
     >
-      <div className="card-content bg-gradient-to-br from-background/80 to-background justify-evenly p-3 sm:p-6 md:p-8">
-        <div className="rounded-full self-start p-5 bg-primary/20">
-          <Cpu className="text-primary size-8" />
-        </div>
-        <div className="">
+      <div className="absolute group-hover:block hidden transition-all ease-out bg-primary rounded-full blur-xl size-64 origin-center translate-x-[calc(var(--mouse-x)-50%)] translate-y-[calc(var(--mouse-y)-50%)]" />
+      <div className="card !rounded-[15px] bg-primary">
+        <div className="card-content bg-gradient-to-br from-background/90 to-background justify-evenly p-3 sm:p-6 md:p-8">
+          <div className="rounded-full self-start p-5 bg-primary/20">
+            <Cpu className="text-primary size-8" />
+          </div>
           <div className="">
-            <div className="space-y-4 mt-4">
-              <h3 className="text-lg font-bold">{props.feature.title}</h3>
-              <p className="text-xs font-medium leading-relaxed text-foreground/70 ">
-                {props.feature.description}
-              </p>
+            <div className="">
+              <div className="space-y-4 mt-4">
+                <h3 className="text-lg font-bold">{props.feature.title}</h3>
+                <p className="text-xs font-medium leading-relaxed text-foreground/70 ">
+                  {props.feature.description}
+                </p>
+              </div>
             </div>
           </div>
         </div>

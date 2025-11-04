@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { Navigation } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslations } from "next-intl";
@@ -34,7 +32,9 @@ export default function TermsPage() {
                         href={`#section-${i + 1}`}
                         className="hover:text-primary"
                       >
-                        {t(`toc.${i + 1}`)}
+                        {t(
+                          `toc.${(i + 1) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13}`,
+                        )}
                       </a>
                     </li>
                   ))}
@@ -86,7 +86,9 @@ export default function TermsPage() {
                 <p>{t("section3.1.p")}</p>
                 <ul className="list-disc pl-5 space-y-1">
                   {Array.from({ length: 7 }).map((_, i) => (
-                    <li key={i}>{t(`section3.1.list.${i}`)}</li>
+                    <li key={i}>
+                      {t(`section3.1.list.${i as 0 | 1 | 2 | 3 | 4 | 5 | 6}`)}
+                    </li>
                   ))}
                 </ul>
 
@@ -96,7 +98,9 @@ export default function TermsPage() {
                 <p>{t("section3.2.p")}</p>
                 <ul className="list-disc pl-5 space-y-1">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <li key={i}>{t(`section3.2.list.${i}`)}</li>
+                    <li key={i}>
+                      {t(`section3.2.list.${i as 0 | 1 | 2 | 3 | 4}`)}
+                    </li>
                   ))}
                 </ul>
 
@@ -106,7 +110,9 @@ export default function TermsPage() {
                 <p>{t("section3.3.p")}</p>
                 <ul className="list-disc pl-5 space-y-1">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <li key={i}>{t(`section3.3.list.${i}`)}</li>
+                    <li key={i}>
+                      {t(`section3.3.list.${i as 0 | 1 | 2 | 3 | 4 | 5}`)}
+                    </li>
                   ))}
                 </ul>
               </section>
@@ -150,7 +156,7 @@ export default function TermsPage() {
                 <p>{t("section7.p")}</p>
                 <ul className="list-disc pl-5 space-y-1">
                   {Array.from({ length: 4 }).map((_, i) => (
-                    <li key={i}>{t(`section7.list.${i}`)}</li>
+                    <li key={i}>{t(`section7.list.${i as 0 | 1 | 2 | 3}`)}</li>
                   ))}
                 </ul>
                 <p>{t("section7.p2")}</p>

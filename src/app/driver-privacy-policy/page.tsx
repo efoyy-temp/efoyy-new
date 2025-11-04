@@ -28,7 +28,9 @@ export default function PrivacyPolicyPage() {
                       href={`#section-${i + 1}`}
                       className="hover:text-primary"
                     >
-                      {t(`toc.${i + 1}`)}
+                      {t(
+                        `toc.${(i + 1) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13}`,
+                      )}
                     </a>
                   </li>
                 ))}
@@ -41,7 +43,9 @@ export default function PrivacyPolicyPage() {
               <p>{t("section1.description")}</p>
               <ul className="list-disc pl-5 space-y-1">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <li key={i}>{t(`section1.list.${i}`)}</li>
+                  <li key={i}>
+                    {t(`section1.list.${i as 0 | 1 | 2 | 3 | 4 | 5}`)}
+                  </li>
                 ))}
               </ul>
             </section>
@@ -51,7 +55,9 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-xl font-semibold">{t("section2.title")}</h2>
               <ul className="list-disc pl-5 space-y-1">
                 {Array.from({ length: 7 }).map((_, i) => (
-                  <li key={i}>{t(`section2.list.${i}`)}</li>
+                  <li key={i}>
+                    {t(`section2.list.${i as 0 | 1 | 2 | 3 | 4 | 5 | 6}`)}
+                  </li>
                 ))}
               </ul>
             </section>
@@ -62,7 +68,7 @@ export default function PrivacyPolicyPage() {
               <p>{t("section3.description")}</p>
               <ul className="list-disc pl-5 space-y-1">
                 {Array.from({ length: 4 }).map((_, i) => (
-                  <li key={i}>{t(`section3.list.${i}`)}</li>
+                  <li key={i}>{t(`section3.list.${i as 0 | 1 | 2 | 3}`)}</li>
                 ))}
               </ul>
             </section>
@@ -72,7 +78,7 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-xl font-semibold">{t("section4.title")}</h2>
               <ul className="list-disc pl-5 space-y-1">
                 {Array.from({ length: 4 }).map((_, i) => (
-                  <li key={i}>{t(`section4.list.${i}`)}</li>
+                  <li key={i}>{t(`section4.list.${i as 0 | 1 | 2 | 3}`)}</li>
                 ))}
               </ul>
             </section>
