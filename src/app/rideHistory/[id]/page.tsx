@@ -114,9 +114,10 @@ function RideDetailsSkeleton() {
   );
 }
 
-export function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  
   return {
-    title: `Ride Details - ${params.id}`,
+    title: `Ride Details - ${(await params).id}`,
     description: "View your ride history and details",
   };
 }
