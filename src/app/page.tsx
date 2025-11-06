@@ -62,6 +62,7 @@ export default function Home() {
             src="/hand-carrying-phone.png"
             height={1038}
             width={1440}
+            className="mx-auto"
             alt="hand-iphone"
           />
         </div>
