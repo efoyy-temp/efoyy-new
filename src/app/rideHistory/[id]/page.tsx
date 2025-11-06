@@ -78,9 +78,9 @@ async function getRideData(id: string) {
 export default async function RideHistoryPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const ride = await getRideData(params.id);
+  const ride = await getRideData((await params).id);
 
   if (!ride) {
     notFound();
