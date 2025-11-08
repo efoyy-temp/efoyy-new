@@ -49,23 +49,22 @@ const SocialQRCode = ({
 );
 
 const DesktopView = () => {
-  const t = useTranslations("dialogs.socials");
   return (
     <div className="grid grid-cols-3 ">
       <SocialQRCode
         href={config.social.whatsapp.passengerUrl}
         {...config.social.whatsapp}
-        name={t("whatsapp")}
+        name={"Whatsapp"}
       />
       <SocialQRCode
         href={config.social.telegram.passengerUrl}
         {...config.social.telegram}
-        name={t("telegram")}
+        name={"Telegram"}
       />
       <SocialQRCode
         href={config.social.instagram.passengerUrl}
         {...config.social.instagram}
-        name={t("instagram")}
+        name={"Instagram"}
       />
     </div>
   );
