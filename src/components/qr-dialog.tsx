@@ -78,11 +78,11 @@ const DesktopView = () => (
   <Tabs defaultValue="driver" className="w-full">
     <TabsList className="grid w-full grid-cols-2 bg-foreground/5">
       <TabsTrigger value="driver">Driver App</TabsTrigger>
-      <TabsTrigger value="community">Community</TabsTrigger>
+      <TabsTrigger value="community">EfoAi</TabsTrigger>
     </TabsList>
     <TabsContent value="driver" className="pt-4 space-y-6">
       <DesktopDriverApps />
-      <DesktopSocialGroup />
+      {/* <DesktopSocialGroup /> */}
     </TabsContent>
     <TabsContent value="community" className="pt-4">
       <DesktopSocialGroup />
