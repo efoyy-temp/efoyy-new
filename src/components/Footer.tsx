@@ -63,7 +63,7 @@ export default function Footer() {
                   {t("resources.privacyPolicy")}
                 </Link>
               </li>
-<li>
+              <li>
                 <Link
                   href="/driver-privacy-policy"
                   className="text-sm font-normal hover:opacity-80 transition-opacity"
@@ -94,7 +94,11 @@ export default function Footer() {
       </div>
 
       <div className="w-full relative overflow-hidden">
-        <h1 className="tracking font-[Manrope] flex justify-center w-full text-foreground text-[30vw] text-center font-bold leading-[0.8] mb-[-6vw]">
+        <h1
+          style={{
+            fontFamily: "var(--font-manrope)",
+          }}
+          className="tracking flex justify-center w-full text-foreground text-[30vw] text-center font-bold leading-[0.8] mb-[-6vw]">
           EFOYY
         </h1>
       </div>

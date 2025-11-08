@@ -11,6 +11,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 import Image from "next/image";
 import Link from "next/link";
 import { config } from "@/config/links";
+import { useTranslations } from "next-intl";
 
 type Props = {
   open: boolean;
@@ -19,7 +20,15 @@ type Props = {
 
 // --- Desktop View Components ---
 
-const SocialQRCode = ({ href, name, icon }: { href: string; name: string; icon: string }) => (
+const SocialQRCode = ({
+  href,
+  name,
+  icon,
+}: {
+  href: string;
+  name: string;
+  icon: string;
+}) => (
   <Link
     href={href}
     target="_blank"
@@ -40,16 +49,38 @@ const SocialQRCode = ({ href, name, icon }: { href: string; name: string; icon: 
   </Link>
 );
 
-const DesktopSocialGroup = () => (
-  <div className="grid grid-cols-3 ">
+const DesktopSocialGroup = () => {
+  const t = useTranslations("dialogs.socials");
+  return (
+    <div className="grid grid-cols-3 ">
+      <SocialQRCode
+        href={config.social.whatsapp.driverUrl}
+        {...config.social.whatsapp}
+        name={t("whatsapp")}
+      />
+      <SocialQRCode
+        href={config.social.telegram.driverUrl}
+        {...config.social.telegram}
+        name={t("telegram")}
+      />
+      <SocialQRCode
+        href={config.social.instagram.driverUrl}
+        {...config.social.instagram}
+        name={t("instagram")}
+      />
+    </div>
+  );
+};
 
-    <SocialQRCode href={config.social.whatsapp.url} {...config.social.whatsapp} name="WhatsApp" />
-    <SocialQRCode href={config.social.telegram.url} {...config.social.telegram} name="Telegram" />
-    <SocialQRCode href={config.social.instagram.url} {...config.social.instagram} name="Instagram" />
-  </div>
-);
-
-const DesktopDriverApp = ({ url, platformName, qrIcon }: { url: string; platformName: string; qrIcon: string }) => (
+const DesktopDriverApp = ({
+  url,
+  platformName,
+  qrIcon,
+}: {
+  url: string;
+  platformName: string;
+  qrIcon: string;
+}) => (
   <a
     href={url}
     target="_blank"
@@ -67,38 +98,59 @@ const DesktopDriverApp = ({ url, platformName, qrIcon }: { url: string; platform
   </a>
 );
 
-const DesktopDriverApps = () => (
-  <div className="flex flex-row justify-center items-start gap-4">
-    <DesktopDriverApp url={config.driver.ios.url} platformName="App Store" qrIcon={config.driver.ios.qrIcon} />
-    <DesktopDriverApp url={config.driver.android.url} platformName="Google Play" qrIcon={config.driver.android.qrIcon} />
-  </div>
-);
+const DesktopDriverApps = () => {
+  const t = useTranslations("dialogs.driver");
+  return (
+    <div className="flex flex-row justify-center items-start gap-4">
+      <DesktopDriverApp
+        url={config.driver.ios.url}
+        platformName={t("appStore")}
+        qrIcon={config.driver.ios.qrIcon}
+      />
+      <DesktopDriverApp
+        url={config.driver.android.url}
+        platformName={t("googlePlay")}
+        qrIcon={config.driver.android.qrIcon}
+      />
+    </div>
+  );
+};
 
-const DesktopView = () => (
-  <Tabs defaultValue="driver" className="w-full">
-    <TabsList className="grid w-full grid-cols-2 bg-foreground/5">
-      <TabsTrigger value="driver">Driver App</TabsTrigger>
-      <TabsTrigger value="community">EfoAi</TabsTrigger>
-    </TabsList>
-    <TabsContent value="driver" className="pt-4 space-y-6">
-      <DesktopDriverApps />
-      {/* <DesktopSocialGroup /> */}
-    </TabsContent>
-    <TabsContent value="community" className="pt-4">
-      <DesktopSocialGroup />
-    </TabsContent>
-  </Tabs>
-);
+const DesktopView = () => {
+  const t = useTranslations("dialogs.driver");
+  return (
+    <Tabs defaultValue="driver" className="w-full">
+      <TabsList className="grid w-full grid-cols-2 bg-foreground/5">
+        <TabsTrigger value="driver">{t("driverAppTab")}</TabsTrigger>
+        <TabsTrigger value="copilot">{t("copilotTab")}</TabsTrigger>
+      </TabsList>
+      <TabsContent value="driver" className="pt-4 space-y-6">
+        <DesktopDriverApps />
+        {/* <DesktopSocialGroup /> */}
+      </TabsContent>
+      <TabsContent value="copilot" className="pt-4">
+        <DesktopSocialGroup />
+      </TabsContent>
+    </Tabs>
+  );
+};
 
 // --- Mobile View Components ---
 
-const MobileLink = ({ href, name, icon }: { href: string; name: string; icon: string }) => (
+const MobileLink = ({
+  href,
+  name,
+  icon,
+}: {
+  href: string;
+  name: string;
+  icon: string;
+}) => (
   <Link
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     className="flex items-center gap-4 p-3 rounded-lg bg-foreground/5 hover:bg-foreground/10 transition-colors w-full"
-
     style={{
       boxShadow: `inset  2px  2px 1px 0px rgba(255, 255, 255, 0.1),
                       inset -2px -2px 1px 0px rgba(255, 255, 255, 0.1),
@@ -111,53 +163,78 @@ const MobileLink = ({ href, name, icon }: { href: string; name: string; icon: st
 );
 
 const MobileDriverLinks = () => {
+  const t = useTranslations("dialogs.driver");
   return (
     <div className="space-y-3">
-      <MobileLink href={config.driver.ios.url} name="Download for iOS" icon={config.driver.ios.qrIcon} />
-      <MobileLink href={config.driver.android.url} name="Download for Android" icon={config.driver.android.qrIcon} />
+      <MobileLink
+        href={config.driver.ios.url}
+        name={t("downloadIos")}
+        icon={config.driver.ios.qrIcon}
+      />
+      <MobileLink
+        href={config.driver.android.url}
+        name={t("downloadAndroid")}
+        icon={config.driver.android.qrIcon}
+      />
     </div>
   );
-
-
 };
 
-const MobileSocialLinks = () => (
-  <div className="space-y-3">
-    <MobileLink href={config.social.whatsapp.url} {...config.social.whatsapp} name="WhatsApp" />
-    <MobileLink href={config.social.telegram.url} {...config.social.telegram} name="Telegram" />
-    <MobileLink href={config.social.instagram.url} {...config.social.instagram} name="Instagram" />
-  </div>
-);
+const MobileSocialLinks = () => {
+  const t = useTranslations("dialogs.socials");
+  return (
+    <div className="space-y-3">
+      <MobileLink
+        href={config.social.whatsapp.driverUrl}
+        {...config.social.whatsapp}
+        name={t("whatsapp")}
+      />
+      <MobileLink
+        href={config.social.telegram.driverUrl}
+        {...config.social.telegram}
+        name={t("telegram")}
+      />
+      <MobileLink
+        href={config.social.instagram.driverUrl}
+        {...config.social.instagram}
+        name={t("instagram")}
+      />
+    </div>
+  );
+};
 
-const MobileView = () => (
-  <Tabs defaultValue="driver" className="w-full">
-    <TabsList className="grid w-full grid-cols-2 bg-foreground/5">
-      <TabsTrigger value="driver">Driver App</TabsTrigger>
-      <TabsTrigger value="community">Community</TabsTrigger>
-    </TabsList>
-    <TabsContent value="driver" className="pt-4 space-y-4">
-      <MobileDriverLinks />
-      <hr className="border-foreground/10" />
-      <MobileSocialLinks />
-    </TabsContent>
-    <TabsContent value="community" className="pt-4">
-      <MobileSocialLinks />
-    </TabsContent>
-  </Tabs>
-);
+const MobileView = () => {
+  const t = useTranslations("dialogs.driver");
+  return (
+    <Tabs defaultValue="driver" className="w-full">
+      <TabsList className="grid w-full grid-cols-2 bg-foreground/5">
+        <TabsTrigger value="driver">{t("driverAppTab")}</TabsTrigger>
+        <TabsTrigger value="copilot">{t("copilotTab")}</TabsTrigger>
+      </TabsList>
+      <TabsContent value="driver" className="pt-4 space-y-4">
+        <MobileDriverLinks />
+        <hr className="border-foreground/10" />
+        <MobileSocialLinks />
+      </TabsContent>
+      <TabsContent value="copilot" className="pt-4">
+        <MobileSocialLinks />
+      </TabsContent>
+    </Tabs>
+  );
+};
 
 // --- Main Dialog Component ---
 
 export const QrDialog = (props: Props) => {
   const isMobile = useMediaQuery("(max-width: 640px)");
+  const t = useTranslations("dialogs.driver");
 
   return (
     <Dialog open={props.open} onOpenChange={props.onOpenChange}>
-      <DialogContent
-      >
+      <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-bold tracking-tight">
-            Get Efoyy
+            {t("title")}
           </DialogTitle>
         </DialogHeader>
         {isMobile ? <MobileView /> : <DesktopView />}

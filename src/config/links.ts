@@ -1,15 +1,18 @@
 export const config = {
   social: {
     whatsapp: {
-      url: "https://wa.me/your-number",
+      driverUrl: "https://wa.me/your-number",
+      passengerUrl: "httpsL",
       icon: "/whatsapp-icon.png",
     },
     telegram: {
-      url: "https://t.me/your-channel",
+      driverUrl: "https://t.me/your-channel",
+      passengerUrl: "httpsL",
       icon: "/telegram-icon.png",
     },
     instagram: {
-      url: "https://instagram.com/your-profile",
+      driverUrl: "https://instagram.com/your-profile",
+      passengerUrl: "httpsL",
       icon: "/instagram-icon.png",
     },
   },

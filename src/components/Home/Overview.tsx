@@ -3,20 +3,26 @@ import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import { QrDialog } from "../qr-dialog";
+import { PassengerDialog } from "../passenger-dialog";
 
 const Overview = () => {
   const t = useTranslations("home.overview");
-  const [isQrDialogOpen, setIsQrDialogOpen] = useState(false);
+  const [isDriverDialogOpen, setIsDriverDialogOpen] = useState(false);
+  const [isPassengerDialogOpen, setIsPassengerDialogOpen] = useState(false);
 
   return (
-    <div className="flex justify-center">
-      <QrDialog open={isQrDialogOpen} onOpenChange={setIsQrDialogOpen} />
-      <div className="max-w-screen-xl px-6 pt-12 mb-9 flex flex-col gap-6 justify-center">
+    <div className="flex justify-center min-h-screen items-center">
+      <QrDialog open={isDriverDialogOpen} onOpenChange={setIsDriverDialogOpen} />
+      <PassengerDialog
+        open={isPassengerDialogOpen}
+        onOpenChange={setIsPassengerDialogOpen}
+      />
+      <div className="max-w-screen-xl px-6 -mt-20 mb-9 flex flex-col gap-6 justify-center">
         <div className="flex items-center flex-col gap-4">
-          <h2 className="text-6xl max-w-2xl text-center text-foreground bg-clip-text font-bold animate-in fade-in delay-300">
+          <h2 className="text-6xl max-w-2xl text-center leading-tight text-foreground bg-clip-text font-bold animate-in fade-in delay-300">
             {t("subtitle")}
           </h2>
-          <p className="text-secondary-foreground text-center font-semibold animate-in fade-in delay-500">
+          <p className="text-secondary-foreground max-w-xl text-center font-semibold animate-in fade-in delay-500">
             {t("description")}
           </p>
         </div>
@@ -24,16 +30,17 @@ const Overview = () => {
           <Button
             size="lg"
             className="min-w-[160px]"
-            onClick={() => setIsQrDialogOpen(true)}
+            onClick={() => setIsPassengerDialogOpen(true)}
           >
-            Get Efoyy Driver
+            {t("getForPassenger")}
           </Button>
           <Button
             size="lg"
             className="min-w-[160px] bg-muted"
             variant="secondary"
+            onClick={() => setIsDriverDialogOpen(true)}
           >
-            Get Efoyy Passanger
+            {t("getForDriver")}
           </Button>
         </div>
       </div>

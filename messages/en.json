@@ -20,7 +20,9 @@
     "overview": {
       "title": "Efoyy Transport",
       "subtitle": "Reliability & Simplicity in Motion",
-      "description": "Efoyy simplifies your ride booking  brooking easy and intuitive ",
+      "description": "Transcending boundaries in technology and innovation, we are committed to redefining mobility in Ethiopia.",
+      "getForPassenger": "Get For Passenger",
+      "getForDriver": "Get For Driver",
       "items": [
         {
           "title": "Hail a ride with our cars.",
@@ -961,6 +963,21 @@
         "question": "How are drivers vetted before they can drive for Efoyy?",
         "answer": "All drivers must complete a thorough background check that includes criminal history and driving record checks. They must also provide valid documentation including driver's license, vehicle registration, and insurance. Vehicles must meet our quality standards and pass regular inspections."
       }
+    }
+  },
+  "dialogs": {
+    "driver": {
+      "title": "Get Efoyy",
+      "driverAppTab": "Driver App",
+      "copilotTab": "Copilot",
+      "appStore": "App Store",
+      "googlePlay": "Google Play",
+      "downloadIos": "Download for iOS",
+      "downloadAndroid": "Download for Android"
+    },
+    "passenger": {
+      "title": "Ride with Efoyy AI",
+      "explanation": "No app needed! Start a conversation with our AI assistant on your favorite social media platform to book a ride, get estimates, and more."
     }
   }
 }

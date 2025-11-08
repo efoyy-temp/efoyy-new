@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Overview from "../components/Home/Overview";
 import Features from "../components/Home/Features";
 import Footer from "../components/Footer";
+import SafetyOverView from "@/components/Home/SafetyOverView";
 
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -67,6 +68,7 @@ export default function Home() {
           />
         </div>
         <Features />
+        <SafetyOverView />
         <Footer />
       </div>
     </>
