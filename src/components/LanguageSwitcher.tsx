@@ -13,12 +13,7 @@ import { Locale } from "@/i18n/config";
 import { useTransition } from "react";
 import { setUserLocale } from "@/services/locale";
 
-type Props = {
-  isLanding?: boolean;
-  scrolled?: boolean;
-};
-
-export default function LanguageSwitcher(props: Props) {
+export default function LanguageSwitcher() {
   const locale = useLocale();
   const [isPending, startTransition] = useTransition();
 
@@ -35,7 +30,6 @@ export default function LanguageSwitcher(props: Props) {
         <Button
           variant="ghost"
           size="icon"
-          className={`${!props.scrolled && props.isLanding ? "text-white/80" : "text-foreground/80"}`}
         >
           <Globe size={18} />
           <span className="sr-only">Switch language</span>

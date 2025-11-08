@@ -9,7 +9,12 @@
     "features": "ባህሪያት",
     "contactUs": "ያግኙን",
     "login": "ግባ",
-    "openMenu": "ምናሌን ክፈት"
+    "openMenu": "ምናሌን ክፈት",
+    "aboutUs": "ስለ እኛ",
+    "blog": "ብሎግ",
+    "vehicles": "ተሽከርካሪዎች",
+    "driverIncentives": "የአሽከርካሪ ማበረታቻዎች",
+    "passengerIncentives": "የተሳፋሪ ማበረታቻዎች"
   },
   "home": {
     "hero": {
@@ -217,6 +222,15 @@
       "beRider": "አሽከርካሪ ይሁኑ",
       "partner": "ከእኛ ጋር ይተባበሩ",
       "jobs": "ስራዎች"
+    },
+    "discover": {
+      "title": "ያግኙ"
+    },
+    "forUsers": {
+      "title": "ለተጠቃሚዎች"
+    },
+    "legal": {
+      "title": "ህጋዊ"
     },
     "copyright": "©year ኢፎዪ። መብቱ በህግ የተጠበቀ ነው"
   },

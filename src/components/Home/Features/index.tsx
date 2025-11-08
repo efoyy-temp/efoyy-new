@@ -75,7 +75,7 @@ const Card = (props: {
         props.feature.className,
       )}
     >
-      <div className="absolute group-hover:block hidden transition-all ease-out bg-primary rounded-full blur-xl size-64 origin-center translate-x-[calc(var(--mouse-x)-50%)] translate-y-[calc(var(--mouse-y)-50%)]" />
+      <div className="translate-x-[calc(var(--mouse-x)-50%)] translate-y-[calc(var(--mouse-y)-50%)] glow-blob"></div>
       <div className="card !rounded-[15px] bg-primary">
         <div className="card-content bg-gradient-to-br from-background/90 to-background justify-evenly p-3 sm:p-6 md:p-8">
           <div className="rounded-full self-start p-5 bg-primary/20">

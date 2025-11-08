@@ -181,3 +181,7 @@
 .react-tel-input .country-list .country.highlight {
   background-color: hsl(var(--secondary)) !important;
 }
+
+.glow-blob {
+  @apply: absolute group-hover:block hidden transition-all ease-out bg-primary rounded-full blur-2xl size-64 origin-center shadow-primary shadow-xl;
+}

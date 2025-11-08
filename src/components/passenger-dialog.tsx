@@ -99,23 +99,22 @@ const MobileLink = ({
 );
 
 const MobileView = () => {
-  const t = useTranslations("dialogs.socials");
   return (
     <div className="space-y-3">
       <MobileLink
         href={config.social.whatsapp.passengerUrl}
         {...config.social.whatsapp}
-        name={t("whatsapp")}
+        name={"Whatsapp"}
       />
       <MobileLink
         href={config.social.telegram.passengerUrl}
         {...config.social.telegram}
-        name={t("telegram")}
+        name={"Telegram"}
       />
       <MobileLink
         href={config.social.instagram.passengerUrl}
         {...config.social.instagram}
-        name={t("instagram")}
+        name={"Instagram"}
       />
     </div>
   );

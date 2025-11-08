@@ -19,18 +19,21 @@ const features = [
   },
 ];
 
-export default function () {
+export default function() {
   return (
     <section className="mx-auto max-w-screen-xl  p-6">
       <h2 className="text-9xl mb-12 font-bold from-primary text-center to-transparent text-clip bg-clip-text text-transparent bg-gradient-to-b  tracking-wide ">
         SAFETY
       </h2>
       <div className="space-y-8">
-        {features.map(({ id, title, desc, colorClass }, i) => (
-          <div key={id} className="flex items-center justify-between border-b border-border pb-4">
+        {features.map(({ title, desc }, i) => (
+          <div
+            key={i}
+            className="flex items-center justify-between border-b border-border pb-4"
+          >
             <div className="flex items-center gap-6">
               <div>
-                <h3 className="font-medium text-primary/80 text-3xl tracking-wider">
+                <h3 className="font-medium text-foreground text-3xl tracking-wider">
                   {title}
                 </h3>
                 <p className="text-sm text-secondary-foreground mt-1 max-w-md">
@@ -40,7 +43,7 @@ export default function () {
             </div>
             <button
               aria-label={`More about ${title}`}
-              className={`${colorClass} p-3 rounded-full hover:opacity-90 transition-opacity`}
+              className={` p-3 rounded-full hover:opacity-90 transition-opacity`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +53,11 @@ export default function () {
                 stroke="currentColor"
                 strokeWidth={2}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -59,4 +66,3 @@ export default function () {
     </section>
   );
 }
-

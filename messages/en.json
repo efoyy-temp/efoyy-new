@@ -9,7 +9,12 @@
     "features": "Features",
     "contactUs": "Contact Us",
     "login": "Login",
-    "openMenu": "Open menu"
+    "openMenu": "Open menu",
+    "aboutUs": "About Us",
+    "blog": "Blog",
+    "vehicles": "Vehicles",
+    "driverIncentives": "Driver Incentives",
+    "passengerIncentives": "Passenger Incentives"
   },
   "home": {
     "hero": {
@@ -219,6 +224,15 @@
       "beRider": "be a rider",
       "partner": "partner with us",
       "jobs": "jobs"
+    },
+    "discover": {
+      "title": "Discover"
+    },
+    "forUsers": {
+      "title": "For Users"
+    },
+    "legal": {
+      "title": "Legal"
     },
     "copyright": "©year EFOYY. ALL RIGHTS RESERVED"
   },

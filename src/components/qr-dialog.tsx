@@ -50,23 +50,22 @@ const SocialQRCode = ({
 );
 
 const DesktopSocialGroup = () => {
-  const t = useTranslations("dialogs.socials");
   return (
     <div className="grid grid-cols-3 ">
       <SocialQRCode
         href={config.social.whatsapp.driverUrl}
         {...config.social.whatsapp}
-        name={t("whatsapp")}
+        name={"Whatsapp"}
       />
       <SocialQRCode
         href={config.social.telegram.driverUrl}
         {...config.social.telegram}
-        name={t("telegram")}
+        name={"Telegram"}
       />
       <SocialQRCode
         href={config.social.instagram.driverUrl}
         {...config.social.instagram}
-        name={t("instagram")}
+        name={"Instagram"}
       />
     </div>
   );
@@ -181,23 +180,22 @@ const MobileDriverLinks = () => {
 };
 
 const MobileSocialLinks = () => {
-  const t = useTranslations("dialogs.socials");
   return (
     <div className="space-y-3">
       <MobileLink
         href={config.social.whatsapp.driverUrl}
         {...config.social.whatsapp}
-        name={t("whatsapp")}
+        name={"Whatsapp"}
       />
       <MobileLink
         href={config.social.telegram.driverUrl}
         {...config.social.telegram}
-        name={t("telegram")}
+        name={"Telegram"}
       />
       <MobileLink
         href={config.social.instagram.driverUrl}
         {...config.social.instagram}
-        name={t("instagram")}
+        name={"Instagram"}
       />
     </div>
   );
