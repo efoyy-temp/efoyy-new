@@ -27,8 +27,10 @@ const navSections = [
       { href: "/features", labelKey: "features", source: "navbar" },
       { href: "/ride", labelKey: "pricing", source: "navbar" },
       { href: "/safety", labelKey: "safety", source: "navbar" },
-      { href: "/blog", labelKey: "blog", source: "navbar" },
       { href: "/vehicles", labelKey: "vehicles", source: "navbar" },
+
+      { href: "/gamification", labelKey: "gamification", source: "navbar" },
+      { href: "/blog", labelKey: "blog", source: "navbar" },
       { href: "/about", labelKey: "aboutUs", source: "navbar" },
     ],
   },
@@ -36,7 +38,6 @@ const navSections = [
     id: "forUsers",
     titleKey: "forUsers.title",
     links: [
-      { href: "/contact", labelKey: "contactUs", source: "navbar" },
       {
         href: "/incentives/driver",
         labelKey: "driverIncentives",
@@ -47,7 +48,13 @@ const navSections = [
         labelKey: "passengerIncentives",
         source: "navbar",
       },
+      {
+        href: "/incentives/passenger",
+        labelKey: "studentIncentives",
+        source: "navbar",
+      },
       { href: "/faq", labelKey: "resources.faqs", source: "footer" },
+      { href: "/contact", labelKey: "contactUs", source: "navbar" },
     ],
   },
   {
@@ -89,7 +96,9 @@ const Navbar = () => {
           : "bg-neutral-300/25 dark:bg-background/20 md:w-[50vw]",
       )}
       style={{
-        boxShadow: isMenuOpen ? "" : `inset 2px 2px 6px 0 rgba(255, 255, 255, 0.15),
+        boxShadow: isMenuOpen
+          ? ""
+          : `inset 2px 2px 6px 0 rgba(255, 255, 255, 0.15),
           inset -2px -2px 6px 0px rgba(255, 255, 255, 0.15),
           0 2px 6px 0 rgba(0, 0, 0, 0.2)`,
       }}
@@ -100,8 +109,11 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="group bg-gradient-to-br from-green-500 hover:from-teal-500 via-cyan-500 hover:via-blue-500 to-purple-500 hover:to-fuchsia-500">
-            <Sparkles className="!size-5 group-hover:scale-110 transition ease-in-out" />
+          <Button
+            variant="ghost"
+            className="group size-6 !p-0 bg-gradient-to-br from-green-800 hover:from-teal-800 via-cyan-800 hover:via-blue-800 to-purple-800 hover:to-fuchsia-800 rounded-full"
+          >
+            <Sparkles className="group-hover:scale-110 transition ease-in-out" />
           </Button>
           <LanguageSwitcher />
           <Button
