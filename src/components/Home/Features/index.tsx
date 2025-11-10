@@ -45,14 +45,18 @@ const Features = () => {
         card.style.setProperty("--mouse-y", `${y}px`);
       }
     };
-    cardRef.current?.addEventListener("mousemove", onMouseMove);
+    document.body.addEventListener("mousemove", onMouseMove);
     return () => {
-      cardRef.current?.removeEventListener("mousemove", onMouseMove);
+      document.body.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
 
   return (
-    <div className="min-h-[min(100vh,1024px)]  group flex justify-center items-center px-5 py-16">
+    <div className="min-h-[max(100vh,1240px)] group flex flex-col justify-center items-center px-5 py-16">
+      <div className="text-center mb-24">
+        <h2 className="text-5xl  font-bold">{t("title")}</h2>
+        <p className="text-lg text-foreground/70 mt-4">{t("description")}</p>
+      </div>
       <div
         ref={cardRef}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full max-w-screen-xl gap-3 "
@@ -75,7 +79,13 @@ const Card = (props: {
         props.feature.className,
       )}
     >
-      <div className="translate-x-[calc(var(--mouse-x)-50%)] translate-y-[calc(var(--mouse-y)-50%)] glow-blob"></div>
+      <div
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, rgb(255,255,255) 0%, hsla(var(--primary) / 80%) 40%, hsl(var(--primary)) 100%)",
+        }}
+        className="translate-x-[calc(var(--mouse-x)-50%)] translate-y-[calc(var(--mouse-y)-50%)]  absolute group-hover:block transition-all ease-out bg-primary rounded-full blur-2xl size-64 origin-center shadow-primary shadow-xl"
+      ></div>
       <div className="card !rounded-[15px] bg-primary">
         <div className="card-content bg-gradient-to-br from-background/90 to-background justify-evenly p-3 sm:p-6 md:p-8">
           <div className="rounded-full self-start p-5 bg-primary/20">

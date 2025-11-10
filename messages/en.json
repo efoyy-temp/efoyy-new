@@ -14,7 +14,11 @@
     "blog": "Blog",
     "vehicles": "Vehicles",
     "driverIncentives": "Driver Incentives",
-    "passengerIncentives": "Passenger Incentives"
+    "passengerIncentives": "Passenger Incentives",
+    "forDrivers": "For Drivers",
+    "forRiders": "For Riders",
+    "gamification": "Gamification",
+    "studentIncentives": "Student Incentives"
   },
   "home": {
     "hero": {
@@ -26,8 +30,8 @@
       "title": "Efoyy Transport",
       "subtitle": "Reliability & Simplicity in Motion",
       "description": "Transcending boundaries in technology and innovation, we are committed to redefining mobility in Ethiopia.",
-      "getForPassenger": "Get For Passenger",
-      "getForDriver": "Get For Driver",
+      "getForPassenger": "Become Passenger",
+      "getForDriver": "Become Driver",
       "items": [
         {
           "title": "Hail a ride with our cars.",
@@ -44,6 +48,8 @@
       ]
     },
     "features": {
+      "title": "Why ride with Efoyy?",
+      "description": "We are committed to making your journey safe, comfortable, and affordable.",
       "items": [
         {
           "title": "Request a safe ride with our advanced vehicle technology.",
@@ -62,6 +68,29 @@
           "description": "Experience competitive pricing with our cutting-edge pricing system! Just hop in and let your driver know to use our app for the most affordable rates."
         }
       ]
+    },
+    "safety": {
+      "title": "Designed for your safety",
+      "description": "Your peace of mind is our priority. We've integrated advanced safety features to ensure every ride with Efoyy is secure and reliable.",
+      "features": [
+        {
+          "title": "Verified Drivers",
+          "description": "All our drivers undergo a comprehensive background check and vehicle inspection to ensure they meet our high standards."
+        },
+        {
+          "title": "SOS Emergency Button",
+          "description": "In case of an emergency, you can use the in-app SOS button to discreetly contact local authorities and our 24/7 support team."
+        },
+        {
+          "title": "Share Your Trip",
+          "description": "Keep your loved ones informed by sharing your live trip details with them. They can track your journey in real-time."
+        },
+        {
+          "title": "24/7 Support",
+          "description": "Our dedicated support team is available around the clock to assist you with any issues or concerns you may have."
+        }
+      ],
+      "viewMore": "Learn more about safety"
     }
   },
   "map": {

@@ -1,67 +1,74 @@
-import React from "react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import {
+  ShieldCheck,
+  AlertTriangle,
+  Share2,
+  Headset,
+  ArrowRight,
+} from "lucide-react";
+import { ReactElement } from "react";
 
-const features = [
-  {
-    title: "GLOBAL ACCOUNT ACCESS",
-    desc: "Receive Payments In USD, EUR, GBP, And More With Local Bank Details.",
-  },
-  {
-    title: "FOREIGN EXCHANGE RATES",
-    desc: "Benefit From Real-Time Rates With Minimal Conversion Fees.",
-  },
-  {
-    title: "SMART FAST PAY TOOLS",
-    desc: "Easily Connect With Platforms Like Upwork, Fiverr, And Amazon.",
-  },
-  {
-    title: "SUPER EASY FUND WITHDRAWALS",
-    desc: "Transfer Funds To Your Local Bank Or Use Our Payrot Card For Direct Access.",
-  },
+const icons = [
+  <ShieldCheck key="shield" className="w-8 h-8 text-primary" />,
+  <AlertTriangle key="alert" className="w-8 h-8 text-primary" />,
+  <Share2 key="share" className="w-8 h-8 text-primary" />,
+  <Headset key="headset" className="w-8 h-8 text-primary" />,
 ];
 
-export default function() {
+export default function SafetyOverView() {
+  const t = useTranslations("home.safety");
+
+  const features = Array.from({ length: 4 }, (_, i) => ({
+    title: t(`features.${i}.title`),
+    description: t(`features.${i}.description`),
+    icon: icons[i],
+  }));
+
   return (
-    <section className="mx-auto max-w-screen-xl  p-6">
-      <h2 className="text-9xl mb-12 font-bold from-primary text-center to-transparent text-clip bg-clip-text text-transparent bg-gradient-to-b  tracking-wide ">
-        SAFETY
-      </h2>
-      <div className="space-y-8">
-        {features.map(({ title, desc }, i) => (
-          <div
-            key={i}
-            className="flex items-center justify-between border-b border-border pb-4"
-          >
-            <div className="flex items-center gap-6">
-              <div>
-                <h3 className="font-medium text-foreground text-3xl tracking-wider">
-                  {title}
-                </h3>
-                <p className="text-sm text-secondary-foreground mt-1 max-w-md">
-                  {desc}
-                </p>
-              </div>
-            </div>
-            <button
-              aria-label={`More about ${title}`}
-              className={` p-3 rounded-full hover:opacity-90 transition-opacity`}
+    <section
+      className="py-24 relative bg-cover bg-center"
+      style={{ backgroundImage: "url(/Charcoal_004.jpg)" }}
+    >
+      <div className="absolute inset-0 bg-background/90 backdrop-blur-sm"></div>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            {t("title")}
+          </h2>
+          <p className="mt-4 text-lg text-foreground/70 max-w-3xl mx-auto">
+            {t("description")}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-card/50 backdrop-blur-lg border border-white/10 p-8 rounded-2xl shadow-lg hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
-        ))}
+              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mb-6">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-foreground/70 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <Link
+            href="/safety"
+            className="inline-flex items-center text-primary font-semibold text-lg group"
+          >
+            {t("viewMore")}
+            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -15,16 +15,13 @@ import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTheme } from "next-themes";
 
-type Props = {
-  isLanding?: boolean;
-};
-
 const navSections = [
   {
     id: "discover",
     titleKey: "discover.title",
     links: [
-      { href: "/features", labelKey: "features", source: "navbar" },
+      { href: "/features/driver", labelKey: "forDrivers", source: "navbar" },
+      { href: "/features/user", labelKey: "forRiders", source: "navbar" },
       { href: "/ride", labelKey: "pricing", source: "navbar" },
       { href: "/safety", labelKey: "safety", source: "navbar" },
       { href: "/vehicles", labelKey: "vehicles", source: "navbar" },
