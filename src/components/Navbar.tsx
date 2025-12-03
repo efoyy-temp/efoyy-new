@@ -25,9 +25,8 @@ const navSections = [
       { href: "/ride", labelKey: "pricing", source: "navbar" },
       { href: "/safety", labelKey: "safety", source: "navbar" },
       { href: "/vehicles", labelKey: "vehicles", source: "navbar" },
-
-      { href: "/gamification", labelKey: "gamification", source: "navbar" },
-      { href: "/blog", labelKey: "blog", source: "navbar" },
+      // { href: "/gamification", labelKey: "gamification", source: "navbar" },
+      // { href: "/blog", labelKey: "blog", source: "navbar" },
       { href: "/about", labelKey: "aboutUs", source: "navbar" },
     ],
   },
@@ -36,20 +35,20 @@ const navSections = [
     titleKey: "forUsers.title",
     links: [
       {
-        href: "/incentives/driver",
-        labelKey: "driverIncentives",
+        href: "/incentives",
+        labelKey: "incentives",
         source: "navbar",
       },
-      {
-        href: "/incentives/passenger",
-        labelKey: "passengerIncentives",
-        source: "navbar",
-      },
-      {
-        href: "/incentives/passenger",
-        labelKey: "studentIncentives",
-        source: "navbar",
-      },
+      // {
+      //   href: "/incentives/passenger",
+      //   labelKey: "passengerIncentives",
+      //   source: "navbar",
+      // },
+      // {
+      //   href: "/incentives/passenger",
+      //   labelKey: "studentIncentives",
+      //   source: "navbar",
+      // },
       { href: "/faq", labelKey: "resources.faqs", source: "footer" },
       { href: "/contact", labelKey: "contactUs", source: "navbar" },
     ],
