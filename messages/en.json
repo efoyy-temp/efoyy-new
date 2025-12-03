@@ -1066,5 +1066,41 @@
       "name": "Standard Electric SUV",
       "comment": ""
     }
+  },
+  "aboutPage": {
+    "title": "About Efoyy",
+    "description": "Efoyy is a transport service app developed by five Ethiopian-Canadian engineers, specifically designed for the African market and launched in Addis Ababa.",
+    "uniqueApproach": "Our Unique Approach",
+    "proprietaryTech": "What sets Efoyy apart is that it's built on our 100% proprietary technology developed to tackle the challenges that are faced in meter taxi technologies in  Ethiopia and other developing countries , allowing us to solve particular  problems that other apps cannot.",
+    "whatMakesUsDifferent": "What Makes Us Different",
+    "innovativeSolutions": "Innovative solutions for unique challenges.",
+    "madeForEthiopia": {
+      "title": "Made for Ethiopia",
+      "description": "Efoyy has  its  own distance calculation technology, developed over a year with local data, to ensure accurate and fair pricing for local terrain, transport culture and fuel economy."
+    },
+    "offlineFunctionality": {
+      "title": "Offline Functionality",
+      "description": "Efoyy’s team also developed a technology that enables drivers to  complete trips even without an internet connection. For weak and spotty networks that are common in Ethiopia and many developing nations."
+    },
+    "smartFairPricing": {
+      "title": "Smart & Fair Pricing",
+      "description": "Our unique Artificial Intelligence (AI) algorithm balances maximizing your earnings with fair prices for passengers. We only charge the lowest commission on the market: 1.25%."
+    },
+    "rewardsIncentives": {
+      "title": "Rewards & Incentives",
+      "description": "Drivers  can earn bonuses through competitions. For example,  Hatrick games  where  drivers can win a 1,000 Birr bonus by completing the most trips in 3 days, or share a 100,000 Birr prize pool  by becoming the  top drivers of the month."
+    },
+    "safetyPriority": {
+      "title": "Your Safety is Our Priority",
+      "description": "The SOS button notifies nearby drivers, drivers’  emergency contacts, and our security team. Efoyy  also has  an emergency fund that provides 1,000,000 Birr in support to a driver's family in the tragic event of a death caused by a passenger assault during a trip."
+    },
+    "efoyyCopilot": {
+      "title": "Efoyy Co-pilot",
+      "description": "Efoyy has also developed a cutting edge  24/7 AI assistant.  Where  drivers can get their  questions answered quickly within the app without needing to call the support line."
+    },
+    "gracePeriod": {
+      "title": "24-Hour Grace Period",
+      "description": "Even if a driver’s wallet balance runs out, Drivers  can continue working for 24 hours before you need to top up."
+    }
   }
 }

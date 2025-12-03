@@ -7,14 +7,15 @@ import VehicleShowcase from "./components/VehicleShowcase";
 import { VehicleCategory } from "./types";
 
 interface VehiclesPageProps {
-  searchParams: {
+  searchParams: Promise<{
     category?: string;
     query?: string;
-  };
+  }>;
 }
 
-const VehiclesPage: React.FC<VehiclesPageProps> = ({ searchParams }) => {
-  const { category: selectedCategoryName, query: searchQuery } = searchParams;
+const VehiclesPage: React.FC<VehiclesPageProps> = async ({ searchParams }) => {
+  const { category: selectedCategoryName, query: searchQuery } =
+    await searchParams;
   const categories: VehicleCategory[] = Categories;
 
   const selectedCategory = selectedCategoryName
