@@ -391,7 +391,7 @@ export function RideDetails({ ride }: { ride: RideData }) {
                 {ride.rating.feedback && (
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Your feedback</p>
-                    <p className="text-sm italic">"{ride.rating.feedback}"</p>
+                    {/* <p className="text-sm italic">"{ride.rating.feedback}"</p> */}
                   </div>
                 )}
               </CardContent>

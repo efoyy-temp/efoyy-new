@@ -8,7 +8,7 @@ export const usePlatform = (): Platform => {
   const [platform, setPlatform] = useState<Platform>("other");
 
   useEffect(() => {
-    // @ts-ignore
+    // @ts-expect-error this is valid
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
     if (/android/i.test(userAgent)) {
