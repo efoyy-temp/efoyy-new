@@ -6,8 +6,8 @@ export const config = {
       icon: "/whatsapp-icon.png",
     },
     telegram: {
-      driverUrl: "https://t.me/your-channel",
-      passengerUrl: "httpsL",
+      driverUrl: "https://t.me/efoyy_copilot_bot",
+      passengerUrl: "https://t.me/efoyy_copilot_bot",
       icon: "/telegram-icon.png",
     },
     instagram: {

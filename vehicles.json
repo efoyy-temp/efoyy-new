@@ -8,7 +8,7 @@
     "categoryImage": "828fa794950e3eacb3107605707e91b1.png",
     "categoryMarkerImage": "a3e73c0b05479b454d9c052ba3206e7e.png",
     "isActive": "1",
-    "comment": "Description: Affordable rides for everyday travel.\nTarget Users: Budget-conscious passengers, students, daily commuters.\nVehicle Types: Compact cars, sedans.",
+    "comment": "Affordable rides for everyday travel.\nTarget Users: Budget-conscious passengers, students, daily commuters.\nVehicle Types: Compact cars, sedans.",
     "brands": [
       {
         "id": "1",
@@ -645,7 +645,7 @@
     "categoryImage": "426c674e4a1b82ed0855fbbc9eb58aec.png",
     "categoryMarkerImage": "b06119a1bb7cb0859c21688a54d626c8.png",
     "isActive": "1",
-    "comment": "Description: Premium rides for a high-end experience.\nTarget Users: Business professionals, tourists, special occasions.\nVehicle Types: High-end sedans, premium SUVs.",
+    "comment": "Premium rides for a high-end experience.\nTarget Users: Business professionals, tourists, special occasions.\nVehicle Types: High-end sedans, premium SUVs.",
     "brands": [
       {
         "id": "9",
@@ -813,7 +813,7 @@
     "categoryImage": "be7ebcc5b3c748e2ac4a97e3b31f4d04.png",
     "categoryMarkerImage": "e8239fced9ee2af8e384cc56a94ff754.png",
     "isActive": "1",
-    "comment": "Description: Rides for groups or families.\nTarget Users: Large families, groups of friends, tourist groups.\nVehicle Types: Minivans, minibuses.",
+    "comment": "Rides for groups or families.\nTarget Users: Large families, groups of friends, tourist groups.\nVehicle Types: Minivans, minibuses.",
     "brands": [
       {
         "id": "72",
@@ -854,7 +854,7 @@
     "categoryImage": "be7ebcc5b3c748e2ac4a97e3b31f4d04.png",
     "categoryMarkerImage": "e8239fced9ee2af8e384cc56a94ff754.png",
     "isActive": "1",
-    "comment": "Description: Rides for more comfort and off-road capability.\nTarget Users: Travelers requiring more space, those traveling on rougher roads.\nVehicle Types: Standard SUVs, off-road vehicles.",
+    "comment": "Rides for more comfort and off-road capability.\nTarget Users: Travelers requiring more space, those traveling on rougher roads.\nVehicle Types: Standard SUVs, off-road vehicles.",
     "brands": [
       {
         "id": "33",
@@ -1114,7 +1114,7 @@
     "categoryImage": "be7ebcc5b3c748e2ac4a97e3b31f4d04.png",
     "categoryMarkerImage": "e8239fced9ee2af8e384cc56a94ff754.png",
     "isActive": "1",
-    "comment": "Description: Eco-friendly rides for environmentally conscious passengers.\nTarget Users: Environmentally conscious individuals, tech enthusiasts.\nVehicle Types: Electric cars, hybrids.",
+    "comment": "Eco-friendly rides for environmentally conscious passengers.\nTarget Users: Environmentally conscious individuals, tech enthusiasts.\nVehicle Types: Electric cars, hybrids.",
     "brands": [
       {
         "id": "45",

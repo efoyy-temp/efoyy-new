@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import { config } from "@/config/links";
 
 const navSections = [
   {
@@ -105,11 +107,16 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            className="group size-6 !p-0 bg-gradient-to-br from-green-800 hover:from-teal-800 via-cyan-800 hover:via-blue-800 to-purple-800 hover:to-fuchsia-800 rounded-full"
-          >
-            <Sparkles className="group-hover:scale-110 transition ease-in-out" />
+          <Button variant="ghost" className="group size-7 !p-0 " asChild>
+            <a href={config.social.telegram.driverUrl} target="_blank">
+              <Image
+                src="/ai-icon.gif"
+                alt="App Badge"
+                width={40}
+                height={40}
+                className="scale-125"
+              />
+            </a>
           </Button>
           <LanguageSwitcher />
           <Button

@@ -38,7 +38,7 @@ const SocialQRCode = ({
     <div className="p-2 bg-white rounded-md">
       <QRCodeSVG
         value={href}
-        size={100}
+        size={180}
         imageSettings={{ src: icon, width: 24, height: 24, excavate: true }}
       />
     </div>
@@ -51,21 +51,11 @@ const SocialQRCode = ({
 
 const DesktopSocialGroup = () => {
   return (
-    <div className="grid grid-cols-3 ">
-      <SocialQRCode
-        href={config.social.whatsapp.driverUrl}
-        {...config.social.whatsapp}
-        name={"Whatsapp"}
-      />
+    <div className="grid grid-cols-1 ">
       <SocialQRCode
         href={config.social.telegram.driverUrl}
         {...config.social.telegram}
         name={"Telegram"}
-      />
-      <SocialQRCode
-        href={config.social.instagram.driverUrl}
-        {...config.social.instagram}
-        name={"Instagram"}
       />
     </div>
   );
@@ -183,19 +173,9 @@ const MobileSocialLinks = () => {
   return (
     <div className="space-y-3">
       <MobileLink
-        href={config.social.whatsapp.driverUrl}
-        {...config.social.whatsapp}
-        name={"Whatsapp"}
-      />
-      <MobileLink
         href={config.social.telegram.driverUrl}
         {...config.social.telegram}
         name={"Telegram"}
-      />
-      <MobileLink
-        href={config.social.instagram.driverUrl}
-        {...config.social.instagram}
-        name={"Instagram"}
       />
     </div>
   );

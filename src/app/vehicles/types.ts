@@ -5,6 +5,7 @@ export interface VehicleCategory {
   categoryNameOr: string;
   categoryImage: string;
   categoryMarkerImage: string;
+  priceEstimate?: string;
   isActive: string;
   comment: string;
   brands: Brand[];

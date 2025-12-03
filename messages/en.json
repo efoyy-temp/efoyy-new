@@ -1021,5 +1021,50 @@
       "title": "Ride with Efoyy AI",
       "explanation": "No app needed! Start a conversation with our AI assistant on your favorite social media platform to book a ride, get estimates, and more."
     }
+  },
+  "vehicles": {
+    "selectCategory": "Select a Category",
+    "chooseRide": "Choose your ride",
+    "categorySelectionSubtitle": "From economical daily commuters to luxurious comfort, we have the perfect vehicle for every journey.",
+    "noVehiclesFound": "No vehicles found",
+    "adjustSearch": "Try adjusting your search query",
+    "modelsAvailable": "Models available",
+    "searchModels": "Search models...",
+    "Economic": {
+      "name": "Economic",
+      "comment": "Affordable rides for everyday travel.\nTarget Users: Budget-conscious passengers, students, daily commuters.\nVehicle Types: Compact cars, sedans."
+    },
+    "Standard": {
+      "name": "Standard",
+      "comment": "Premium rides for a high-end experience.\nTarget Users: Business professionals, tourists, special occasions.\nVehicle Types: High-end sedans, premium SUVs."
+    },
+    "Minibus": {
+      "name": "Minibus",
+      "comment": "Rides for groups or families.\nTarget Users: Large families, groups of friends, tourist groups.\nVehicle Types: Minivans, minibuses."
+    },
+    "Standard SUV": {
+      "name": "Standard SUV",
+      "comment": "Rides for more comfort and off-road capability.\nTarget Users: Travelers requiring more space, those traveling on rougher roads.\nVehicle Types: Standard SUVs, off-road vehicles."
+    },
+    "Standard Electric": {
+      "name": "Standard Electric",
+      "comment": "Eco-friendly rides for environmentally conscious passengers.\nTarget Users: Environmentally conscious individuals, tech enthusiasts.\nVehicle Types: Electric cars, hybrids."
+    },
+    "Luxury": {
+      "name": "Luxury",
+      "comment": ""
+    },
+    "VIP": {
+      "name": "VIP",
+      "comment": ""
+    },
+    "MiniVan (7 seaters)": {
+      "name": "MiniVan (7 seaters)",
+      "comment": ""
+    },
+    "Standard Electric SUV": {
+      "name": "Standard Electric SUV",
+      "comment": ""
+    }
   }
 }
