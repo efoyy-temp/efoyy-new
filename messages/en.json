@@ -1018,8 +1018,10 @@
       "downloadAndroid": "Download for Android"
     },
     "passenger": {
-      "title": "Ride with Efoyy AI",
-      "explanation": "No app needed! Start a conversation with our AI assistant on your favorite social media platform to book a ride, get estimates, and more."
+      "comingSoon": {
+        "title": "Coming Soon!",
+        "description": "We're putting the final touches on our passenger app. Stay tuned for a seamless and enhanced booking experience. We'll be live before you know it!"
+      }
     }
   },
   "vehicles": {
