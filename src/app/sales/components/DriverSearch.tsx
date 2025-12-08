@@ -22,7 +22,7 @@ export const DriverSearch: React.FC<DriverSearchProps> = ({
 
     try {
       const driverData = {};
-      onDriverFound(driverData);
+      // onDriverFound(driverData);
     } catch (err) {
       console.error(err);
       setError("Failed to retrieve driver details. Please try again.");
