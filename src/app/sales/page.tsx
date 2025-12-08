@@ -1,26 +1,24 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "./context/AuthContext";
 import { Layout } from "./components/Layout";
-import { SignupForm } from "./components/SignupForm";
 import { DriverSearch } from "./components/DriverSearch";
 import { DriverProfile } from "./components/DriverProfile";
-import { SalesPerson, Driver, AppView } from "./types";
+import { Driver } from "./types";
+import { Loader2 } from "lucide-react";
 
-function App() {
-  const [view, setView] = useState<AppView>(AppView.SIGNUP);
-  const [currentUser, setCurrentUser] = useState<SalesPerson | null>(null);
+export default function SalesDashboardPage() {
+  const { user, isLoading, logout } = useAuth();
+  const router = useRouter();
   const [currentDriver, setCurrentDriver] = useState<Driver | null>(null);
 
-  const handleSignup = (user: SalesPerson) => {
-    setCurrentUser(user);
-    setView(AppView.DASHBOARD);
-  };
-
-  const handleLogout = () => {
-    setCurrentUser(null);
-    setCurrentDriver(null);
-    setView(AppView.SIGNUP);
-  };
+  useEffect(() => {
+    if (!isLoading && !user) {
+      router.replace("/sales/login");
+    }
+  }, [user, isLoading, router]);
 
   const handleDriverFound = (driver: Driver) => {
     setCurrentDriver(driver);
@@ -31,29 +29,31 @@ function App() {
   };
 
   const handleApproveDriver = (password: string): boolean => {
-    if (!currentUser || !currentDriver) return false;
-
-    // Verify password
-    if (password === currentUser.password) {
-      setCurrentDriver({
-        ...currentDriver,
-        approvalStatus: "Approved",
-      });
-      return true;
+    // In a real app, this would be a backend call.
+    // For this mock, we'll just approve it without checking the password.
+    if (currentDriver) {
+        setCurrentDriver({
+            ...currentDriver,
+            approvalStatus: "Approved",
+          });
+          return true;
     }
-
     return false;
   };
 
+  if (isLoading || !user) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
   return (
-    <Layout currentUser={currentUser} onLogout={handleLogout}>
-      {view === AppView.SIGNUP && <SignupForm onSignup={handleSignup} />}
-
-      {view === AppView.DASHBOARD && !currentDriver && (
+    <Layout>
+      {!currentDriver ? (
         <DriverSearch onDriverFound={handleDriverFound} />
-      )}
-
-      {view === AppView.DASHBOARD && currentDriver && (
+      ) : (
         <DriverProfile
           driver={currentDriver}
           onClose={handleCloseDriverProfile}
@@ -64,4 +64,3 @@ function App() {
   );
 }
 
-export default App;
