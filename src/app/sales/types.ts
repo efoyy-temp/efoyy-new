@@ -29,6 +29,8 @@ export type SalesUserLoginResponse = {
     status: "inactive" | "active";
     statusCode: 200;
     errorMessage: string;
+    weeklyTarget: number;
+    weeklySales: number;
   };
 };
 
@@ -43,6 +45,8 @@ export type SalesUserSignupResponse = {
     status: "inactive" | "active";
     statusCode: number;
     errorMessage: string;
+    weeklyTarget: number;
+    weeklySales: number;
   };
 };
 

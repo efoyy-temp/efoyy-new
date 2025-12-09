@@ -10,10 +10,13 @@ import { Loader2 } from "lucide-react";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DriverProfileResponse } from "./types";
+import { SalesProfile } from "./components/SalesProfile";
 
 export default function SalesDashboardPage() {
   const { user, isLoading, logout } = useAuth();
+
   const router = useRouter();
+
   const [currentDriver, setCurrentDriver] = useState<
     DriverProfileResponse["data"]["profile"] | null
   >(null);
@@ -44,6 +47,7 @@ export default function SalesDashboardPage() {
 
   return (
     <Layout>
+      <SalesProfile />
       <DriverSearch onDriverFound={handleDriverFound} />
       <Dialog
         open={!!currentDriver}

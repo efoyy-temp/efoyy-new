@@ -65,16 +65,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsLoading(true);
     try {
       const data = await salesDal.signup(params);
-      localStorage.setItem("salesUser", JSON.stringify(data));
-      localStorage.setItem("salesUserToken", data.token);
-      setUser({
+      const userData = {
         firstName: data.firstName,
         lastName: data.lastName,
         joinedSince: data.joinedSince,
         lastLogin: data.lastLogin,
         picture: data.picture,
         status: data.status,
-      });
+        weeklySales: data.weeklySales,
+        weeklyTarget: data.weeklyTarget,
+        token: data.token,
+      };
+      localStorage.setItem("salesUser", JSON.stringify(userData));
+      localStorage.setItem("salesUserToken", data.token);
+      setUser(userData);
       setIsLoading(false);
       return {
         success: true,
@@ -112,16 +116,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         phoneNumber: phoneNumber,
         pin: pin,
       });
-      localStorage.setItem("salesUser", JSON.stringify(data));
-      localStorage.setItem("salesUserToken", data.token);
-      setUser({
+      const userData = {
         firstName: data.firstName,
         lastName: data.lastName,
         joinedSince: data.joinedSince,
         lastLogin: data.lastLogin,
         picture: data.picture,
         status: data.status,
-      });
+        weeklySales: data.weeklySales,
+        weeklyTarget: data.weeklyTarget,
+        token: data.token,
+      };
+      localStorage.setItem("salesUser", JSON.stringify(userData));
+      localStorage.setItem("salesUserToken", data.token);
+      setUser(userData);
       setIsLoading(false);
       return {
         success: true,

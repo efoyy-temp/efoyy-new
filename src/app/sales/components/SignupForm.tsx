@@ -27,6 +27,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { companies } from "../dal/constants";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   firstName: z.string().trim().min(2, "First name is too short"),
@@ -46,6 +47,7 @@ const formSchema = z.object({
 type FormInput = z.infer<typeof formSchema>;
 
 export const SignupForm = () => {
+  const router = useRouter();
   const auth = useAuth();
 
   const {
@@ -63,6 +65,7 @@ export const SignupForm = () => {
     const response = await auth.signUp(data);
     if (response.success) {
       toast.success("Account created successfully!");
+      router.push("/sales");
       reset();
     } else {
       toast.error(response.errorMessage);
