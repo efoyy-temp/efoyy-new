@@ -50,7 +50,7 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
       <DialogHeader>
         <DialogTitle>Driver Profile</DialogTitle>
         <DialogDescription>
-          Review the driver's details and take action.
+          Review the driver&apos;s details and take action.
         </DialogDescription>
       </DialogHeader>
       <div className="py-4">
@@ -59,6 +59,7 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
             <AvatarImage
               src={driver.picture}
               alt={`${driver.firstName} ${driver.lastName}`}
+              className="object-cover"
             />
             <AvatarFallback>
               {driver.firstName[0]}
@@ -80,29 +81,29 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
             <p className="text-sm text-muted-foreground">Driver OTP</p>
             <p className="text-2xl font-bold tracking-widest">{otp.otp}</p>
             <p className="text-xs text-muted-foreground">
-              Expires at:{" "}
-              {new Date(otp.otpUpdatedAt).toLocaleTimeString()}
+              Expires at: {new Date(otp.otpUpdatedAt).toLocaleTimeString()}
             </p>
           </div>
         )}
 
         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       </div>
+
+      <Button
+        onClick={handleViewOtp}
+        variant="outline"
+        disabled={isFetchingOtp}
+      >
+        {isFetchingOtp ? <Loader2 className="animate-spin" /> : null}
+        View OTP
+      </Button>
       <DialogFooter className="sm:justify-between gap-2">
-        <Button onClick={handleViewOtp} disabled={isFetchingOtp}>
-          {isFetchingOtp ? (
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          ) : null}
-          View OTP
-        </Button>
-        <div className="flex gap-2">
-          <Button variant="outline" disabled>
-            Approve Driver
+        <DialogClose asChild>
+          <Button variant="outline" onClick={onClose}>
+            Close
           </Button>
-          <DialogClose asChild>
-            <Button onClick={onClose}>Close</Button>
-          </DialogClose>
-        </div>
+        </DialogClose>
+        <Button>Approve Driver</Button>
       </DialogFooter>
     </>
   );
