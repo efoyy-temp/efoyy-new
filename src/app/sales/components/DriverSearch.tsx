@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-// import { searchDriverByPhone } from "../../../../inspo/services/geminiService";
-import { Driver } from "../types";
+import { DriverProfileResponse } from "../types";
+import { salesDal } from "../dal";
+import { Loader2 } from "lucide-react";
+import { isValidNumber } from "libphonenumber-js";
+import { Search } from "lucide-react";
+import PhoneInput from "react-phone-input-2";
+import { Button } from "@/components/ui/button";
 
 interface DriverSearchProps {
-  onDriverFound: (driver: Driver) => void;
+  onDriverFound: (driver: DriverProfileResponse["data"]["profile"]) => void;
 }
 
 export const DriverSearch: React.FC<DriverSearchProps> = ({
@@ -13,16 +18,23 @@ export const DriverSearch: React.FC<DriverSearchProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const isValidPhoneNumber = isValidNumber(phone, "ET");
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!phone) return;
+    if (!isValidPhoneNumber) return;
 
     setIsLoading(true);
     setError(null);
 
     try {
-      const driverData = {};
-      // onDriverFound(driverData);
+      const response = await salesDal.getDriverProfile({
+        internationalPhoneNumber: `+${phone}`,
+      });
+      if (response.data.profile) {
+        onDriverFound(response.data.profile);
+      } else {
+        setError(response.data.errorMessage || "Driver not found.");
+      }
     } catch (err) {
       console.error(err);
       setError("Failed to retrieve driver details. Please try again.");
@@ -43,44 +55,33 @@ export const DriverSearch: React.FC<DriverSearchProps> = ({
         </p>
       </div>
 
-      <form onSubmit={handleSearch} className="relative group">
-        <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5 text-zinc-600 group-focus-within:text-white transition-colors"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
-          </svg>
-        </div>
-        <input
-          type="tel"
-          className="w-full pl-14 pr-4 py-5 bg-[#18181b] border border-white/10 rounded-2xl shadow-xl focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition-all text-lg placeholder:text-zinc-700 text-white"
-          placeholder="(555) 000-0000"
+      <form
+        onSubmit={handleSearch}
+        className="relative group flex flex-col gap-4"
+      >
+        <PhoneInput
+          onChange={(phoneNumber) => setPhone(phoneNumber)}
+          dropdownClass="!bg-card"
+          countryCodeEditable={false}
+          buttonClass="!bg-card !border-border !rounded-md"
+          inputClass="!bg-card !ml-16 !pl-4 !h-auto  py-2  placeholder:!text-muted-foreground !border-border !rounded-r-md h-auto flex-1"
+          containerClass="!border-border w-full flex "
           value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          disabled={isLoading}
+          country={"et"}
         />
-        <button
+        <Button
+          size="lg"
+          disabled={!isValidPhoneNumber || isLoading}
           type="submit"
-          disabled={isLoading || !phone}
-          className="absolute right-3 top-3 bottom-3 bg-white text-black px-6 rounded-xl text-sm font-semibold hover:bg-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+          className="flex items-center justify-center gap-2"
         >
           {isLoading ? (
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-            </div>
+            <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
-            "Check"
+            <Search className="h-4 w-4" />
           )}
-        </button>
+          Search
+        </Button>
       </form>
 
       {error && (
@@ -98,23 +99,6 @@ export const DriverSearch: React.FC<DriverSearchProps> = ({
             />
           </svg>
           {error}
-        </div>
-      )}
-
-      {!isLoading && !error && (
-        <div className="mt-12 grid grid-cols-2 gap-4">
-          <div className="p-6 bg-[#18181b] rounded-2xl border border-white/5 shadow-lg text-center">
-            <p className="text-3xl font-bold text-white">1.4k</p>
-            <p className="text-[10px] text-zinc-500 uppercase tracking-widest mt-2">
-              Verified Drivers
-            </p>
-          </div>
-          <div className="p-6 bg-[#18181b] rounded-2xl border border-white/5 shadow-lg text-center">
-            <p className="text-3xl font-bold text-white">98%</p>
-            <p className="text-[10px] text-zinc-500 uppercase tracking-widest mt-2">
-              Safety Score
-            </p>
-          </div>
         </div>
       )}
     </div>

@@ -4,17 +4,10 @@ import React from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { salesDal } from "../dal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardDescription, CardTitle } from "@/components/ui/card";
 import {
   InputOTP,
   InputOTPGroup,
@@ -25,6 +18,7 @@ import "react-phone-input-2/lib/style.css";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { isValidPhoneNumber } from "libphonenumber-js";
+import { useAuth } from "../context/AuthContext";
 
 const formSchema = z.object({
   firstName: z.string().trim().min(2, "First name is too short"),
@@ -43,7 +37,9 @@ const formSchema = z.object({
 
 type FormInput = z.infer<typeof formSchema>;
 
-export const SignupForm: React.FC = () => {
+export const SignupForm = () => {
+  const auth = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -55,12 +51,12 @@ export const SignupForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    const response = await salesDal.signup(data);
-    if (response.statusCode === 201) {
+    const response = await auth.signUp(data);
+    if (response.success) {
       toast.success("Account created successfully!");
       reset();
     } else {
-      toast.error(response.errorMessage || "An error occurred.");
+      toast.error(response.errorMessage);
     }
   };
 
@@ -178,45 +174,6 @@ export const SignupForm: React.FC = () => {
             {errors.pin && (
               <p className="text-red-500 text-sm">{errors.pin.message}</p>
             )}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label htmlFor="managerName">Manager Name</Label>
-              <Input
-                id="managerName"
-                placeholder="e.g. Jane Doe"
-                {...register("managerName")}
-              />
-              {errors.managerName && (
-                <p className="text-red-500 text-sm">
-                  {errors.managerName.message}
-                </p>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="managerPhoneNumber">Manager Phone Number</Label>
-              <Controller
-                control={control}
-                name="managerPhoneNumber"
-                render={({ field }) => (
-                  <PhoneInput
-                    country={"et"}
-                    value={field.value}
-                    onChange={(phone) => field.onChange("+" + phone)}
-                    dropdownClass="!bg-card"
-                    buttonClass="!bg-card !border-border !rounded-md"
-                    inputClass="!bg-card !ml-16 !pl-4 !h-auto  py-1  placeholder:!text-muted-foreground !border-border !rounded-r-md h-auto flex-1"
-                    containerClass="!border-border w-full flex "
-                  />
-                )}
-              />
-              {errors.managerPhoneNumber && (
-                <p className="text-red-500 text-sm">
-                  {errors.managerPhoneNumber.message}
-                </p>
-              )}
-            </div>
           </div>
 
           <div className="space-y-2">
