@@ -6,21 +6,17 @@ import { useAuth } from "./context/AuthContext";
 import { Layout } from "./components/Layout";
 import { DriverSearch } from "./components/DriverSearch";
 import { DriverProfile } from "./components/DriverProfile";
-import { Driver } from "./types";
 import { Loader2 } from "lucide-react";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DriverProfileResponse } from "./types";
 
 export default function SalesDashboardPage() {
   const { user, isLoading, logout } = useAuth();
   const router = useRouter();
-  const [currentDriver, setCurrentDriver] =
-    useState<DriverProfileResponse["data"]["profile"] | null>(null);
+  const [currentDriver, setCurrentDriver] = useState<
+    DriverProfileResponse["data"]["profile"] | null
+  >(null);
 
   useEffect(() => {
     if (!isLoading && !user) {

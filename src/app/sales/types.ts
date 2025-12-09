@@ -18,19 +18,6 @@ export interface AuthUser {
   status: "inactive" | "active";
 }
 
-export interface Driver {
-  fullName: string;
-  phoneNumber: string;
-  licenseNumber: string;
-  licensePlate: string;
-  carModel: string;
-  carColor: string;
-  carYear: string;
-  approvalStatus: "Approved" | "Pending" | "Rejected";
-  riskScore: number; // 0-100
-  notes: string;
-}
-
 export type SalesUserLoginResponse = {
   data: {
     token: string;
