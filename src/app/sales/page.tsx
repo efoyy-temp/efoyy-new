@@ -58,9 +58,6 @@ export default function SalesDashboardPage() {
             <DriverProfile
               driver={currentDriver}
               onClose={handleCloseDriverProfile}
-              onApprove={() => {
-                console.log("Approve clicked");
-              }}
             />
           )}
         </DialogContent>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { DriverProfileResponse } from "../types";
+import "react-phone-input-2/lib/style.css";
 import { salesDal } from "../dal";
 import { Loader2 } from "lucide-react";
 import { isValidNumber } from "libphonenumber-js";
@@ -46,7 +47,7 @@ export const DriverSearch: React.FC<DriverSearchProps> = ({
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-semibold text-white mb-4 tracking-tight">
+        <h1 className="text-3xl font-semibold text-white mb-4 tracking-tight">
           Driver Search
         </h1>
         <p className="text-zinc-500">

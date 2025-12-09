@@ -19,6 +19,14 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import { useAuth } from "../context/AuthContext";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { companies } from "../dal/constants";
 
 const formSchema = z.object({
   firstName: z.string().trim().min(2, "First name is too short"),
@@ -46,6 +54,7 @@ export const SignupForm = () => {
     control,
     reset,
     formState: { errors, isSubmitting },
+    ...form
   } = useForm<FormInput>({
     resolver: zodResolver(formSchema),
   });
@@ -125,11 +134,15 @@ export const SignupForm = () => {
 
           <div className="space-y-2">
             <Label htmlFor="badgeNumber">Badge ID</Label>
-            <Input
-              id="badgeNumber"
-              placeholder="e.g. B-492"
-              {...register("badgeNumber")}
-            />
+
+            <div className="flex items-center gap-2">
+              <span className="text-xl min-w-12 shrink-0">ፎ _</span>
+              <Input
+                id="badgeNumber"
+                placeholder="000"
+                {...register("badgeNumber")}
+              />
+            </div>
             {errors.badgeNumber && (
               <p className="text-red-500 text-sm">
                 {errors.badgeNumber.message}
@@ -178,11 +191,45 @@ export const SignupForm = () => {
 
           <div className="space-y-2">
             <Label htmlFor="company">Company</Label>
-            <Input
-              id="company"
-              placeholder="e.g. Efoyy"
-              {...register("company")}
+            <Controller
+              control={control}
+              name="company"
+              render={({ field }) => (
+                <Select
+                  onValueChange={(value) => {
+                    field.onChange(value);
+                    const { managerPhoneNumber, managerName } = companies.find(
+                      (company) => company.name === value,
+                    )!;
+                    form.setValue("managerName", managerName);
+                    form.setValue("managerPhoneNumber", managerPhoneNumber);
+                  }}
+                  value={field.value}
+                >
+                  <SelectTrigger ref={field.ref}>
+                    <SelectValue placeholder="Select a company">
+                      {field.value}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    {companies.map((company) => (
+                      <SelectItem
+                        key={company.name as string}
+                        value={company.name as string}
+                      >
+                        {company.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
             />
+
+            {/* <Input */}
+            {/*   id="company" */}
+            {/*   placeholder="e.g. Efoyy" */}
+            {/*   {...register("company")} */}
+            {/* /> */}
             {errors.company && (
               <p className="text-red-500 text-sm">{errors.company.message}</p>
             )}

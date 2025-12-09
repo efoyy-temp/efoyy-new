@@ -59,4 +59,10 @@ export const salesDal = {
     );
     return response.data;
   },
+  async approveDriver(data: { driverPhoneNumber: string; pin: string }) {
+    const response = await apiClient.post("/driver/approve", {
+      data,
+    });
+    return response.data;
+  },
 };

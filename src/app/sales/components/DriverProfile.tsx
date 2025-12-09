@@ -6,104 +6,227 @@ import {
   DialogDescription,
   DialogClose,
 } from "@/components/ui/dialog";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
+import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { salesDal } from "../dal";
 import { DriverOtp, DriverProfileResponse } from "../types";
 
+import { useToast } from "@/hooks/use-toast";
+
 interface DriverProfileProps {
   driver: DriverProfileResponse["data"]["profile"];
   onClose: () => void;
-  onApprove: (password: string) => boolean;
 }
 
 export const DriverProfile: React.FC<DriverProfileProps> = ({
   driver,
   onClose,
 }) => {
+  const { toast } = useToast();
   const [otp, setOtp] = useState<DriverOtp["data"] | null>(null);
+  const [showOtp, setShowOtp] = useState(false);
   const [isFetchingOtp, setIsFetchingOtp] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleViewOtp = async () => {
-    setIsFetchingOtp(true);
+  const [isApproving, setIsApproving] = useState(false);
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [isApproved, setIsApproved] = useState(false);
+  const [pin, setPin] = useState("");
+
+  const handleViewOtpToggle = async () => {
     setError(null);
-    try {
-      const response = await salesDal.getDriverOtp({
-        driverPhoneNumber: driver.internationalPhoneNumber,
-      });
-      if (response.data) {
-        setOtp(response.data);
-      } else {
-        setError("Failed to fetch OTP.");
-      }
-    } catch (err) {
-      setError("An error occurred while fetching OTP.");
-    } finally {
-      setIsFetchingOtp(false);
+    if (showOtp) {
+      setShowOtp(false);
+      return;
     }
+
+    if (!otp) {
+      setIsFetchingOtp(true);
+      try {
+        const response = await salesDal.getDriverOtp({
+          driverPhoneNumber: driver.internationalPhoneNumber,
+        });
+        if (response.data) {
+          setOtp(response.data);
+          setShowOtp(true);
+        } else {
+          setError("Failed to fetch OTP.");
+        }
+      } catch (err) {
+        setError("An error occurred while fetching OTP.");
+      } finally {
+        setIsFetchingOtp(false);
+      }
+    } else {
+      setShowOtp(true);
+    }
+  };
+
+  const handleConfirmApproval = async () => {
+    setError(null);
+    setIsConfirming(true);
+    try {
+      await salesDal.approveDriver({
+        driverPhoneNumber: driver.internationalPhoneNumber,
+        pin: pin,
+      });
+
+      toast({
+        title: "Driver Approved",
+        description: `${driver.firstName} ${driver.lastName} has been successfully approved.`,
+      });
+      onClose(); // Close the dialog
+    } catch (err) {
+      setError("Approval failed. Please check the PIN and try again.");
+      setPin("");
+    } finally {
+      setIsConfirming(false);
+    }
+  };
+
+  const handleCancelApproval = () => {
+    setIsApproving(false);
+    setError(null);
+    setPin("");
   };
 
   return (
     <>
       <DialogHeader>
-        <DialogTitle>Driver Profile</DialogTitle>
-        <DialogDescription>
-          Review the driver&apos;s details and take action.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="py-4">
-        <div className="flex items-center gap-4">
-          <Avatar className="h-20 w-20">
-            <AvatarImage
-              src={driver.picture}
-              alt={`${driver.firstName} ${driver.lastName}`}
-              className="object-cover"
-            />
-            <AvatarFallback>
-              {driver.firstName[0]}
-              {driver.lastName[0]}
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <h3 className="text-xl font-semibold">
-              {driver.firstName} {driver.lastName}
-            </h3>
-            <p className="text-muted-foreground">
-              {driver.internationalPhoneNumber}
-            </p>
-          </div>
-        </div>
-
-        {otp && (
-          <div className="mt-4 p-4 bg-secondary rounded-lg">
-            <p className="text-sm text-muted-foreground">Driver OTP</p>
-            <p className="text-2xl font-bold tracking-widest">{otp.otp}</p>
-            <p className="text-xs text-muted-foreground">
-              Expires at: {new Date(otp.otpUpdatedAt).toLocaleTimeString()}
-            </p>
-          </div>
+        <DialogTitle>
+          {isApproving ? "Confirm Approval" : "Driver Profile"}
+        </DialogTitle>
+        {!isApproving && (
+          <DialogDescription>
+            Review the driver&apos;s details and take action.
+          </DialogDescription>
         )}
+      </DialogHeader>
 
-        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-      </div>
+      {isApproving ? (
+        <div className="py-4 space-y-4">
+          <Label htmlFor="pin">Enter your PIN to approve this driver</Label>
+          <InputOTP
+            id="pin"
+            maxLength={4}
+            value={pin}
+            onChange={(value) => setPin(value)}
+            containerClassName="w-full gap-6 self-center justify-between my-8 has-[:disabled]:opacity-100"
+          >
+            <InputOTPGroup className="w-full justify-between [&>*]:rounded-md ">
+              <InputOTPSlot
+                className="!text-xl leading-tight border size-12"
+                index={0}
+              />
+              <InputOTPSlot
+                className="!text-xl leading-tight border size-12"
+                index={1}
+              />
+              <InputOTPSlot
+                className="!text-xl leading-tight border size-12"
+                index={2}
+              />
+              <InputOTPSlot
+                className="!text-xl leading-tight border size-12"
+                index={3}
+              />
+            </InputOTPGroup>
+          </InputOTP>
+          {error && (
+            <p className="text-destructive text-sm text-center">{error}</p>
+          )}
+        </div>
+      ) : (
+        <div className="py-4">
+          <div className="flex items-center gap-4">
+            <Avatar className="h-20 w-20">
+              <AvatarImage
+                src={driver.picture}
+                alt={`${driver.firstName} ${driver.lastName}`}
+                className="object-cover"
+              />
+              <AvatarFallback>
+                {driver.firstName[0]}
+                {driver.lastName[0]}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <h3 className="text-xl font-semibold">
+                {driver.firstName} {driver.lastName}
+              </h3>
+              <p className="text-muted-foreground">
+                {driver.internationalPhoneNumber}
+              </p>
+            </div>
+          </div>
 
-      <Button
-        onClick={handleViewOtp}
-        variant="outline"
-        disabled={isFetchingOtp}
-      >
-        {isFetchingOtp ? <Loader2 className="animate-spin" /> : null}
-        View OTP
-      </Button>
+          {isApproved && (
+            <div className="mt-4 p-4 bg-green-500/10 text-green-500 rounded-lg">
+              Driver has been approved successfully.
+            </div>
+          )}
+
+          {showOtp && otp && (
+            <div className="mt-4 p-4 bg-secondary rounded-lg">
+              <p className="text-sm text-muted-foreground">Driver OTP</p>
+              <p className="text-2xl font-bold tracking-widest">{otp.otp}</p>
+              <p className="text-xs text-muted-foreground">
+                Expires at: {new Date(otp.otpUpdatedAt).toLocaleTimeString()}
+              </p>
+            </div>
+          )}
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        </div>
+      )}
+
       <DialogFooter className="sm:justify-between gap-2">
-        <DialogClose asChild>
-          <Button variant="outline" onClick={onClose}>
-            Close
-          </Button>
-        </DialogClose>
-        <Button>Approve Driver</Button>
+        {isApproving ? (
+          <>
+            <Button variant="ghost" onClick={handleCancelApproval}>
+              Cancel
+            </Button>
+            <Button
+              onClick={handleConfirmApproval}
+              disabled={pin.length < 4 || isConfirming}
+            >
+              {isConfirming && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              )}
+              Confirm Approval
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              onClick={handleViewOtpToggle}
+              variant="outline"
+              disabled={isFetchingOtp}
+            >
+              {isFetchingOtp ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
+              {showOtp ? "Hide OTP" : "View OTP"}
+            </Button>
+
+            <DialogClose asChild>
+              <Button variant="outline" onClick={onClose}>
+                Close
+              </Button>
+            </DialogClose>
+            {!isApproved && (
+              <Button onClick={() => setIsApproving(true)}>
+                Approve Driver
+              </Button>
+            )}
+          </>
+        )}
       </DialogFooter>
     </>
   );

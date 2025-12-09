@@ -35,9 +35,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <span className="text-sm font-medium">
                   {user.firstName} {user.lastName}
                 </span>
-                <span className="text-xs text-muted-foreground">
-                  {user.company}
-                </span>
               </div>
               <Button variant="ghost" onClick={handleLogout}>
                 Log out
@@ -55,7 +52,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           )}
         </div>
       </header>
-      <main className="w-full max-w-lg px-6 py-12 flex-1 flex flex-col justify-center">
+      <main className="w-full max-w-lg px-6 py-12 flex-1 flex flex-col ">
         {children}
       </main>
       <footer className="w-full py-8 text-center text-muted-foreground text-xs border-t">
