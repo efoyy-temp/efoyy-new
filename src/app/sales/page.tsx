@@ -9,10 +9,18 @@ import { DriverProfile } from "./components/DriverProfile";
 import { Driver } from "./types";
 import { Loader2 } from "lucide-react";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { DriverProfileResponse } from "./types";
+
 export default function SalesDashboardPage() {
   const { user, isLoading, logout } = useAuth();
   const router = useRouter();
-  const [currentDriver, setCurrentDriver] = useState<Driver | null>(null);
+  const [currentDriver, setCurrentDriver] =
+    useState<DriverProfileResponse["data"]["profile"] | null>(null);
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -20,25 +28,14 @@ export default function SalesDashboardPage() {
     }
   }, [user, isLoading, router]);
 
-  const handleDriverFound = (driver: Driver) => {
+  const handleDriverFound = (
+    driver: DriverProfileResponse["data"]["profile"],
+  ) => {
     setCurrentDriver(driver);
   };
 
   const handleCloseDriverProfile = () => {
     setCurrentDriver(null);
-  };
-
-  const handleApproveDriver = (password: string): boolean => {
-    // In a real app, this would be a backend call.
-    // For this mock, we'll just approve it without checking the password.
-    if (currentDriver) {
-        setCurrentDriver({
-            ...currentDriver,
-            approvalStatus: "Approved",
-          });
-          return true;
-    }
-    return false;
   };
 
   if (isLoading || !user) {
@@ -51,16 +48,23 @@ export default function SalesDashboardPage() {
 
   return (
     <Layout>
-      {!currentDriver ? (
-        <DriverSearch onDriverFound={handleDriverFound} />
-      ) : (
-        <DriverProfile
-          driver={currentDriver}
-          onClose={handleCloseDriverProfile}
-          onApprove={handleApproveDriver}
-        />
-      )}
+      <DriverSearch onDriverFound={handleDriverFound} />
+      <Dialog
+        open={!!currentDriver}
+        onOpenChange={(isOpen) => !isOpen && handleCloseDriverProfile()}
+      >
+        <DialogContent>
+          {currentDriver && (
+            <DriverProfile
+              driver={currentDriver}
+              onClose={handleCloseDriverProfile}
+              onApprove={() => {
+                console.log("Approve clicked");
+              }}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 }
-

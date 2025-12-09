@@ -1,14 +1,34 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { SalesPerson } from "../types";
-import { mockSalesUsers } from "../lib/mock-data";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import { AuthUser, SalesPerson } from "../types";
+import { salesDal } from "../dal";
+import { AxiosError, isAxiosError } from "axios";
 
-// Define the shape of the context
+type Result =
+  | {
+    success: true;
+  }
+  | {
+    success: false;
+    error:
+    | "network-error"
+    | "invalid-credentials"
+    | "server-error"
+    | "unknown";
+    errorMessage: string;
+  };
+
 interface AuthContextType {
-  user: Omit<SalesPerson, "pin"> | null;
-  login: (phoneNumber: string, pin: string) => Promise<boolean>;
+  user: AuthUser | null;
+  login: (phoneNumber: string, pin: string) => Promise<Result>;
+  signUp: (params: SalesPerson) => Promise<Result>;
   logout: () => void;
   isLoading: boolean;
 }
@@ -23,9 +43,9 @@ interface AuthProviderProps {
 
 // Create the AuthProvider component
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<Omit<SalesPerson, "pin"> | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     // On mount, try to load the user from localStorage
     try {
@@ -41,42 +61,108 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, []);
 
-  const login = async (phoneNumber: string, pin: string): Promise<boolean> => {
+  const signUp = async (params: SalesPerson): Promise<Result> => {
     setIsLoading(true);
-    // Simulate an API call
-    return new Promise(resolve => {
-      setTimeout(() => {
-        const foundUser = mockSalesUsers.find(
-          (u) => u.phoneNumber === phoneNumber && u.pin === pin
-        );
+    try {
+      const data = await salesDal.signup(params);
+      localStorage.setItem("salesUser", JSON.stringify(data));
+      localStorage.setItem("salesUserToken", data.token);
+      setUser({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        joinedSince: data.joinedSince,
+        lastLogin: data.lastLogin,
+        picture: data.picture,
+        status: data.status,
+      });
+      setIsLoading(false);
+      return {
+        success: true,
+      };
+    } catch (err) {
+      console.error(err);
+      setIsLoading(false);
+      if (!isAxiosError(err))
+        return {
+          success: false,
+          error: "unknown",
+          errorMessage: "Something went wrong.",
+        };
+      const axiosError = err as AxiosError<{ errorMessage: string }>;
+      if (axiosError.code === "ERR_NETWORK")
+        return {
+          success: false,
+          error: "network-error",
+          errorMessage: "No internet connection.",
+        };
 
-        if (foundUser) {
-          const { pin: _, ...userToStore } = foundUser;
-          localStorage.setItem("salesUser", JSON.stringify(userToStore));
-          setUser(userToStore);
-          setIsLoading(false);
-          resolve(true);
-        } else {
-          setIsLoading(false);
-          resolve(false);
-        }
-      }, 500);
-    });
+      const res = axiosError.response;
+      return {
+        success: false,
+        error: "server-error",
+        errorMessage: res?.data?.errorMessage ?? "Something went wrong.",
+      };
+    }
+  };
+
+  const login = async (phoneNumber: string, pin: string): Promise<Result> => {
+    setIsLoading(true);
+    try {
+      const data = await salesDal.login({
+        phoneNumber: phoneNumber,
+        pin: pin,
+      });
+      localStorage.setItem("salesUser", JSON.stringify(data));
+      localStorage.setItem("salesUserToken", data.token);
+      setUser({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        joinedSince: data.joinedSince,
+        lastLogin: data.lastLogin,
+        picture: data.picture,
+        status: data.status,
+      });
+      setIsLoading(false);
+      return {
+        success: true,
+      };
+    } catch (err) {
+      console.error(err);
+      setIsLoading(false);
+      if (!isAxiosError(err))
+        return {
+          success: false,
+          error: "unknown",
+          errorMessage: "Something went wrong.",
+        };
+      const axiosError = err as AxiosError<{ errorMessage: string }>;
+      if (axiosError.code === "ERR_NETWORK")
+        return {
+          success: false,
+          error: "network-error",
+          errorMessage: "No internet connection.",
+        };
+
+      const res = axiosError.response;
+      return {
+        success: false,
+        error: "server-error",
+        errorMessage: res?.data?.errorMessage ?? "Something went wrong.",
+      };
+    }
   };
 
   const logout = () => {
     localStorage.removeItem("salesUser");
+    localStorage.removeItem("salesUserToken");
+
     setUser(null);
     // We can handle redirection in the component that calls logout
   };
 
-  const value = { user, login, logout, isLoading };
+  const value = { user, login, logout, isLoading, signUp };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 // Create a custom hook to use the auth context
