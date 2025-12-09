@@ -5,6 +5,7 @@ import Providers from "../components/Providers";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { Toaster } from "@/components/ui/sonner";
 
 const manrope = Instrument_Sans({
   variable: "--font-manrope",
@@ -43,6 +44,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <Providers>{children}</Providers>
+            <Toaster />
           </NextThemesProvider>
         </NextIntlClientProvider>
       </body>
