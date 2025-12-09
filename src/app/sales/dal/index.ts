@@ -18,7 +18,7 @@ apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("salesUserToken");
     if (token) {
-      config.headers.auth = `Bearer ${token}`;
+      config.headers.auth = `${token}`;
     }
     return config;
   },
@@ -60,9 +60,7 @@ export const salesDal = {
     return response.data;
   },
   async approveDriver(data: { driverPhoneNumber: string; pin: string }) {
-    const response = await apiClient.post("/driver/approve", {
-      data,
-    });
+    const response = await apiClient.post("/approve/driver", data);
     return response.data;
   },
 };

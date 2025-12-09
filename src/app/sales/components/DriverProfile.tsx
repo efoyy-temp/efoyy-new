@@ -19,6 +19,9 @@ import { salesDal } from "../dal";
 import { DriverOtp, DriverProfileResponse } from "../types";
 
 import { useToast } from "@/hooks/use-toast";
+import parsePhoneNumber from "libphonenumber-js";
+import { AxiosError, isAxiosError } from "axios";
+import { CircleAlert } from "lucide-react";
 
 interface DriverProfileProps {
   driver: DriverProfileResponse["data"]["profile"];
@@ -37,7 +40,6 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
 
   const [isApproving, setIsApproving] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
-  const [isApproved, setIsApproved] = useState(false);
   const [pin, setPin] = useState("");
 
   const handleViewOtpToggle = async () => {
@@ -73,8 +75,10 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
     setError(null);
     setIsConfirming(true);
     try {
+      const parsed = parsePhoneNumber(driver.internationalPhoneNumber);
+
       await salesDal.approveDriver({
-        driverPhoneNumber: driver.internationalPhoneNumber,
+        driverPhoneNumber: parsed!.formatNational().replaceAll(" ", ""),
         pin: pin,
       });
 
@@ -84,7 +88,20 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
       });
       onClose(); // Close the dialog
     } catch (err) {
-      setError("Approval failed. Please check the PIN and try again.");
+      if (isAxiosError(err)) {
+        const axiosError = err as AxiosError<{
+          data: { errorMessage: string };
+        }>;
+        if (axiosError.code === "ERR_NETWORK")
+          setError("No internet connection.");
+        else
+          setError(
+            axiosError.response?.data?.data?.errorMessage ??
+            "Something went wrong.",
+          );
+      } else {
+        setError("Something went wrong.");
+      }
       setPin("");
     } finally {
       setIsConfirming(false);
@@ -167,19 +184,18 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
             </div>
           </div>
 
-          {isApproved && (
-            <div className="mt-4 p-4 bg-green-500/10 text-green-500 rounded-lg">
-              Driver has been approved successfully.
-            </div>
-          )}
-
           {showOtp && otp && (
-            <div className="mt-4 p-4 bg-secondary rounded-lg">
-              <p className="text-sm text-muted-foreground">Driver OTP</p>
-              <p className="text-2xl font-bold tracking-widest">{otp.otp}</p>
-              <p className="text-xs text-muted-foreground">
-                Expires at: {new Date(otp.otpUpdatedAt).toLocaleTimeString()}
+            <div className="mt-4 p-4 text-center bg-secondary rounded-lg">
+              <p className="text-xs mb-2 text-muted-foreground">Driver OTP</p>
+              <p className="text-3xl text-center font-bold tracking-widest">
+                {otp.otp}
               </p>
+
+              <DialogDescription className="mt-4 gap-4 text-red-500  ">
+                <CircleAlert className="inline-flex  " />
+                {"    "}
+                Only use the OTP if the driver is not receiving sms.
+              </DialogDescription>
             </div>
           )}
           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
@@ -220,11 +236,7 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
                 Close
               </Button>
             </DialogClose>
-            {!isApproved && (
-              <Button onClick={() => setIsApproving(true)}>
-                Approve Driver
-              </Button>
-            )}
+            <Button onClick={() => setIsApproving(true)}>Approve Driver</Button>
           </>
         )}
       </DialogFooter>

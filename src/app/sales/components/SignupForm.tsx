@@ -75,19 +75,15 @@ export const SignupForm = () => {
   return (
     <div className="w-full ">
       <div className="mb-6">
-        <CardTitle className="text-2xl">Create Account</CardTitle>
-        <CardDescription>
-          Enter your personnel details to access the driver database.
-        </CardDescription>
+        <CardTitle className="text-2xl">Create an Account</CardTitle>
       </div>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-2">
-              <Label htmlFor="firstName">First Name</Label>
               <Input
                 id="firstName"
-                placeholder="e.g. Alex"
+                placeholder="First Name"
                 {...register("firstName")}
               />
               {errors.firstName && (
@@ -97,10 +93,9 @@ export const SignupForm = () => {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="lastName">Last Name</Label>
               <Input
                 id="lastName"
-                placeholder="e.g. Johnson"
+                placeholder="Last Name"
                 {...register("lastName")}
               />
               {errors.lastName && (
@@ -210,9 +205,7 @@ export const SignupForm = () => {
                   value={field.value}
                 >
                   <SelectTrigger ref={field.ref}>
-                    <SelectValue placeholder="Select a company">
-                      {field.value}
-                    </SelectValue>
+                    <SelectValue placeholder="Select a company" />
                   </SelectTrigger>
                   <SelectContent>
                     {companies.map((company) => (
@@ -227,12 +220,6 @@ export const SignupForm = () => {
                 </Select>
               )}
             />
-
-            {/* <Input */}
-            {/*   id="company" */}
-            {/*   placeholder="e.g. Efoyy" */}
-            {/*   {...register("company")} */}
-            {/* /> */}
             {errors.company && (
               <p className="text-red-500 text-sm">{errors.company.message}</p>
             )}
@@ -242,7 +229,7 @@ export const SignupForm = () => {
             {isSubmitting ? (
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
             ) : null}
-            Access Platform
+            Register
           </Button>
         </form>
       </div>

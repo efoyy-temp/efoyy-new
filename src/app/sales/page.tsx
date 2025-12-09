@@ -10,13 +10,12 @@ import { Loader2 } from "lucide-react";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DriverProfileResponse } from "./types";
+import { Button } from "@/components/ui/button";
 import { SalesProfile } from "./components/SalesProfile";
 
 export default function SalesDashboardPage() {
   const { user, isLoading, logout } = useAuth();
-
   const router = useRouter();
-
   const [currentDriver, setCurrentDriver] = useState<
     DriverProfileResponse["data"]["profile"] | null
   >(null);
@@ -42,6 +41,28 @@ export default function SalesDashboardPage() {
       <div className="flex items-center justify-center min-h-screen">
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
       </div>
+    );
+  }
+
+  if (user.status === "inactive") {
+    return (
+      <Layout>
+        <div className="flex flex-col items-center justify-center text-center pt-20">
+          <div className="bg-card p-8 rounded-lg shadow-lg max-w-md w-full">
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              Wait for Activation
+            </h2>
+            <p className="text-muted-foreground mb-6">
+              Your account is currently inactive. Please wait for the
+              activation. Please contact your manager for assistance or call
+              9446.
+            </p>
+            <Button onClick={logout} variant="destructive">
+              Log Out
+            </Button>
+          </div>
+        </div>
+      </Layout>
     );
   }
 

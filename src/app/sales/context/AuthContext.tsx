@@ -92,7 +92,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           error: "unknown",
           errorMessage: "Something went wrong.",
         };
-      const axiosError = err as AxiosError<{ errorMessage: string }>;
+      const axiosError = err as AxiosError<{ data: { errorMessage: string } }>;
       if (axiosError.code === "ERR_NETWORK")
         return {
           success: false,
@@ -104,7 +104,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       return {
         success: false,
         error: "server-error",
-        errorMessage: res?.data?.errorMessage ?? "Something went wrong.",
+        errorMessage: res?.data?.data?.errorMessage ?? "Something went wrong.",
       };
     }
   };
@@ -143,7 +143,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           error: "unknown",
           errorMessage: "Something went wrong.",
         };
-      const axiosError = err as AxiosError<{ errorMessage: string }>;
+      const axiosError = err as AxiosError<{ data: { errorMessage: string } }>;
       if (axiosError.code === "ERR_NETWORK")
         return {
           success: false,
@@ -155,7 +155,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       return {
         success: false,
         error: "server-error",
-        errorMessage: res?.data?.errorMessage ?? "Something went wrong.",
+        errorMessage: res?.data?.data?.errorMessage ?? "Something went wrong.",
       };
     }
   };

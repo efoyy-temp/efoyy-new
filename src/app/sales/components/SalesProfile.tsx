@@ -19,14 +19,15 @@ export const SalesProfile = () => {
     return null; // or a loading skeleton
   }
 
+  //  @ts-expect-error this is fine
   const { firstName, lastName, picture, weeklyTarget, weeklySales } = user;
   const progress = weeklyTarget > 0 ? (weeklySales / weeklyTarget) * 100 : 0;
 
   return (
-    <Card className="mb-8">
-      <CardHeader>
+    <Card className="mb-8 ">
+      <CardHeader className="p-3">
         <div className="flex items-center gap-4">
-          <Avatar className="h-16 w-16">
+          <Avatar>
             <AvatarImage
               src={picture}
               alt={`${firstName} ${lastName}`}
@@ -45,7 +46,7 @@ export const SalesProfile = () => {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-3">
         <div className="space-y-2">
           <div className="flex justify-between text-sm text-muted-foreground">
             <h3 className="text-sm font-medium">This Week Progress</h3>

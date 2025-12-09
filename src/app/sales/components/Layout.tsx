@@ -52,7 +52,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           )}
         </div>
       </header>
-      <main className="w-full max-w-lg px-6 py-12 flex-1 flex flex-col ">
+      <main className="w-full max-w-lg p-6 flex-1 flex flex-col ">
         {children}
       </main>
       <footer className="w-full py-8 text-center text-muted-foreground text-xs border-t">
