@@ -46,46 +46,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const fetchUser = async () => {
+    const res = await salesDal.getSalesProfile();
+    setUser(res.data.profile);
+  };
+
   useEffect(() => {
-    // On mount, try to load the user from localStorage
-    try {
-      const storedUser = localStorage.getItem("salesUser");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
+    (async () => {
+      setIsLoading(true);
+      try {
+        fetchUser();
+      } catch (error) {
+        console.error("Failed to fetch sales person", error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error("Failed to parse user from localStorage", error);
-      localStorage.removeItem("salesUser");
-    } finally {
-      setIsLoading(false);
-    }
+    })();
   }, []);
 
   const signUp = async (params: SalesPerson): Promise<Result> => {
-    setIsLoading(true);
     try {
       const data = await salesDal.signup(params);
-      const userData = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        joinedSince: data.joinedSince,
-        lastLogin: data.lastLogin,
-        picture: data.picture,
-        status: data.status,
-        weeklySales: data.weeklySales,
-        weeklyTarget: data.weeklyTarget,
-        token: data.token,
-      };
-      localStorage.setItem("salesUser", JSON.stringify(userData));
       localStorage.setItem("salesUserToken", data.token);
-      setUser(userData);
-      setIsLoading(false);
+      fetchUser();
       return {
         success: true,
       };
     } catch (err) {
       console.error(err);
-      setIsLoading(false);
       if (!isAxiosError(err))
         return {
           success: false,
@@ -110,33 +98,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const login = async (phoneNumber: string, pin: string): Promise<Result> => {
-    setIsLoading(true);
     try {
       const data = await salesDal.login({
         phoneNumber: phoneNumber,
         pin: pin,
       });
-      const userData = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        joinedSince: data.joinedSince,
-        lastLogin: data.lastLogin,
-        picture: data.picture,
-        status: data.status,
-        weeklySales: data.weeklySales,
-        weeklyTarget: data.weeklyTarget,
-        token: data.token,
-      };
-      localStorage.setItem("salesUser", JSON.stringify(userData));
       localStorage.setItem("salesUserToken", data.token);
-      setUser(userData);
-      setIsLoading(false);
+      fetchUser();
       return {
         success: true,
       };
     } catch (err) {
       console.error(err);
-      setIsLoading(false);
       if (!isAxiosError(err))
         return {
           success: false,
@@ -150,8 +123,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           error: "network-error",
           errorMessage: "No internet connection.",
         };
-
       const res = axiosError.response;
+      if (axiosError.code === "ERR_BAD_REQUEST")
+        return {
+          success: false,
+          error: "invalid-credentials",
+          errorMessage: "Invalid phone number or PIN. Please try again.",
+        };
       return {
         success: false,
         error: "server-error",

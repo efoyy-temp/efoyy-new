@@ -9,15 +9,6 @@ export interface SalesPerson {
   company: string;
 }
 
-export interface AuthUser {
-  firstName: string;
-  lastName: string;
-  joinedSince: string;
-  lastLogin: string;
-  picture: string;
-  status: "inactive" | "active";
-}
-
 export type SalesUserLoginResponse = {
   data: {
     token: string;
@@ -50,6 +41,55 @@ export type SalesUserSignupResponse = {
   };
 };
 
+export type SalesProfileResponse = {
+  data: {
+    profile: {
+      id: number;
+      firstName: string;
+      lastName: string;
+      preferredName: string | null;
+      phoneNumber: string;
+      email: string | null;
+      status: "active" | "inactive";
+      company: string;
+      role: string;
+      badgeNumber: string;
+      department: string | null;
+      teamName: string | null;
+      isEmployee: boolean;
+      managerName: string;
+      managerPhoneNumber: string;
+      managerEmail: string | null;
+      joinedAt: string;
+      startDate: string;
+      lastActivityAt: string;
+      picture: string;
+      stats: {
+        numberOfSales: number;
+        driverOnboardedCount: number;
+        passengerOnboardedCount: number;
+        activeDriverPipeline: number;
+        activePassengerPipeline: number;
+        totalAmountPaid: string;
+        totalAmountUnpaid: string;
+        commissionPending: string;
+        bonusPaid: string;
+        targetMonthlySales: number;
+        targetQuarterlySales: number;
+        targetWeeklySales: number;
+        numberOfStickers: number;
+        conversionRate: string;
+      };
+      createdAt: string;
+      updatedAt: string;
+    };
+    statusCode: number;
+    errorMessage: string;
+  };
+};
+
+export type AuthUser = SalesProfileResponse["data"]["profile"];
+
 export type DriverOtp = {
   data: {
     otp: number;
@@ -67,8 +107,32 @@ export type DriverProfileResponse = {
       lastName: string;
       internationalPhoneNumber: string;
       picture: string;
+      vehicle: {
+        plateNumber: string;
+        color: string;
+        colorCode: string;
+        model: string;
+        brand: string;
+      };
     };
     statusCode: 200;
+    errorMessage: string;
+  };
+};
+
+export type SalesPersonListResponse = {
+  data: {
+    salesPersons: {
+      id: number;
+      firstName: string;
+      lastName: string;
+      phoneNumber: string;
+      status: string;
+      createdAt: string;
+      updatedAt: string;
+    }[];
+    count: number;
+    statusCode: number;
     errorMessage: string;
   };
 };

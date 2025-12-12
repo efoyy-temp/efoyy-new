@@ -5,6 +5,8 @@ import {
   SalesUserLoginResponse,
   DriverProfileResponse,
   SalesUserSignupResponse,
+  SalesProfileResponse,
+  SalesPersonListResponse,
 } from "../types";
 
 const apiClient = axios.create({
@@ -50,6 +52,11 @@ export const salesDal = {
     return response.data.data;
   },
 
+  async getSalesProfile() {
+    const response = await apiClient.get<SalesProfileResponse>("/profile");
+    return response.data;
+  },
+
   async getDriverProfile(data: { internationalPhoneNumber: string }) {
     const response = await apiClient.get<DriverProfileResponse>(
       "/driver/profile",
@@ -61,6 +68,17 @@ export const salesDal = {
   },
   async approveDriver(data: { driverPhoneNumber: string; pin: string }) {
     const response = await apiClient.post("/approve/driver", data);
+    return response.data;
+  },
+
+  async approveSalesPerson(data: { id: string }) {
+    const response = await apiClient.post("/activate", data);
+    return response.data;
+  },
+
+  async listUnactiveSalesPersons() {
+    const response =
+      await apiClient.get<SalesPersonListResponse>("/inactive/salesRep");
     return response.data;
   },
 };

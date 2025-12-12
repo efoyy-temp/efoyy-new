@@ -20,17 +20,23 @@ export default function LoginPage() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [pin, setPin] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const { login, isLoading } = useAuth();
+  const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const success = await login("+" + phoneNumber, pin);
-    if (success) {
+    setIsLoading(true);
+    const res = await login("+" + phoneNumber, pin);
+    setIsLoading(false);
+    if (res.success) {
       router.push("/sales");
     } else {
-      setError("Invalid phone number or PIN. Please try again.");
+      if (res.error === "network-error") setError("No internet connection.");
+      else if (res.error === "invalid-credentials")
+        setError("Invalid phone number or PIN. Please try again.");
+      else setError("Something went wrong.");
     }
   };
 
@@ -97,7 +103,7 @@ export default function LoginPage() {
             className="w-full h-12 text-base"
             disabled={isLoading}
           >
-            {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+            {isLoading && <Loader2 className="animate-spin" />}
             Log In
           </Button>
         </form>
