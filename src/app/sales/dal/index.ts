@@ -72,7 +72,7 @@ export const salesDal = {
   },
 
   async approveSalesPerson(data: { id: string }) {
-    const response = await apiClient.post("/activate", data);
+    const response = await apiClient.put("/activate", data);
     return response.data;
   },
 
