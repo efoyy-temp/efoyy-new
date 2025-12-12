@@ -47,7 +47,7 @@ export const DriverSearch: React.FC<DriverSearchProps> = ({
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-2xl font-semibold text-white mb-4 tracking-tight">
+        <h1 className="text-2xl font-semibold my-4 tracking-tight">
           Driver Search
         </h1>
         <p className="text-zinc-500">

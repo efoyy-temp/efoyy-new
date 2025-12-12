@@ -12,6 +12,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DriverProfileResponse } from "./types";
 import { Button } from "@/components/ui/button";
 import { SalesProfile } from "./components/SalesProfile";
+import Link from "next/link";
 
 export default function SalesDashboardPage() {
   const { user, isLoading, logout } = useAuth();
@@ -69,6 +70,13 @@ export default function SalesDashboardPage() {
   return (
     <Layout>
       <SalesProfile />
+      {user.isEmployee && (
+        <div className="my-4">
+          <Button asChild className="w-full">
+            <Link href="/sales/manage-sales">Manage Salespersons</Link>
+          </Button>
+        </div>
+      )}
       <DriverSearch onDriverFound={handleDriverFound} />
       <Dialog
         open={!!currentDriver}

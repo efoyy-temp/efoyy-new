@@ -24,7 +24,7 @@ export const SalesProfile = () => {
   const progress = weeklyTarget > 0 ? (weeklySales / weeklyTarget) * 100 : 0;
 
   return (
-    <Card className="mb-8 ">
+    <Card>
       <CardHeader className="p-3">
         <div className="flex items-center gap-4">
           <Avatar>
