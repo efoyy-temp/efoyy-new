@@ -55,7 +55,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     (async () => {
       setIsLoading(true);
       try {
-        fetchUser();
+        await fetchUser();
       } catch (error) {
         console.error("Failed to fetch sales person", error);
       } finally {
@@ -68,7 +68,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const data = await salesDal.signup(params);
       localStorage.setItem("salesUserToken", data.token);
-      fetchUser();
+      await fetchUser();
       return {
         success: true,
       };
@@ -104,7 +104,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         pin: pin,
       });
       localStorage.setItem("salesUserToken", data.token);
-      fetchUser();
+      await fetchUser();
       return {
         success: true,
       };
