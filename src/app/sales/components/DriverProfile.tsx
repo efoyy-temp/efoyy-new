@@ -14,14 +14,15 @@ import {
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, CircleAlert } from "lucide-react";
 import { salesDal } from "../dal";
 import { DriverOtp, DriverProfileResponse } from "../types";
 
 import { useToast } from "@/hooks/use-toast";
 import parsePhoneNumber from "libphonenumber-js";
 import { AxiosError, isAxiosError } from "axios";
-import { CircleAlert } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 
 interface DriverProfileProps {
   driver: DriverProfileResponse["data"]["profile"];
@@ -41,6 +42,9 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
   const [isApproving, setIsApproving] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
   const [pin, setPin] = useState("");
+
+  const color =
+    driver.vehicle.colorCode.slice(2) + driver.vehicle.colorCode.slice(0, 2);
 
   const handleViewOtpToggle = async () => {
     setError(null);
@@ -181,6 +185,33 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
               <p className="text-muted-foreground">
                 {driver.internationalPhoneNumber}
               </p>
+            </div>
+          </div>
+
+          <Separator className="my-4" />
+
+          <div>
+            <h4 className="font-semibold mb-2 text-lg">Vehicle Information</h4>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-4 text-sm">
+              <p className="text-muted-foreground">Plate Number</p>
+              <Badge variant="secondary" className="font-mono text-lg w-fit">
+                {driver.vehicle.plateNumber}
+              </Badge>
+
+              <p className="text-muted-foreground">Brand</p>
+              <p className="font-medium text-lg">{driver.vehicle.brand}</p>
+
+              <p className="text-muted-foreground">Model</p>
+              <p className="font-medium text-lg">{driver.vehicle.model}</p>
+
+              <p className="text-muted-foreground">Color</p>
+              <div className="flex items-center gap-1">
+                <div
+                  className="h-6 w-8 rounded-md border"
+                  style={{ backgroundColor: "#" + color }}
+                ></div>
+                <p className="font-medium text-lg">{driver.vehicle.color}</p>
+              </div>
             </div>
           </div>
 
