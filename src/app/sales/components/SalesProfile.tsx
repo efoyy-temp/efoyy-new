@@ -16,7 +16,7 @@ export const SalesProfile = () => {
   const { user } = useAuth();
 
   if (!user) {
-    return null; // or a loading skeleton
+    return null;
   }
 
   //  @ts-expect-error this is fine

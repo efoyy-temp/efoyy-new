@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { user, logout, isLoading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = () => {
     logout();
@@ -22,11 +23,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col items-center selection:bg-primary/20 bg-background text-foreground">
-      <header className="w-full max-w-6xl px-6 py-4 flex justify-between items-center border-b">
+      <header className="w-full max-w-6xl px-4 py-4 flex justify-between items-center border-b">
         <Link href="/sales">
           <Logo height={28} />
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center ">
           {isLoading ? (
             <div className="h-8 w-24 bg-muted animate-pulse rounded-md" />
           ) : user ? (
@@ -36,7 +37,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {user.firstName} {user.lastName}
                 </span>
               </div>
-              <Button variant="ghost" onClick={handleLogout}>
+              <Link
+                className="text-xs p-2 rounded-lg font-medium hover:bg-muted "
+                href={pathname === "/sales" ? "/sales" : "/sales/manage-sales"}
+              >
+                {pathname === "/sales" ? "Drivers" : "Sales"}
+              </Link>
+              <Button variant="ghost" size={"sm"} onClick={handleLogout}>
                 Log out
               </Button>
             </>
