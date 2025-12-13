@@ -39,9 +39,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
               <Link
                 className="text-xs p-2 rounded-lg font-medium hover:bg-muted "
-                href={pathname === "/sales" ? "/sales" : "/sales/manage-sales"}
+                href={pathname === "/sales" ? "/sales/manage-sales" : "/sales"}
               >
-                {pathname === "/sales" ? "Drivers" : "Sales"}
+                {pathname === "/sales" ? "Sales" : "Drivers"}
               </Link>
               <Button variant="ghost" size={"sm"} onClick={handleLogout}>
                 Log out
