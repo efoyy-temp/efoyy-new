@@ -19,7 +19,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("salesUserToken");
-    if (token) {
+    if (token && token !== "null") {
       config.headers.auth = `${token}`;
     }
     return config;
