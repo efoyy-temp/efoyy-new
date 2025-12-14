@@ -44,7 +44,9 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
   const [pin, setPin] = useState("");
 
   const color =
-    driver.vehicle.colorCode.slice(2) + driver.vehicle.colorCode.slice(0, 2);
+    driver.vehicle && driver.vehicle.colorCode
+      ? driver.vehicle.colorCode.slice(2) + driver.vehicle.colorCode.slice(0, 2)
+      : "";
 
   const handleViewOtpToggle = async () => {
     setError(null);
@@ -188,32 +190,43 @@ export const DriverProfile: React.FC<DriverProfileProps> = ({
             </div>
           </div>
 
-          <Separator className="my-4" />
+          {driver.vehicle && (
+            <>
+              <Separator className="my-4" />
 
-          <div>
-            <h4 className="font-semibold mb-2 text-lg">Vehicle Information</h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-4 text-sm">
-              <p className="text-muted-foreground">Plate Number</p>
-              <Badge variant="secondary" className="font-mono text-lg w-fit">
-                {driver.vehicle.plateNumber}
-              </Badge>
+              <div>
+                <h4 className="font-semibold mb-2 text-lg">
+                  Vehicle Information
+                </h4>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-4 text-sm">
+                  <p className="text-muted-foreground">Plate Number</p>
+                  <Badge
+                    variant="secondary"
+                    className="font-mono text-lg w-fit"
+                  >
+                    {driver.vehicle.plateNumber}
+                  </Badge>
 
-              <p className="text-muted-foreground">Brand</p>
-              <p className="font-medium text-lg">{driver.vehicle.brand}</p>
+                  <p className="text-muted-foreground">Brand</p>
+                  <p className="font-medium text-lg">{driver.vehicle.brand}</p>
 
-              <p className="text-muted-foreground">Model</p>
-              <p className="font-medium text-lg">{driver.vehicle.model}</p>
+                  <p className="text-muted-foreground">Model</p>
+                  <p className="font-medium text-lg">{driver.vehicle.model}</p>
 
-              <p className="text-muted-foreground">Color</p>
-              <div className="flex items-center gap-1">
-                <div
-                  className="h-6 w-8 rounded-md border"
-                  style={{ backgroundColor: "#" + color }}
-                ></div>
-                <p className="font-medium text-lg">{driver.vehicle.color}</p>
+                  <p className="text-muted-foreground">Color</p>
+                  <div className="flex items-center gap-1">
+                    <div
+                      className="h-6 w-8 rounded-md border"
+                      style={{ backgroundColor: "#" + color }}
+                    ></div>
+                    <p className="font-medium text-lg">
+                      {driver.vehicle.color}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </>
+          )}
 
           {showOtp && otp && (
             <div className="mt-4 p-4 text-center bg-secondary rounded-lg">

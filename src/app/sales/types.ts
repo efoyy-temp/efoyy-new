@@ -113,7 +113,7 @@ export type DriverProfileResponse = {
         colorCode: string;
         model: string;
         brand: string;
-      };
+      } | null;
     };
     statusCode: 200;
     errorMessage: string;
