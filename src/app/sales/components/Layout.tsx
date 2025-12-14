@@ -37,12 +37,16 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {user.firstName} {user.lastName}
                 </span>
               </div>
-              <Link
-                className="text-xs p-2 rounded-lg font-medium hover:bg-muted "
-                href={pathname === "/sales" ? "/sales/manage-sales" : "/sales"}
-              >
-                {pathname === "/sales" ? "Sales" : "Drivers"}
-              </Link>
+              {user.isEmployee && (
+                <Link
+                  className="text-xs p-2 rounded-lg font-medium hover:bg-muted "
+                  href={
+                    pathname === "/sales" ? "/sales/manage-sales" : "/sales"
+                  }
+                >
+                  {pathname === "/sales" ? "Sales" : "Drivers"}
+                </Link>
+              )}
               <Button variant="ghost" size={"sm"} onClick={handleLogout}>
                 Log out
               </Button>

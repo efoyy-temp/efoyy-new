@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -71,6 +71,10 @@ export const SignupForm = () => {
       toast.error(response.errorMessage);
     }
   };
+
+  useEffect(() => {
+    if (!auth.isLoading && auth.user) router.push("/sales");
+  }, [auth.isLoading, auth.user]);
 
   return (
     <div className="w-full ">
