@@ -5,7 +5,15 @@ import moduleAnalzer from "@next/bundle-analyzer";
 const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true
-  }
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
 };
 
 const withBundleAnalyzer = moduleAnalzer({
