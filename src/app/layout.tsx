@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Serif_Ethiopic } from "next/font/google";
+import { Instrument_Sans, Noto_Serif_Ethiopic } from "next/font/google";
 import "./globals.css";
 import Providers from "../components/Providers";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
@@ -7,20 +7,20 @@ import { getLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Instrument_Sans({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
 const noto = Noto_Serif_Ethiopic({
   variable: "--font-noto",
   subsets: ["ethiopic"],
-  fallback: ["var(--font-inter)", "sans-serif"],
+  fallback: ["var(--font-manrope)", "sans-serif"],
 });
 
 export const metadata: Metadata = {
-  title: "Efoyy Lab | Engineering Tomorrow",
-  description: "Building Ethiopia's future engineers through project-based mastery.",
+  title: "Efoyy",
+  description: "Safely arrive at your destination",
 };
 
 export default async function RootLayout({
@@ -34,7 +34,7 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <link rel="icon" href="/Charcoal_004.jpg" />
       <body
-        className={`${inter.variable} ${locale == "en" ? inter.className : noto.className} antialiased`}
+        className={`${manrope.variable} ${locale == "en" ? manrope.className : noto.className} antialiased`}
       >
         <NextIntlClientProvider>
           <NextThemesProvider
